@@ -1,10 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import LocationNavigator from "./navigation/LocationNavigator";
 
-export default function App() {
-  return <LocationNavigator />;
-}
+const ReportScreen = props => {
+  return (
+    <View>
+      <Text>ReportScreen</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -14,3 +17,5 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   }
 });
+
+export default ReportScreen;
