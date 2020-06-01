@@ -2,8 +2,12 @@ import React from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { Platform } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+//import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
+
+import WorkerScreen from "../screens/Worker/WorkerScreen";
+import ReportScreen from "../screens/Worker/ReportScreen";
+import AuthScreen from "../screens/Auth/AuthScreen";
 
 const defaultNavOptions = {
   headerStyle: {
@@ -15,7 +19,7 @@ const defaultNavOptions = {
 
 const LocationNavigator = createStackNavigator(
   {
-    Work: WorkScreen,
+    Work: WorkerScreen,
     Report: ReportScreen
   },
   {
@@ -38,3 +42,5 @@ const MainNavigator = createSwitchNavigator({
   Auth: AuthNavigator,
   Worker: LocationNavigator
 });
+
+export default createAppContainer(MainNavigator);
