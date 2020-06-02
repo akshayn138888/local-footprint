@@ -16,6 +16,7 @@ export const authenticate = (userId, token, expiryTime) => {
 };
 
 export const login = (email, password) => {
+    // console.log(1, email, password)
     return async dispatch => {
         const response = await fetch(
             "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBoRutTZz1NSIYzdho2OIDoyDsa3zPYWnU",
@@ -32,6 +33,7 @@ export const login = (email, password) => {
             }
         );
         if (!response.ok) {
+            // console.log(response)
             const errorResData = await response.json();
             const errorId = errorResData.error.message;
             let message = "Something went wrong !";
@@ -43,7 +45,7 @@ export const login = (email, password) => {
             throw new Error(message);
         }
         const resData = await response.json();
-        console.log(resData);
+        // console.log(resData);
         dispatch(
             authenticate(
                 resData.localId,

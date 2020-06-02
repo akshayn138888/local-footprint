@@ -9,22 +9,27 @@ import * as authActions from '../../store/actions/auth'
 
 const AuthScreen = props => {
   const [isLoading, setIsLoading] = useState(false)
-  const [formData, setFormData] = useState({ email: "", password: "" })
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
   const [error, setError] = useState()
   const dispatch = useDispatch()
 
-  function handleChange(evt) {
-    const value = evt.target.value;
-    setFormData({
-      ...formData,
-      [evt.target.name]: value
-    });
+
+  function handleEmail(evt) {
+    const email = evt.nativeEvent.text
+    setEmail(email);
+  }
+
+  function handlePassword(evt) {
+    const password = evt.nativeEvent.text
+    setPassword(password);
   }
 
   const authHandler = async () => {
     const actions = authActions.login(
-      formData.email,
-      formData.password
+      email,
+      password
     )
     setError(null)
     setIsLoading(true)
@@ -48,9 +53,13 @@ const AuthScreen = props => {
   //   },
   //   [dispatchFormState]
   // );
-
+  let errText = <Text></Text>
+  if (error) {
+    const errText = <Text>{error}</Text>
+  }
   return (
     <View>
+      {errText}
       <Text>Auth Screen</Text>
       <Button
         title="StartWork"
@@ -61,8 +70,8 @@ const AuthScreen = props => {
       <KeyboardAvoidingView>
         <Card>
           <ScrollView>
-            <TextInput name="email" value={formData.email} onChange={handleChange} placeholder="Enter Your Email..." />
-            <TextInput name="password" value={formData.password} onChange={handleChange} placeholder="Enter Your Password..." />
+            <TextInput name="email" value={email} onChange={handleEmail} placeholder="Enter Your Email..." />
+            <TextInput name="password" value={password} onChange={handlePassword} placeholder="Enter Your Password..." />
             <View style={styles.buttonContainer}>
               {isLoading ? (
                 <ActivityIndicator size="small" color={Colors.primary} />

@@ -37,6 +37,8 @@ const WorkerScreen = props => {
         setlocation(location);
       })();
     }, 9000);
+
+    return () => clearInterval(interval);
   }, []);
 
   let text = "Waiting..";
