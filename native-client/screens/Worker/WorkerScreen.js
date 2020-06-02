@@ -10,6 +10,7 @@ const WorkerScreen = props => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.auth.token);
   const username = useSelector(state => state.auth.userId);
+  const email = useSelector(state => state.auth.email);
 
   useEffect(
     function() {
@@ -23,7 +24,8 @@ const WorkerScreen = props => {
             },
             body: JSON.stringify({
               latitude: `${location.coords.latitude}`,
-              longitude: `${location.coords.longitude}`
+              longitude: `${location.coords.longitude}`,
+              userEmail: `${email}`
             })
           }
         )
@@ -66,10 +68,15 @@ const WorkerScreen = props => {
   } else if (location) {
     text = JSON.stringify(location);
   }
+  let userEmail = <Text>Fetching...</Text>;
+  if (email) {
+    userEmail = <Text>{email}</Text>;
+  }
 
   return (
     <View>
       <Text>WorkerScreen</Text>
+      {userEmail}
       <Button
         title="Report-Incident"
         onPress={() => {
