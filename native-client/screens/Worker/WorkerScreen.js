@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import * as Location from "expo-location";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as authActions from "../../store/actions/auth";
 
 const WorkerScreen = props => {
   const [location, setlocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const dispatch = useDispatch();
+  const token = useSelector(state => state.auth.token);
+  const username = useSelector(state => state.auth.userId);
 
   useEffect(
     function() {
       if (location) {
-        fetch("https://location-app-5d3d8.firebaseio.com/locations.json", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            latitude: `${location.coords.latitude}`,
-            longitude: `${location.coords.longitude}`
-          })
-        })
+        fetch(
+          `https://location-app-5d3d8.firebaseio.com/locations/${username}.json?auth=${token}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              latitude: `${location.coords.latitude}`,
+              longitude: `${location.coords.longitude}`
+            })
+          }
+        )
           .then(e => e.json())
           .then(data => console.log(data));
       }
