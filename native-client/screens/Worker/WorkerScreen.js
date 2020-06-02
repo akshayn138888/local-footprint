@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import * as Location from "expo-location";
+import { useDispatch } from "react-redux";
+import * as authActions from "../../store/actions/auth";
 
 const WorkerScreen = props => {
   const [location, setlocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(
-    function () {
+    function() {
       if (location) {
         fetch("https://location-app-5d3d8.firebaseio.com/locations.json", {
           method: "POST",
@@ -41,6 +44,17 @@ const WorkerScreen = props => {
     return () => clearInterval(interval);
   }, []);
 
+  const logoutHandler = async () => {
+    let actions = authActions.logout();
+    try {
+      await dispatch(actions);
+      props.navigation.navigate("Auth");
+    } catch (error) {
+      setError(error.message);
+      setIsLoading(false);
+    }
+  };
+
   let text = "Waiting..";
   if (errorMsg) {
     text = errorMsg;
@@ -63,6 +77,7 @@ const WorkerScreen = props => {
           props.navigation.navigate("Auth");
         }}
       />
+      <Button title="Log Out" onPress={logoutHandler} />
     </View>
   );
 };
