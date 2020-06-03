@@ -5,7 +5,9 @@ import {
   Button,
   Text,
   TextInput,
-  StyleSheet
+  StyleSheet,
+  Alert,
+  ActivityIndicator
 } from "react-native";
 import * as firebase from "firebase";
 // import { useDispatch } from "react-redux";
@@ -20,6 +22,7 @@ firebase.initializeApp(firebaseConfig);
 const ReportScreen = props => {
   const [titleValue, setTitleValue] = useState("");
   const [selectedImage, setSelectedImage] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const titleChangeHandler = text => {
     // you could add validation
@@ -39,9 +42,20 @@ const ReportScreen = props => {
         .storage()
         .ref()
         .child(imageName);
-      return ref.put(blob, { title: titleValue });
+      return ref.put(blob);
     };
-    uploadImage(selectedImage);
+    setIsLoading(true);
+    uploadImage(selectedImage).then(() => {
+      setIsLoading(false);
+      Alert.alert("Success", "Report has been sent", [
+        {
+          text: "Okay",
+          onPress: () => {
+            props.navigation.goBack();
+          }
+        }
+      ]);
+    });
 
     console.log(selectedImage);
     console.log(titleValue);
@@ -49,20 +63,24 @@ const ReportScreen = props => {
 
   return (
     <ScrollView>
-      <View style={styles.form}>
-        <Text style={styles.label}>Title</Text>
-        <TextInput
-          style={styles.textInput}
-          onChangeText={titleChangeHandler}
-          value={titleValue}
-        />
-        <ImagePicker onImageTaken={imageTakenHandler} />
-        <Button
-          title="Save Report"
-          color={Colors.primary}
-          onPress={saveReportHandler}
-        />
-      </View>
+      {isLoading ? (
+        <ActivityIndicator size="large" color={Colors.primary} />
+      ) : (
+        <View style={styles.form}>
+          <Text style={styles.label}>Title</Text>
+          <TextInput
+            style={styles.textInput}
+            onChangeText={titleChangeHandler}
+            value={titleValue}
+          />
+          <ImagePicker onImageTaken={imageTakenHandler} />
+          <Button
+            title="Save Report"
+            color={Colors.primary}
+            onPress={saveReportHandler}
+          />
+        </View>
+      )}
     </ScrollView>
   );
 };
