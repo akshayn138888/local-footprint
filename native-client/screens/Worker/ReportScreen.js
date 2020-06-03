@@ -7,10 +7,15 @@ import {
   TextInput,
   StyleSheet
 } from "react-native";
+import * as firebase from "firebase";
 // import { useDispatch } from "react-redux";
 
 import Colors from "../../constants/Colors";
 import ImagePicker from "../../components/ImagePicker";
+import { firebaseConfig } from "../../config/fire";
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 const ReportScreen = props => {
   const [titleValue, setTitleValue] = useState("");
@@ -25,6 +30,19 @@ const ReportScreen = props => {
   };
 
   const saveReportHandler = () => {
+    uploadImage = async uri => {
+      const response = await fetch(uri);
+      const blob = await response.blob();
+      let imageName = selectedImage.split("/").pop() + "$" + titleValue;
+
+      var ref = firebase
+        .storage()
+        .ref()
+        .child(imageName);
+      return ref.put(blob, { title: titleValue });
+    };
+    uploadImage(selectedImage);
+
     console.log(selectedImage);
     console.log(titleValue);
   };
