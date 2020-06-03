@@ -46,7 +46,7 @@ const WorkerScreen = props => {
         let location = await Location.getCurrentPositionAsync({});
         setlocation(location);
       })();
-    }, 9000);
+    }, 30000); ////////////////////////////////////// CHange Timing when //////////////////////// Demoing
 
     return () => clearInterval(interval);
   }, []);
