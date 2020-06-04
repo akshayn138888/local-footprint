@@ -9,7 +9,7 @@ const ImgPicker = props => {
   const [pickedImage, setPickedImage] = useState();
 
   const verifyPermissions = async () => {
-    const result = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+    const result = await Permissions.askAsync(Permissions.CAMERA_ROLL, Permissions.CAMERA);
     if (result.status !== "granted") {
       Alert.alert(
         "Insufficient permissions!",
@@ -43,8 +43,8 @@ const ImgPicker = props => {
         {!pickedImage ? (
           <Text>No image picked yet.</Text>
         ) : (
-          <Image style={styles.image} source={{ uri: pickedImage }} />
-        )}
+            <Image style={styles.image} source={{ uri: pickedImage }} />
+          )}
       </View>
       <Button
         title="Take Image"
