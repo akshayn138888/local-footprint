@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import * as Location from "expo-location";
+
 import {
   ScrollView,
   View,
@@ -7,7 +9,8 @@ import {
   TextInput,
   StyleSheet,
   Alert,
-  ActivityIndicator
+  ActivityIndicator,
+  KeyboardAvoidingView
 } from "react-native";
 import * as firebase from "firebase";
 import Colors from "../../constants/Colors";
@@ -17,20 +20,31 @@ import { useSelector } from "react-redux";
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const ReportScreen = props => {
+  //States
   const [titleValue, setTitleValue] = useState("");
+  const [descriptionValue, setDescriptionValue] = useState("");
   const [selectedImage, setSelectedImage] = useState();
   const [isLoading, setIsLoading] = useState(false);
+
+  // Redux
   const token = useSelector(state => state.auth.token);
   const username = useSelector(state => state.auth.userId);
   const email = useSelector(state => state.auth.email);
+
+  // Handlers
   const titleChangeHandler = text => {
     // you could add validation
     setTitleValue(text);
   };
+  const descriptionChangeHandler = text => {
+    // you could add validation
+    setDescriptionValue(text);
+  };
   const imageTakenHandler = imagePath => {
     setSelectedImage(imagePath);
   };
-  const saveReportHandler = () => {
+
+  const saveReportHandler = async () => {
     if (titleValue && selectedImage) {
       uploadImage = async uri => {
         const response = await fetch(uri);
@@ -42,7 +56,17 @@ const ReportScreen = props => {
           .child(imageName);
         await ref.put(blob);
         const fileUrl = await ref.getDownloadURL();
-        console.log(fileUrl)
+        console.log(fileUrl);
+
+        let { status } = await Location.requestPermissionsAsync();
+        if (status !== "granted") {
+          setErrorMsg("Permission to access location was denied");
+          let location = {
+            coords: { latitude: "49.1197408", longitude: "-122.8888664" }
+          };
+        }
+        let location = await Location.getCurrentPositionAsync({});
+
         await fetch(
           `https://location-app-5d3d8.firebaseio.com/images/${username}.json?auth=${token}`,
           {
@@ -53,10 +77,13 @@ const ReportScreen = props => {
             body: JSON.stringify({
               title: `${titleValue}`,
               url: `${fileUrl}`,
-              userEmail: `${email}`
+              userEmail: `${email}`,
+              description: `${descriptionValue}`,
+              latitude: `${location.coords.latitude}`,
+              longitude: `${location.coords.longitude}`
             })
           }
-        )
+        );
       };
       setIsLoading(true);
       uploadImage(selectedImage).then(() => {
@@ -84,18 +111,28 @@ const ReportScreen = props => {
     }
   };
   return (
-    <ScrollView>
-      {isLoading ? (
-        <ActivityIndicator size="large" color={Colors.primary} />
-      ) : (
+    <KeyboardAvoidingView>
+      <ScrollView>
+        {isLoading ? (
+          <ActivityIndicator size="large" color={Colors.primary} />
+        ) : (
           <View style={styles.form}>
+            <ImagePicker onImageTaken={imageTakenHandler} />
+
             <Text style={styles.label}>Title</Text>
+
             <TextInput
               style={styles.textInput}
               onChangeText={titleChangeHandler}
               value={titleValue}
             />
-            <ImagePicker onImageTaken={imageTakenHandler} />
+            <Text style={styles.label}>Description</Text>
+
+            <TextInput
+              style={styles.desciptionText}
+              onChangeText={descriptionChangeHandler}
+              value={descriptionValue}
+            />
             <Button
               title="Save Report"
               color={Colors.primary}
@@ -103,7 +140,8 @@ const ReportScreen = props => {
             />
           </View>
         )}
-    </ScrollView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 ReportScreen.navigationOptions = {
@@ -123,6 +161,14 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     paddingVertical: 4,
     paddingHorizontal: 2
+  },
+  descriptionText: {
+    borderBottomColor: "#ccc",
+    borderBottomWidth: 1,
+    marginBottom: 15,
+    paddingVertical: 4,
+    paddingHorizontal: 2,
+    width: "80%"
   }
 });
 export default ReportScreen;
