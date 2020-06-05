@@ -34,20 +34,43 @@ const IncidentMapScreen = props => {
 
       for (let [key1, value1] of Object.entries(value)) {
         let title = value1.title;
+        let type = "";
+        if (value1.incident == "A") {
+          type =
+            "https://www.pngkit.com/png/full/26-266075_alcoholic-drink-alcohol-intoxication-computer-icons-drunk-icon.png";
+        } else if (value1.incident == "PI") {
+          type = "https://vectorified.com/images/assault-icon-6.png";
+        }
+
+        // switch (value1.incident) {
+        //   case "PI":
+        //     type =
+        //       "https://www.pngkit.com/png/full/26-266075_alcoholic-drink-alcohol-intoxication-computer-icons-drunk-icon.png";
+
+        //   // case "BAE" :
+
+        //   // case "VT" :
+
+        //   // case "VC" :
+
+        //   // case "GT" :
+
+        //   case "A":
+        //     type = "https://vectorified.com/images/assault-icon-6.png";
+
+        //   // case "PD":
+        // }
 
         parseData.push(
           <Marker
             latitude={parseFloat(value1.latitude)}
             longitude={parseFloat(value1.longitude)}
           >
-            <button class="marker-btn">
-              <img
-                src="https://cdn.imgbin.com/12/4/19/imgbin-auxiliary-police-lawyer-material-people-s-police-UcqivXX1JKh98eQ2xMj1Zyan2.jpg"
-                alt="security guard"
-                style={{ width: 50 }}
-              />
-              <p>{title}</p>
-            </button>
+            <img
+              src={type}
+              alt="security guard"
+              style={{ width: 50, borderRadius: "100%" }}
+            />
           </Marker>
         );
       }

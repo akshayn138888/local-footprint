@@ -6,6 +6,9 @@ const WelcomeScreen = props => {
       <Link to="/signin">
         <button>Sign In</button>
       </Link>
+      <Link to="/IncidentMapScreen">
+        <button>IncidentMapScreen</button>
+      </Link>
     </div>
   );
 };
