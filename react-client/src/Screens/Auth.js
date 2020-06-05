@@ -33,6 +33,7 @@ const Auth = props => {
     const resData = await response.json();
     console.log(resData);
     console.log("logged in");
+    props.history.push("/MapScreen");
   };
   return (
     <div>
