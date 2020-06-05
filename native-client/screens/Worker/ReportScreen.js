@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Alert,
   ActivityIndicator,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Picker
 } from "react-native";
 import * as firebase from "firebase";
 import Colors from "../../constants/Colors";
@@ -25,6 +26,7 @@ const ReportScreen = props => {
   const [descriptionValue, setDescriptionValue] = useState("");
   const [selectedImage, setSelectedImage] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [picker, setPicker] = useState(null);
 
   // Redux
   const token = useSelector(state => state.auth.token);
@@ -43,9 +45,12 @@ const ReportScreen = props => {
   const imageTakenHandler = imagePath => {
     setSelectedImage(imagePath);
   };
+  const pickerHandler = (itemValue, itemIndex) => {
+    setPicker(itemValue);
+  };
 
   const saveReportHandler = async () => {
-    if (titleValue && selectedImage) {
+    if (titleValue && selectedImage && picker && descriptionValue) {
       uploadImage = async uri => {
         const response = await fetch(uri);
         const blob = await response.blob();
@@ -80,7 +85,8 @@ const ReportScreen = props => {
               userEmail: `${email}`,
               description: `${descriptionValue}`,
               latitude: `${location.coords.latitude}`,
-              longitude: `${location.coords.longitude}`
+              longitude: `${location.coords.longitude}`,
+              incident: `${picker}`
             })
           }
         );
@@ -100,14 +106,18 @@ const ReportScreen = props => {
       console.log(selectedImage);
       console.log(titleValue);
     } else {
-      Alert.alert("Error", "Please Add Title and Image Before Submitting", [
-        {
-          text: "Okay",
-          onPress: () => {
-            props.navigation.goBack();
+      Alert.alert(
+        "Incomplete Form",
+        "Please ensure form is complete before submitting.",
+        [
+          {
+            text: "Okay",
+            onPress: () => {
+              props.navigation.goBack();
+            }
           }
-        }
-      ]);
+        ]
+      );
     }
   };
   return (
@@ -129,10 +139,24 @@ const ReportScreen = props => {
             <Text style={styles.label}>Description</Text>
 
             <TextInput
-              style={styles.desciptionText}
+              style={styles.textInput}
               onChangeText={descriptionChangeHandler}
               value={descriptionValue}
             />
+            <Picker
+              selectedValue={picker}
+              style={styles.picker}
+              onValueChange={pickerHandler}
+            >
+              <Picker.Item label="Break and Enter" value="BAE" />
+              <Picker.Item label="Vehicle Theft" value="VT" />
+              <Picker.Item label="Vehicle Collision" value="VC" />
+              <Picker.Item label="General Theft" value="GT" />
+              <Picker.Item label="Public Intoxication" value="PI" />
+              <Picker.Item label="Assault" value="A" />
+              <Picker.Item label="Property Damage" value="PD" />
+            </Picker>
+
             <Button
               title="Save Report"
               color={Colors.primary}
@@ -162,13 +186,11 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal: 2
   },
-  descriptionText: {
-    borderBottomColor: "#ccc",
-    borderBottomWidth: 1,
-    marginBottom: 15,
-    paddingVertical: 4,
-    paddingHorizontal: 2,
-    width: "80%"
+
+  picker: {
+    height: 50,
+    width: "100%",
+    marginBottom: 20
   }
 });
 export default ReportScreen;
