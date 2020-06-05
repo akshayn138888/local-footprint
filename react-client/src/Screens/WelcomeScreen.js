@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Welcome = props => {
+const WelcomeScreen = props => {
   return (
     <div>
       <Link to="/signin">
@@ -9,4 +9,4 @@ const Welcome = props => {
     </div>
   );
 };
-export default Welcome;
+export default WelcomeScreen;

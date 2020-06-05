@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Auth = props => {
+const AuthScreen = props => {
   const [submitForm, setSubmitForm] = useState({});
   const [text1, setText1] = useState({ email: "", password: "" });
   function handleChange(evt) {
@@ -66,4 +66,4 @@ const Auth = props => {
     </div>
   );
 };
-export default Auth;
+export default AuthScreen;
