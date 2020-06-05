@@ -86,7 +86,8 @@ const ReportScreen = props => {
               description: `${descriptionValue}`,
               latitude: `${location.coords.latitude}`,
               longitude: `${location.coords.longitude}`,
-              incident: `${picker}`
+              incident: `${picker}`,
+              timestamp: new Date().toLocaleString()
             })
           }
         );
