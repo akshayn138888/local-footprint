@@ -25,7 +25,8 @@ const WorkerScreen = props => {
             body: JSON.stringify({
               latitude: `${location.coords.latitude}`,
               longitude: `${location.coords.longitude}`,
-              userEmail: `${email}`
+              userEmail: `${email}`,
+              timestamp: new Date().toLocaleString()
             })
           }
         )
