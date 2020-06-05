@@ -27,7 +27,16 @@ function App() {
       //console.log(value);
       for (let [key1, value1] of Object.entries(value)) {
         parseData.push(
-          <img src={value1.url} alt="red" style={{ width: 200, height: 200 }} />
+          <div>
+            <p>{value1.title}</p>
+
+            <img
+              src={value1.url}
+              alt="red"
+              style={{ width: 200, height: 200 }}
+            />
+            <p>Posted by:{value1.email}</p>
+          </div>
         );
       }
     }
