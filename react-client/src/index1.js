@@ -27,5 +27,6 @@ for (let [key, value] of Object.entries(obj)) {
     console.log(value1.title);
   }
 }
+let location = { coords: { latitude: "", longitude: "" } };
 
 //console.log(parsedData);
