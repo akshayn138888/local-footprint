@@ -8,9 +8,9 @@ const IncidentShowScreen = props => {
   const { userId, reportId } = props.match.params;
 
   const [viewport, setViewport] = useState({
-    latitude: 47.119706917599885,
-    longitude: -124.112312312,
-    zoom: 15,
+    latitude: 49.119706917599885,
+    longitude: -122.112312312,
+    zoom: 10,
     width: "100vw",
     height: "100vh"
   });
