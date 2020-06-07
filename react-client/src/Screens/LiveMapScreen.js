@@ -18,7 +18,7 @@ const MapScreen = props => {
       })
         .then(e => e.json())
         .then(data => {
-          console.log(data);
+          //console.log(data);
           setLatLon(data);
         });
     }, 10000);
@@ -30,7 +30,7 @@ const MapScreen = props => {
   if (latLon) {
     let parseData = [];
     for (let [key, value] of Object.entries(latLon)) {
-      console.log(value);
+      //console.log(value);
       let array1 = [];
       for (let [key1, value1] of Object.entries(value)) {
         let name = value1.userEmail.split("@")[0];
@@ -52,7 +52,7 @@ const MapScreen = props => {
       }
       parseData.push(array1);
     }
-    console.log(parseData);
+    //console.log(parseData);
     return (
       <div>
         <ReactMapGL
