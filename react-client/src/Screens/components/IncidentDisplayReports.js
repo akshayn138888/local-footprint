@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import TinyReport from "./components/TinyReport";
 
 import { Box, Grid, Image, Text, CheckBox } from "grommet";
+import { Link } from "react-router-dom";
 
 const DisplayReport = props => {
   const [images, setImages] = useState(null);
@@ -26,10 +26,11 @@ const DisplayReport = props => {
   if (images) {
     let parseData = [];
     for (let [key, value] of Object.entries(images)) {
-      //console.log(value);
+      // Key is the User ID
       for (let [key1, value1] of Object.entries(value)) {
+        // Key1 is the report number
         parseData.push(
-          <div>
+          <div id={key1}>
             <hr
               style={{
                 color: "gray",
@@ -45,6 +46,7 @@ const DisplayReport = props => {
                 ["Picture", "LowerMain", "LowerSide"],
               ]}
               margin={{ vertical: "xsmall", horizontal: "medium" }}
+
             >
 
 
@@ -56,7 +58,7 @@ const DisplayReport = props => {
               </Box>
 
               <Box background="light-3" gridArea="UpperMain" pad={{ left: "small" }} fit="contain" >
-                <Text>{value1.title}</Text>
+                <Link to={`/IncidentScreen/${key}/${key1}`} >{value1.title}</Link>
                 <Text>{value1.incident}</Text>
               </Box>
               <Box background="light-3" gridArea="LowerMain">
