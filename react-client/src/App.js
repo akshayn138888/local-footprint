@@ -7,7 +7,7 @@ import IncidentMapScreen from "./Screens/components/IncidentMapScreen";
 import IncidentScreen from "./Screens/IncidentScreen";
 import IncidentShowScreen from "./Screens/IncidentShowScreen";
 import "./App.css";
-
+import NavBar from "./Screens/components/NavBar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Grommet } from "grommet";
 
@@ -16,10 +16,6 @@ function App() {
     <BrowserRouter>
       <Grommet>
         <Switch>
-          {/* <DisplayReport /> */}
-          {/* <MapScreen /> */}
-          {/* <Auth /> */}
-          {/* <IncidentShowScreen /> */}
           <Route exact path="/" component={WelcomeScreen} />
           <Route exact path="/signin" component={AuthScreen} />
           <Route exact path="/LiveMapScreen" component={LiveMapScreen} />
