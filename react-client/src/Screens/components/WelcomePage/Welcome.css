@@ -219,6 +219,7 @@ body {
   -moz-transition: all 0.4s;
   -ms-transition: all 0.4s;
   -o-transition: all 0.4s;
+  text-decoration: none;
 }
 
 .btn:hover {
@@ -440,7 +441,13 @@ body {
   margin: 15px 0 40px 0;
   text-align: center;
 }
-
+.stripe {
+  position: relative;
+  height: 40%;
+  background-image: linear-gradient(to top, #ffffff 0%, #ebeff9 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 7vw));
+  /* change the calc height to a percentage height to get alternate responsive behavior*/
+}
 .site__img {
   margin-top: 50px;
   display: inline-block;
@@ -468,6 +475,8 @@ body {
 }
 .header__img {
   display: inline-block;
+  width: 16em;
+
   vertical-align: middle;
 }
 
@@ -490,7 +499,8 @@ body {
 }
 .header__link {
   color: #1f4568;
-  font-size: 14px;
+  font-size: 20px;
+  text-decoration: none;
 }
 .header__link:hover {
   text-decoration: none;
@@ -872,6 +882,7 @@ body {
   }
   .footer__img {
     width: 15px;
+    height: 25px;
   }
   .footer__title {
     font-size: 16px;

@@ -5,18 +5,20 @@ import "../Screens/components/WelcomePage/Welcome.css";
 const WelcomeScreen = props => {
   return (
     <>
-      <header class="header">
-        <div class="container header__container">
-          <div class="header__logo">
-            <img
-              class="header__img"
-              src="https://image.ibb.co/kcVou6/path3000.png"
-            />{" "}
-            <h1 class="header__title">
-              Bricks<span class="header__light">.io</span>
-            </h1>
-          </div>
-          <button
+      <div className="stripe">
+        <header class="header">
+          <div
+            class="container header__container"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between"
+            }}
+          >
+            <div class="header__logo">
+              <img class="header__img" src="/NoSloganLogo.png" />
+            </div>
+            {/* <button
             type="button"
             class="navbar-toggle collapsed"
             data-toggle="collapse"
@@ -28,79 +30,72 @@ const WelcomeScreen = props => {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
+          </button> */}
 
-          <div class="header__menu">
-            <nav id="navbar" class="header__nav collapse">
-              <ul class="header__elenco">
-                <li class="header__el">
-                  <a href="#" class="header__link">
-                    Home
-                  </a>
-                </li>
-                <li class="header__el">
-                  <a href="#" class="header__link">
-                    Pricing
-                  </a>
-                </li>
-                <li class="header__el">
-                  <a href="#" class="header__link">
-                    Success stories
-                  </a>
-                </li>
-                <li class="header__el">
-                  <a href="#" class="header__link">
-                    Blog
-                  </a>
-                </li>
-                <li class="header__el">
-                  <a href="#" class="header__link">
-                    Contact us
-                  </a>
-                </li>
-                <li class="header__el header__el--blue">
-                  <a href="" class="btn btn--white">
-                    Sign In →
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <div class="header__menu">
+              <nav id="navbar" class="header__nav collapse">
+                <ul class="header__elenco">
+                  <li class="header__el">
+                    <a href="#" class="header__link">
+                      Home
+                    </a>
+                  </li>
+                  <li class="header__el">
+                    <a href="#" class="header__link">
+                      Pricing
+                    </a>
+                  </li>
+
+                  <li class="header__el">
+                    <a href="#" class="header__link">
+                      Contact us
+                    </a>
+                  </li>
+                  <li class="header__el header__el--blue">
+                    <a href="" class="btn btn--white">
+                      Sign In →
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
-        </div>
-      </header>
-      <div class="sect sect--padding-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="site">
-                <h1 class="site__title">
-                  Fast paced way to grow your business
-                </h1>
-                <h2 class="site__subtitle">Manage analytics like a boss</h2>
-                <div class="site__box-link">
-                  <a class="btn btn--width" href="">
-                    Pricing
-                  </a>
-                  <a class="btn btn--revert btn--width" href="">
-                    Contact
-                  </a>
+        </header>
+        <div class="sect sect--padding-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="site">
+                  <h1 class="site__title">
+                    Fast paced way to grow your business
+                  </h1>
+                  <h2 class="site__subtitle">Manage analytics like a boss</h2>
+                  <div class="site__box-link">
+                    <a class="btn btn--width" href="">
+                      Pricing
+                    </a>
+                    <a class="btn btn--revert btn--width" href="">
+                      Contact
+                    </a>
+                  </div>
+                  <img
+                    class="site__img"
+                    src="https://d540vms5r2s2d.cloudfront.net/mad/uploads/mad_blog_5dce98b8aaf431573820600.jpg"
+                  ></img>
                 </div>
-                <img
-                  class="site__img"
-                  src="https://image.ibb.co/c7grYb/image3015.png"
-                />
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div class="sect sect--padding-bottom">
         <div class="container">
           <div class="row row--center">
             <h1 class="row__title">Pricing</h1>
             <h2 class="row__sub">What fits your business the best?</h2>
           </div>
-          <div class="row row--center row--margin">
+          <div class="row row--center row--margin" style={{ display: "flex" }}>
             <div class="col-md-4 col-sm-4 price-box price-box--purple">
               <div class="price-box__wrap">
                 <div class="price-box__img"></div>
@@ -118,9 +113,6 @@ const WelcomeScreen = props => {
                   <li class="price-box__list-el">No tasks limit</li>
                   <li class="price-box__list-el">No contractors limit </li>
                 </ul>
-                <div class="price-box__btn">
-                  <a class="btn btn--purple btn--width">Start now</a>
-                </div>
               </div>
             </div>
 
@@ -141,9 +133,6 @@ const WelcomeScreen = props => {
                   <li class="price-box__list-el">No tasks limit</li>
                   <li class="price-box__list-el">No contractors limit </li>
                 </ul>
-                <div class="price-box__btn">
-                  <a class="btn btn--violet btn--width">Start now</a>
-                </div>
               </div>
             </div>
 
@@ -164,144 +153,90 @@ const WelcomeScreen = props => {
                   <li class="price-box__list-el">No tasks limit</li>
                   <li class="price-box__list-el">No contractors limit </li>
                 </ul>
-                <div class="price-box__btn">
-                  <a class="btn btn--blue btn--width">Start now</a>
-                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>{" "}
-      ???????WelcomePage
+      </div>
+
       <div class="sect sect--padding-bottom">
-        <div class="container">
+        <div class="container" style={{ marginRight: "5%", marginLeft: "5%" }}>
           <div class="row">
             <h1 class="row__title">Contact Us </h1>
             <h2 class="row__sub">Feel free to ask any questions</h2>
           </div>
-          <div class="row row--margin">
-            <div class="col-md-1"></div>
-            <div class="col-md-4">
-              <div class="contacts">
-                <a href="#" class="contacts__link">
-                  <img src="https://image.ibb.co/kcVou6/path3000.png" />
-                  <h1 class="contacts_title-ag">
-                    Bricks<span class="contacts--light">.io</span>
-                  </h1>
-                </a>
-                <p class="contacts__address">
-                  431 Broadway, Floor 1-2
-                  <br />
-                  New York NY 10013
-                  <br />
-                  United States
-                </p>
-                <p class="contacts__info">
-                  tel.{" "}
-                  <a href="#" class="contacts__info-link">
-                    +1 234 567 890
-                  </a>
-                </p>
-                <p class="contacts__info">
-                  m.{" "}
-                  <a href="#" class="contacts__info-link">
-                    info@bricks.io
-                  </a>
-                </p>
+          <form id="contact" class="form" style={{ marginTop: "3%" }}>
+            <div class="form-group">
+              <select class="form__field form__select">
+                <option selected value>
+                  Choose topic*
+                </option>
+                <option value="1">Pricing</option>
+                <option value="2">Success Stories</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Name*"
+                  class="form__field form__text"
+                ></input>
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Surname"
+                  class="form__field form__text"
+                ></input>
               </div>
             </div>
-            <div class="col-md-6">
-              <form id="contact" class="form">
-                <div class="form-group">
-                  <select class="form__field form__select">
-                    <option selected value>
-                      Choose topic*
-                    </option>
-                    <option value="1">Pricing</option>
-                    <option value="2">Success Stories</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <div class="form__field--half">
-                    <input
-                      type="text"
-                      placeholder="Name*"
-                      class="form__field form__text"
-                    ></input>
-                  </div>
-                  <div class="form__field--half">
-                    <input
-                      type="text"
-                      placeholder="Surname"
-                      class="form__field form__text"
-                    ></input>
-                  </div>
-                </div>
 
-                <div class="form-group">
-                  <div class="form__field--half">
-                    <input
-                      type="text"
-                      placeholder="Email address*"
-                      class="form__field form__text"
-                    ></input>
-                  </div>
-                  <div class="form__field--half">
-                    <input
-                      type="text"
-                      placeholder="Phone number"
-                      class="form__field form__text"
-                    ></input>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <textarea
-                    type="text"
-                    placeholder="Your messsage*"
-                    class="form__field form__textarea"
-                  ></textarea>
-                  <button class="btn btn--up btn--width" type="submit">
-                    Submit
-                  </button>
-                </div>
-              </form>
+            <div class="form-group">
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Email address*"
+                  class="form__field form__text"
+                ></input>
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Phone number"
+                  class="form__field form__text"
+                ></input>
+              </div>
             </div>
-            <div class="col-md-1"></div>
-          </div>
+
+            <div class="form-group">
+              <textarea
+                type="text"
+                placeholder="Your messsage*"
+                class="form__field form__textarea"
+              ></textarea>
+              <button class="btn btn--up btn--width" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-      <div class="sect sect--violet ">
-        <img
-          src="https://image.ibb.co/fWyVtb/path3762.png"
-          class="career-img"
-        />
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h1 class="career_title">
-                Oh! Your have digged our website in search for the new job?
-              </h1>
-              <h1 class="career_sub">
-                We will pleased to have you onboard! Check open positions.
-              </h1>
-              <a href="#" class="btn btn--white btn--width">
-                Careers
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <footer class="footer">
-        <div class="container">
+        <div class="container" style={{ margin: "2%" }}>
           <div class="row">
-            <div class="col-md-2 col-xs-6">
+            <div
+              class="col-md-2 col-xs-6"
+              style={{ display: "flex", alignItems: "center" }}
+            >
               <img
                 class="footer__img"
-                src="https://image.ibb.co/kcVou6/path3000.png"
-              />{" "}
+                src="/OwlLogo.png"
+                style={{ width: 20 }}
+              />
               <h1 class="footer__title">
-                Bricks<span class="footer__light">.io</span>
+                Local<span class="footer__light">Footprint</span>
               </h1>
             </div>
             <div class="col-md-10 col-xs-6">
