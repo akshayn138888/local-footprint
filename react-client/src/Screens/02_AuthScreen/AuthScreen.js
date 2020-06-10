@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './AuthScreen.scss'
 
 const AuthScreen = props => {
   const [submitForm, setSubmitForm] = useState({});
@@ -36,33 +37,47 @@ const AuthScreen = props => {
     props.history.push("/MapScreen");
   };
   return (
-    <div>
-      <h1>Sign In</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+      width: "100vw"
+    }}>
+      <div className="login-form">
+        <div className="indent-a" />
+        <div className="indent-b" />
+        <div className="form-header">
+          <div className="logo-wrapper">
+            <img src="/02_Logo/OwlLogo.png" />
+          </div>
+          <h2>Welcome Back</h2>
+          <h4>Please login to continue</h4>
+        </div>
+        <form className="form" onSubmit={handleSubmit}>
+          <input name="password"
+            id="password"
+            type="text"
+            onChange={handleChange}
+            value={text1.password}
+            className="form-field"
+            placeholder="Enter Password..."
+          />
           <input
             name="email"
             id="email"
             type="text"
             onChange={handleChange}
             value={text1.email}
+            className="form-field"
+            placeholder="Enter Email..."
           />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            name="password"
-            id="password"
-            type="text"
-            onChange={handleChange}
-            value={text1.password}
-          />
-        </div>
-        <div>
-          <button>Submit</button>
-        </div>
-      </form>
+          <button className="form-submit" type="submit"><strong>Login</strong></button>
+        </form>
+        <a href="#" className="forgot-link">
+          Forgot Password?
+    </a>
+      </div>
     </div>
   );
 };

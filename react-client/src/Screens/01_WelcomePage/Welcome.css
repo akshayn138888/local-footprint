@@ -745,6 +745,10 @@ body {
   color: #fff;
 }
 
+.footer__black{
+  color: #2A4C6C
+}
+
 .footer__social {
   float: right;
 }
@@ -784,6 +788,18 @@ body {
   .header__logo {
     padding: 12px 20px 12px 20px;
   }
+
+  .header__logo__title {
+      font-size: 24px;
+      margin: 0;
+      margin-left: 0px;
+      margin-left: 10px;
+      display: inline-block;
+      line-height: 18px;
+      vertical-align: middle;
+      color: #4EA8FF;
+    }
+
   .header__el {
     display: block;
     padding: 10px 20px;

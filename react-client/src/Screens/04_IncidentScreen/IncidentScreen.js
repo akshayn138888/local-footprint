@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import { Box, Grid, Image, Text, CheckBox } from "grommet";
 
-import TinyReport from './components/TinyReport'
-import IncidentMapScreen from "./components/IncidentMapScreen"
-import DisplayReport from './components/IncidentDisplayReports'
+import TinyReport from '../../components/TinyReport'
+import IncidentMapScreen from "../../components/IncidentMapScreen"
+import DisplayReport from '../../components/IncidentDisplayReports'
 
 
 const GridAreasAlternative = (props) => {
