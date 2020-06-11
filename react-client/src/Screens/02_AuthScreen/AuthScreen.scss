@@ -70,13 +70,13 @@
     }
     .form {
       .form-submit {
-        width: 350px;
+        width: 200px;
         height: 35px;
         border-radius: 25px;
         color: #fafafa;
         border: none;
         font-size: 1em;
-        margin: 0.5em 1em;
+        margin: 2em 5.3em;
         background: #47a1f2;
         box-shadow: 5px 5px 10px #d1cdc7, -5px -5px 10px #ffffff;
         &:hover {
@@ -89,12 +89,12 @@
       }
       .form-field {
         padding: 0 1em;
-        margin: 0.5em 1em;
+        margin: 0.5em 1em 1em 1em;
         width: 350px;
         height: 35px;
         border-radius: 25px;
         border: none;
-        background: #eee;
+        background: #ffffff;
         box-shadow: inset 5px 5px 10px #d1cdc7, inset -2.5px -2.5px 5px #ffffff;
         &:hover {
           background: #f2f2f2;

@@ -55,14 +55,6 @@ const AuthScreen = props => {
           <h4>Please login to continue</h4>
         </div>
         <form className="form" onSubmit={handleSubmit}>
-          <input name="password"
-            id="password"
-            type="text"
-            onChange={handleChange}
-            value={text1.password}
-            className="form-field"
-            placeholder="Enter Password..."
-          />
           <input
             name="email"
             id="email"
@@ -72,11 +64,20 @@ const AuthScreen = props => {
             className="form-field"
             placeholder="Enter Email..."
           />
-          <button className="form-submit" type="submit"><strong>Login</strong></button>
+          <input
+            name="password"
+            id="password"
+            type="text"
+            onChange={handleChange}
+            value={text1.password}
+            className="form-field"
+            placeholder="Enter Password..."
+          />
+          <button className="form-submit"><strong>Login</strong></button>
         </form>
-        <a href="#" className="forgot-link">
+        {/* <a href="#" className="forgot-link">
           Forgot Password?
-    </a>
+    </a> */}
       </div>
     </div>
   );
