@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import NavBar from "../../components/NavBar/NavBar";
 
 const MapScreen = props => {
   const [latLon, setLatLon] = useState(null);

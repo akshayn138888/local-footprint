@@ -9,10 +9,6 @@ const Dashboard = props => {
     <div>
       <div className="sect sect--padding-bottom">
         <div className="container">
-          <div className="row row--center">
-            <h1 className="row__title pricing">Pricing</h1>
-            <h2 className="row__sub">What fits your business the best?</h2>
-          </div>
           <div style={{ display: "flex" }}>
             <div>
               <NavBar />
