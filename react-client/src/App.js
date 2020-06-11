@@ -6,8 +6,9 @@ import WelcomeScreen from "./Screens/01_WelcomePage/WelcomeScreen";
 import IncidentMapScreen from "./components/IncidentMapScreen";
 import IncidentScreen from "./Screens/04_IncidentScreen/IncidentScreen";
 import IncidentShowScreen from "./Screens/05_IncidentShowScreen/IncidentShowScreen";
+import DashBoardScreen from "./Screens/06_DashboardScreen/DashBoardScreen";
 import "./App.css";
-import NavBar from "./components/NavBar";
+
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Grommet } from "grommet";
 
@@ -25,6 +26,7 @@ function App() {
             component={IncidentShowScreen}
           />
           <Route exact path="/IncidentScreen" component={IncidentScreen} />
+          <Route exact path="/DashBoardScreen" component={DashBoardScreen} />
         </Switch>
       </Grommet>
     </BrowserRouter>

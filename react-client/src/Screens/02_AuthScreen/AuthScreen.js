@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './AuthScreen.scss'
+import "./AuthScreen.scss";
 
 const AuthScreen = props => {
   const [submitForm, setSubmitForm] = useState({});
@@ -34,16 +34,18 @@ const AuthScreen = props => {
     const resData = await response.json();
     console.log(resData);
     console.log("logged in");
-    props.history.push("/MapScreen");
+    props.history.push("/DashboardScreen");
   };
   return (
-    <div style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh",
-      width: "100vw"
-    }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        width: "100vw"
+      }}
+    >
       <div className="login-form">
         <div className="indent-a" />
         <div className="indent-b" />
@@ -73,7 +75,9 @@ const AuthScreen = props => {
             className="form-field"
             placeholder="Enter Password..."
           />
-          <button className="form-submit"><strong>Login</strong></button>
+          <button className="form-submit">
+            <strong>Login</strong>
+          </button>
         </form>
         {/* <a href="#" className="forgot-link">
           Forgot Password?
