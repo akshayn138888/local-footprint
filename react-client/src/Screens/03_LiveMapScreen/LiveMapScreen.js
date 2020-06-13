@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import NavBar from "../../components/NavBar/NavBar";
 
 const MapScreen = props => {
   const [latLon, setLatLon] = useState(null);
   const [viewport, setViewport] = useState({
     latitude: 49.119706917599885,
     longitude: -122.88886313338101,
-    zoom: 15,
+    zoom: 10,
     width: "100vw",
     height: "100vh"
   });
+  console.log(viewport.zoom);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,13 +42,11 @@ const MapScreen = props => {
             latitude={parseFloat(value1.latitude)}
             longitude={parseFloat(value1.longitude)}
           >
-            <button class="marker-btn">
-              <img
-                src="https://cdn.imgbin.com/12/4/19/imgbin-auxiliary-police-lawyer-material-people-s-police-UcqivXX1JKh98eQ2xMj1Zyan2.jpg"
-                alt="security guard"
-                style={{ width: 50 }}
-              />
-            </button>
+            <img
+              src="https://cdn.imgbin.com/12/4/19/imgbin-auxiliary-police-lawyer-material-people-s-police-UcqivXX1JKh98eQ2xMj1Zyan2.jpg"
+              alt="security guard"
+              style={{ width: `4%` }}
+            />
           </Marker>
         );
       }
@@ -59,11 +59,14 @@ const MapScreen = props => {
           {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           mapStyle="mapbox://styles/akkin13/ckb1qv50i0grp1inr5bx1qkfm"
-          onViewportChange={viewport => setViewport(viewport)}
+          onViewportChange={viewport => {
+            setViewport(viewport);
+          }}
         >
           {parseData
             ? parseData.map(markerArray => markerArray[markerArray.length - 1])
             : ""}
+          <NavBar />
         </ReactMapGL>
       </div>
     );
