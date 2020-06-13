@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import DisplayReport from "./components/IncidentDisplayReports";
+import React from "react";
 import LiveMapScreen from "./Screens/03_LiveMapScreen/LiveMapScreen";
 import AuthScreen from "./Screens/02_AuthScreen/AuthScreen";
 import WelcomeScreen from "./Screens/01_WelcomePage/WelcomeScreen";
-import IncidentMapScreen from "./components/IncidentMapScreen";
 import IncidentScreen from "./Screens/04_IncidentScreen/IncidentScreen";
 import IncidentShowScreen from "./Screens/05_IncidentShowScreen/IncidentShowScreen";
 import DashBoardScreen from "./Screens/06_DashboardScreen/DashBoardScreen";

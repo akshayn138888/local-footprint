@@ -1,11 +1,18 @@
-.login-form {
+.login-form1 {
   position: relative;
-  height: 600px;
-  width: 275px;
+  height: 60%;
+  width: 300px;
   border-radius: 20px;
-  background: rgba(235, 239, 249, 0.3);
-  box-shadow: 11px 11px 22px #b3b3b3, -11px -11px 22px #ffffff;
+  background: #ebeff9;
+  box-shadow: 11px 11px 22px #b3b3b3;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  left: 2%;
+  top: 10%;
 }
 
 .header__logo,
@@ -81,9 +88,10 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 45px;
-  position: relative;
+  // position: relative;
+  margin: 0 auto;
   text-decoration: none;
-
+  text-align: center;
   width: 100%;
 
   &:hover {

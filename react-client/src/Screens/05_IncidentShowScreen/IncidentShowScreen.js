@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Grid, Image, Text, CheckBox, Calendar } from "grommet";
+import { Box, Grid, Image, Text, Calendar } from "grommet";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
 const IncidentShowScreen = props => {

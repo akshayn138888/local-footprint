@@ -35,10 +35,10 @@ const IncidentMapScreen = props => {
       for (let [key1, value1] of Object.entries(value)) {
         let title = value1.title;
         let type = "";
-        if (value1.incident == "A") {
+        if (value1.incident === "A") {
           type =
             "https://www.pngkit.com/png/full/26-266075_alcoholic-drink-alcohol-intoxication-computer-icons-drunk-icon.png";
-        } else if (value1.incident == "PI") {
+        } else if (value1.incident === "PI") {
           type = "https://vectorified.com/images/assault-icon-6.png";
         }
 

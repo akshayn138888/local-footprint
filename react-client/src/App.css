@@ -1,20 +1,32 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:600|Poppins:400');
+@import url("https://fonts.googleapis.com/css?family=Lato:600|Poppins:400");
+@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
 
-html {font-size: 100%;} /*16px*/
-
+/*Reset*/
+html,
 body {
-  background-color: white;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  line-height: 1.65;
-  color: #333;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  color: #1f4568;
 }
 
-p {margin-bottom: 1.15rem;}
+body {
+  background-image: url("https://image.ibb.co/de6JzG/bitmap_1_1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+p {
+  margin-bottom: 1.15rem;
+}
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 2.75rem 0 1.05rem;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 600;
   line-height: 1.15;
 }
@@ -24,12 +36,23 @@ h1 {
   font-size: 3.052em;
 }
 
-h2 {font-size: 2.441em;}
+h2 {
+  font-size: 2.441em;
+}
 
-h3 {font-size: 1.953em;}
+h3 {
+  font-size: 1.953em;
+}
 
-h4 {font-size: 1.563em;}
+h4 {
+  font-size: 1.563em;
+}
 
-h5 {font-size: 1.25em;}
+h5 {
+  font-size: 1.25em;
+}
 
-small, .text_small {font-size: 0.8em;}
+small,
+.text_small {
+  font-size: 0.8em;
+}
