@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import NavBar from './NavBar/NavBar'
 
 const IncidentMapScreen = props => {
   const [latLon, setLatLon] = useState(null);
@@ -34,32 +35,28 @@ const IncidentMapScreen = props => {
 
       for (let [key1, value1] of Object.entries(value)) {
         let title = value1.title;
-        let type = "";
-        if (value1.incident === "A") {
-          type =
-            "https://www.pngkit.com/png/full/26-266075_alcoholic-drink-alcohol-intoxication-computer-icons-drunk-icon.png";
-        } else if (value1.incident === "PI") {
-          type = "https://vectorified.com/images/assault-icon-6.png";
+        let srcIncident = "";
+        if (value1.incident === "Assault") {
+          srcIncident = "./04_Incident/Assault.png";
+
+        } else if (value1.incident === "Break and Enter") {
+          srcIncident = "./04_Incident/Break_and_Enter.png";
+
+        } else if (value1.incident === "General Theft") {
+          srcIncident = "./04_Incident/General_Theft.png";
+
+        } else if (value1.incident === "Property Damage") {
+          srcIncident = "./04_Incident/Property_Damage.png";
+
+        } else if (value1.incident === "Public Intoxication") {
+          srcIncident = "./04_Incident/Public_Intoxication.png";
+
+        } else if (value1.incident === "Vehicle Collision") {
+          srcIncident = "./04_Incident/Vehicle_Collision.png";
+
+        } else if (value1.incident === "Vehicle Theft") {
+          srcIncident = "./04_Incident/Vehicle_Theft.png";
         }
-
-        // switch (value1.incident) {
-        //   case "PI":
-        //     type =
-        //       "https://www.pngkit.com/png/full/26-266075_alcoholic-drink-alcohol-intoxication-computer-icons-drunk-icon.png";
-
-        //   // case "BAE" :
-
-        //   // case "VT" :
-
-        //   // case "VC" :
-
-        //   // case "GT" :
-
-        //   case "A":
-        //     type = "https://vectorified.com/images/assault-icon-6.png";
-
-        //   // case "PD":
-        // }
 
         parseData.push(
           <Marker
@@ -67,9 +64,9 @@ const IncidentMapScreen = props => {
             longitude={parseFloat(value1.longitude)}
           >
             <img
-              src={type}
+              src={srcIncident}
               alt="security guard"
-              style={{ width: 50, borderRadius: "100%" }}
+              style={{ width: "10%" }}
             />
           </Marker>
         );
@@ -84,12 +81,18 @@ const IncidentMapScreen = props => {
           mapStyle="mapbox://styles/akkin13/ckb1qv50i0grp1inr5bx1qkfm"
           onViewportChange={viewport => setViewport(viewport)}
         >
+          <NavBar />
           {parseData ? parseData.map(markerArray => markerArray) : ""}
         </ReactMapGL>
       </div>
     );
   } else {
-    return <div>Loading</div>;
+    return (
+      <div>
+        <NavBar />
+
+      </div>
+    );
   }
 };
 export default IncidentMapScreen;

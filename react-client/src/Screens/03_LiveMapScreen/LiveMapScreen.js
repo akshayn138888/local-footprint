@@ -43,16 +43,16 @@ const MapScreen = props => {
             longitude={parseFloat(value1.longitude)}
           >
             <img
-              src="https://cdn.imgbin.com/12/4/19/imgbin-auxiliary-police-lawyer-material-people-s-police-UcqivXX1JKh98eQ2xMj1Zyan2.jpg"
+              src="./04_Incident/01_Worker.png"
               alt="security guard"
-              style={{ width: `4%` }}
+              style={{ width: `8%` }}
             />
           </Marker>
         );
       }
       parseData.push(array1);
     }
-    //console.log(parseData);
+    console.log(parseData);
     return (
       <div>
         <ReactMapGL
@@ -71,7 +71,11 @@ const MapScreen = props => {
       </div>
     );
   } else {
-    return <div>Loading</div>;
+    return (
+      <div>
+        <NavBar />
+      </div>
+    );
   }
 };
 export default MapScreen;
