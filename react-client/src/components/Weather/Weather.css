@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 40px 8%;
+  padding: 22px;
   border-radius: 20px;
   background: rgba(250, 250, 250, 0.85);
   box-shadow: 10px 10px 5px 0px rgba(15, 15, 15, 0.404);
@@ -38,11 +38,11 @@ p {
 }
 
 .city sup {
-  font-size: 0.5em;
+  font-size: 0.2em;
 }
 
 .city-name {
-  font-size: 2em;
+  font-size: 22px;
 }
 
 .city-name sup {

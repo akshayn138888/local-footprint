@@ -15,7 +15,7 @@ const Weather = () => {
     <div>
       {weather.main && (
         <div>
-          <h2 className="city-name">
+          <h2 className="city-name" style={{ margin: 0, marginBottom: "20px" }}>
             <span>{weather.name}</span>
             <sup>{weather.sys.country}</sup>
           </h2>
