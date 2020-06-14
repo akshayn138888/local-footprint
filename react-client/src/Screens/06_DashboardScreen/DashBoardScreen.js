@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./DashBoard.css";
 import NavBar from "../../components/NavBar/NavBar.js";
+import Weather from "../../components/Weather/Weather";
 const Dashboard = props => {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
@@ -10,6 +11,7 @@ const Dashboard = props => {
       <div>
         <NavBar />
       </div>
+
       <div
         className="sect sect--padding-bottom"
         style={{ position: "absolute", left: "35%", paddingTop: "0" }}
@@ -37,12 +39,11 @@ const Dashboard = props => {
               </div>
               <div className="col-md-4 col-sm-4 price-box price-box--purple">
                 <div className="price-box__wrap">
-                  <div className="price-box__img"></div>
-                  <h1 className="price-box__title">Weather</h1>
+                  <div>
+                    <Weather />
+                  </div>
 
-                  <h2 className="price-box__discount">
-                    <span className="price-box__dollar"></span>11
-                  </h2>
+                  <h2 className="price-box__discount"></h2>
                 </div>
               </div>
             </div>
