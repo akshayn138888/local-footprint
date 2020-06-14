@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Grid, Image, Text, Calendar } from "grommet";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-
+import "./IncidentShowScreen.css";
 const IncidentShowScreen = props => {
   const [report, setReport] = useState(null);
 
@@ -26,22 +26,44 @@ const IncidentShowScreen = props => {
       .then(data => {
         console.log(data);
         setReport(data);
+        setViewport({
+          latitude: parseFloat(data.latitude) - 0.07,
+          longitude: parseFloat(data.longitude) + 0.05,
+          zoom: 10,
+          width: "100vw",
+          height: "100vh"
+        });
       });
   }, []);
+  let srcIncident = "";
   if (report) {
+    if (report.incident === "Assault") {
+      srcIncident = "./04_Incident/Assault.png";
+    } else if (report.incident === "Break and Enter") {
+      srcIncident = "./04_Incident/Break_and_Enter.png";
+    } else if (report.incident === "General Theft") {
+      srcIncident = "./04_Incident/General_Theft.png";
+    } else if (report.incident === "Property Damage") {
+      srcIncident = "./04_Incident/Property_Damage.png";
+    } else if (report.incident === "Public Intoxication") {
+      srcIncident = "./04_Incident/Public_Intoxication.png";
+    } else if (report.incident === "Vehicle Collision") {
+      srcIncident = "./04_Incident/Vehicle_Collision.png";
+    } else if (report.incident === "Vehicle Theft") {
+      srcIncident = "./04_Incident/Vehicle_Theft.png";
+    }
+
     return (
       <>
         <Box margin={{ horizontal: "5%" }}>
           <Grid
-            rows={["xsmall", "xsmall", "medium", "medium", "medium", "small"]}
+            rows={["xsmall", "medium", "medium", "medium"]}
             columns={["70%", "30%"]}
             areas={[
-              ["header", "header"],
               ["title", "title"],
               ["image", "image"],
               ["description", "chat"],
-              ["location", "location"],
-              ["footer", "footer"]
+              ["location", "location"]
             ]}
             gap="xsmall"
           >
@@ -52,7 +74,7 @@ const IncidentShowScreen = props => {
 
             {/* ROW 2 */}
             <Box background="light-2" gridArea="title">
-              <h1>{report.title}</h1>
+              <h2>{report.title}</h2>
             </Box>
 
             {/* ROW 3 */}
@@ -67,10 +89,20 @@ const IncidentShowScreen = props => {
 
             {/* ROW 4 */}
             <Box gridArea="description" margin={{ right: "12%" }}>
-              <h2>
-                Assault {report.incident} Reported by:{" "}
-                {report.userEmail.split("@")[0]}
-              </h2>
+              <h4>
+                {report.incident} Reported by: {report.userEmail.split("@")[0]}
+              </h4>
+              <Text>
+                <Text>{srcIncident}</Text>
+                {new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "2-digit",
+                  hour: "numeric",
+                  minute: "numeric"
+                }).format(Date.parse(report.timestamp))}
+              </Text>
+              <br />
               <div
                 style={{
                   color: "gainsboro",
@@ -78,14 +110,14 @@ const IncidentShowScreen = props => {
                   height: 0.8
                 }}
               ></div>
-              <h3> Details </h3>
+              <h5> Details </h5>
               <Text>{report.description}</Text>
             </Box>
 
             <Box gridArea="chat" align="center" margin={{ top: "10%" }}>
               <Calendar
                 size="small"
-                date={new Date().toISOString()}
+                date={new Date(report.timestamp).toISOString()}
                 onSelect={date => {}}
                 fit="contain"
               />
@@ -103,6 +135,7 @@ const IncidentShowScreen = props => {
               overflow="hidden"
               round={true}
               fit="cover"
+              style={{ marginTop: "5%" }}
             >
               <div>
                 <ReactMapGL
@@ -115,13 +148,7 @@ const IncidentShowScreen = props => {
                     latitude={parseFloat(report.latitude)}
                     longitude={parseFloat(report.longitude)}
                   >
-                    <button class="marker-btn">
-                      <img
-                        src="https://cdn.imgbin.com/12/4/19/imgbin-auxiliary-police-lawyer-material-people-s-police-UcqivXX1JKh98eQ2xMj1Zyan2.jpg"
-                        alt="security guard"
-                        style={{ width: 50 }}
-                      />
-                    </button>
+                    <button className="btnIncidentShow"></button>
                   </Marker>
                 </ReactMapGL>
               </div>

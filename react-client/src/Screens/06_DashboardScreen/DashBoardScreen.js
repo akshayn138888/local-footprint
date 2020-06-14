@@ -7,59 +7,59 @@ const Dashboard = props => {
 
   return (
     <div>
-      <div className="sect sect--padding-bottom">
-        <div className="container">
-          <div style={{ display: "flex" }}>
-            <div>
-              <NavBar />
-            </div>
+      <div>
+        <NavBar />
+      </div>
+      <div
+        className="sect sect--padding-bottom"
+        style={{ position: "absolute", left: "35%", paddingTop: "0" }}
+      >
+        <div>
+          <div
+            className="row row--center row--margin"
+            style={{ display: "flex" }}
+          >
+            <div className="0000000">
+              <div className="col-md-4 col-sm-4 price-box price-box--purple">
+                <div className="price-box__wrap">
+                  <div className="price-box__img"></div>
+                  <h1 className="price-box__title">On Duty Staff</h1>
 
-            <div
-              className="row row--center row--margin"
-              style={{ display: "flex" }}
-            >
-              <div className="0000000">
-                <div className="col-md-4 col-sm-4 price-box price-box--purple">
-                  <div className="price-box__wrap">
-                    <div className="price-box__img"></div>
-                    <h1 className="price-box__title">On Duty Staff</h1>
-
-                    <h2 className="price-box__discount">
-                      <span className="price-box__dollar"></span>49
-                    </h2>
-                  </div>
-                </div>
-                <div className="col-md-4 col-sm-4 price-box price-box--purple">
-                  <div className="price-box__wrap">
-                    <div className="price-box__img"></div>
-                    <h1 className="price-box__title">Incidents Today</h1>
-
-                    <h2 className="price-box__discount">
-                      <span className="price-box__dollar"></span>11
-                    </h2>
-                  </div>
+                  <h2 className="price-box__discount">
+                    <span className="price-box__dollar"></span>49
+                  </h2>
                 </div>
               </div>
-              <div className="0000000">
-                <div className="col-md-4 col-sm-4 price-box price-box--purple">
-                  <div className="price-box__wrap">
-                    <div className="price-box__img"></div>
-                    <h1 className="price-box__title">Distance</h1>
+              <div className="col-md-4 col-sm-4 price-box price-box--purple">
+                <div className="price-box__wrap">
+                  <div className="price-box__img"></div>
+                  <h1 className="price-box__title">Weather</h1>
 
-                    <h2 className="price-box__discount">
-                      <span className="price-box__dollar"></span>21 Km
-                    </h2>
-                  </div>
+                  <h2 className="price-box__discount">
+                    <span className="price-box__dollar"></span>11
+                  </h2>
                 </div>
-                <div className="col-md-4 col-sm-4 price-box price-box--purple">
-                  <div className="price-box__wrap">
-                    <div className="price-box__img"></div>
-                    <h1 className="price-box__title">Type of Incidents</h1>
+              </div>
+            </div>
+            <div className="0000000">
+              <div className="col-md-4 col-sm-4 price-box price-box--purple">
+                <div className="price-box__wrap">
+                  <div className="price-box__img"></div>
+                  <h1 className="price-box__title">Incidents Today</h1>
 
-                    <h2 className="price-box__discount">
-                      <span className="price-box__dollar"></span>11
-                    </h2>
-                  </div>
+                  <h2 className="price-box__discount">
+                    <span className="price-box__dollar"></span>21 Km
+                  </h2>
+                </div>
+              </div>
+              <div className="col-md-4 col-sm-4 price-box price-box--purple">
+                <div className="price-box__wrap">
+                  <div className="price-box__img"></div>
+                  <h1 className="price-box__title">List of Incident</h1>
+
+                  <h2 className="price-box__discount">
+                    <span className="price-box__dollar"></span>11
+                  </h2>
                 </div>
               </div>
             </div>
