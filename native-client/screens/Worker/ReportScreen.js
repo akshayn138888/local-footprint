@@ -127,46 +127,46 @@ const ReportScreen = props => {
         {isLoading ? (
           <ActivityIndicator size="large" color={Colors.primary} />
         ) : (
-          <View style={styles.form}>
-            <ImagePicker onImageTaken={imageTakenHandler} />
+            <View style={styles.form}>
+              <ImagePicker onImageTaken={imageTakenHandler} />
 
-            <Text style={styles.label}>Title</Text>
+              <Text style={styles.label}>Title</Text>
 
-            <TextInput
-              style={styles.textInput}
-              onChangeText={titleChangeHandler}
-              value={titleValue}
-            />
-            <Text style={styles.label}>Description</Text>
+              <TextInput
+                style={styles.textInput}
+                onChangeText={titleChangeHandler}
+                value={titleValue}
+              />
+              <Text style={styles.label}>Description</Text>
 
-            <TextInput
-              style={styles.textInput}
-              onChangeText={descriptionChangeHandler}
-              value={descriptionValue}
-            />
-            <Picker
-              selectedValue={picker}
-              style={styles.picker}
-              onValueChange={pickerHandler}
-            >
-              <Picker.Item label="Break and Enter" value="BAE" />
-              <Picker.Item label="Vehicle Theft" value="VT" />
-              <Picker.Item label="Vehicle Collision" value="VC" />
-              <Picker.Item label="General Theft" value="GT" />
-              <Picker.Item label="Public Intoxication" value="PI" />
-              <Picker.Item label="Assault" value="A" />
-              <Picker.Item label="Property Damage" value="PD" />
-            </Picker>
+              <TextInput
+                style={styles.textInput}
+                onChangeText={descriptionChangeHandler}
+                value={descriptionValue}
+              />
+              <Picker
+                selectedValue={picker}
+                style={styles.picker}
+                onValueChange={pickerHandler}
+              >
+                <Picker.Item label="Assault" value="Assault" />
+                <Picker.Item label="Break and Enter" value="Break and Enter" />
+                <Picker.Item label="General Theft" value="General Theft" />
+                <Picker.Item label="Property Damage" value="Property Damage" />
+                <Picker.Item label="Public Intoxication" value="Public Intoxication" />
+                <Picker.Item label="Vehicle Collision" value="Vehicle Collision" />
+                <Picker.Item label="Vehicle Theft" value="Vehicle Theft" />
+              </Picker>
 
-            <Button
-              title="Save Report"
-              color={Colors.primary}
-              onPress={saveReportHandler}
-            />
-          </View>
-        )}
+              <Button
+                title="Save Report"
+                color={Colors.primary}
+                onPress={saveReportHandler}
+              />
+            </View>
+          )}
       </ScrollView>
-    </KeyboardAvoidingView>
+    </KeyboardAvoidingView >
   );
 };
 ReportScreen.navigationOptions = {
