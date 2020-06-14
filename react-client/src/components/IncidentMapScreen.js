@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import { Link } from "react-router-dom"
 import NavBar from './NavBar/NavBar'
 
 const IncidentMapScreen = props => {
+  const [popupToggler, setPopupToggler] = useState(false)
+  const [selectedIncident, setSelectedIncident] = useState(null)
   const [latLon, setLatLon] = useState(null);
   const [viewport, setViewport] = useState({
     latitude: 49.119706917599885,
@@ -13,25 +16,25 @@ const IncidentMapScreen = props => {
   });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      fetch("https://location-app-5d3d8.firebaseio.com/images.json", {
-        method: "GET"
-      })
-        .then(e => e.json())
-        .then(data => {
-          console.log(data);
-          setLatLon(data);
-        });
-    }, 10000);
-    return () => {
-      clearInterval(interval);
-    };
+    // const interval = setInterval(() => {
+    fetch("https://location-app-5d3d8.firebaseio.com/images.json", {
+      method: "GET"
+    })
+      .then(e => e.json())
+      .then(data => {
+        console.log("request made");
+        setLatLon(data);
+      });
+    // }, 10000);
+    // return () => {
+    //   clearInterval(interval);
+    // };
   }, []);
 
   if (latLon) {
     let parseData = [];
     for (let [key, value] of Object.entries(latLon)) {
-      console.log(value);
+      // console.log(value);
 
       for (let [key1, value1] of Object.entries(value)) {
         let title = value1.title;
@@ -63,16 +66,28 @@ const IncidentMapScreen = props => {
             latitude={parseFloat(value1.latitude)}
             longitude={parseFloat(value1.longitude)}
           >
-            <img
-              src={srcIncident}
-              alt="security guard"
-              style={{ width: "10%" }}
-            />
+            <button
+              onClick={e => {
+                setSelectedIncident({ data: value1, userId: key, reportId: key1 })
+                setPopupToggler(true)
+
+              }}
+              className="btnIncident"
+
+              style={{ backgroundImage: `url(${srcIncident})` }}
+            >
+              {/* <img
+                src={srcIncident}
+                alt="security guard"
+                style={{ width: "100%" }}
+              /> */}
+            </button>
+
           </Marker>
         );
       }
     }
-    console.log(parseData);
+
     return (
       <div>
         <ReactMapGL
@@ -83,6 +98,31 @@ const IncidentMapScreen = props => {
         >
           <NavBar />
           {parseData ? parseData.map(markerArray => markerArray) : ""}
+
+          {selectedIncident ? (
+            <Popup
+              latitude={parseFloat(selectedIncident.data.latitude)}
+              longitude={parseFloat(selectedIncident.data.longitude)}
+              closeOnClick={false}
+              onClose={() => { setSelectedIncident(null) }}
+              className="apple-popup"
+            >
+              <div>
+                <h5 className="popuptitle">{selectedIncident.data.title}</h5>
+                <p className="popupdate">{new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "2-digit"
+                }).format(Date.parse(selectedIncident.data.timestamp))
+                }</p>
+                <p className="popupdescription">{selectedIncident.data.description}</p>
+                <a style={{ color: '#1f4568' }} href={`/IncidentScreen/${selectedIncident.userId}/${selectedIncident.reportId}`}>
+                  More Details
+                </a>
+              </div>
+            </Popup>
+          ) : ""
+          }
         </ReactMapGL>
       </div>
     );
