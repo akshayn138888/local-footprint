@@ -1,67 +1,67 @@
 .popuptitle {
-    margin: 0;
-
+  margin: 0;
 }
 
 .popupdescription {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .popupdate {
-    margin: 0;
-    font-size: 0.75rem;
+  margin: 0;
+  font-size: 0.75rem;
 }
 
 .btnIncident {
-    border-radius: 100%;
-    width: 4rem; 
-    height: 4rem;
-    background-size: cover;
-    outline: none;
+  border-radius: 100%;
+  width: 4rem;
+  height: 4rem;
+  background-size: cover;
+  outline: none;
 }
 
-.mapboxgl-popup-close-button{
-    margin-right: 2%;
+.mapboxgl-popup-close-button {
+  margin-right: 2%;
 }
 
 .mapboxgl-popup {
-    padding: 0;
-    margin: 0;
-    width: 20%;
-    box-sizing: border-box;
-    position: relative;
-    cursor: pointer;
-  }
+  padding: 0;
+  margin: 0;
+  width: 20%;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+}
 
-  .apple-popup .mapboxgl-popup-content {
-    background-color: rgba(235, 239, 249,0.95)
-  }
+.apple-popup .mapboxgl-popup-content {
+  background-color: rgba(235, 239, 249, 0.95);
+}
 
 /* Styling for X button */
 
-.mapboxgl-popup-close-button:before, .mapboxgl-popup-close-button:after {
-    position: absolute;
-    content: '';
-    height: 1px;
-    width: inherit;
-    background: black;
-    left: 0;
-    transition: all .3s ease-in;
-  }
+.mapboxgl-popup-close-button:before,
+.mapboxgl-popup-close-button:after {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: inherit;
+  background: black;
+  left: 0;
+  transition: all 0.3s ease-in;
+}
 
 .mapboxgl-popup-close-button:before {
-    top: 50%; 
-        transform: rotate(45deg); 
+  top: 50%;
+  transform: rotate(45deg);
 }
 .mapboxgl-popup-close-button:after {
-    bottom: 50%;
-    transform: rotate(-45deg); 
+  bottom: 50%;
+  transform: rotate(-45deg);
 }
 
-      .mapboxgl-popup:hover .mapboxgl-popup-close-button:before,
-      .mapboxgl-popup:hover .mapboxgl-popup-close-button:after {
+.mapboxgl-popup:hover .mapboxgl-popup-close-button:before,
+.mapboxgl-popup:hover .mapboxgl-popup-close-button:after {
   transform: rotate(0);
 }
 .mapboxgl-popup:hover .mapboxgl-popup-close-button:before {
