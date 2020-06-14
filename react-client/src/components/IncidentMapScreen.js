@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import { Link } from "react-router-dom"
-import NavBar from './NavBar/NavBar'
+import { Link } from "react-router-dom";
+import NavBar from "./NavBar/NavBar";
 
 const IncidentMapScreen = props => {
-  const [popupToggler, setPopupToggler] = useState(false)
-  const [selectedIncident, setSelectedIncident] = useState(null)
+  const [popupToggler, setPopupToggler] = useState(false);
+  const [selectedIncident, setSelectedIncident] = useState(null);
   const [latLon, setLatLon] = useState(null);
   const [viewport, setViewport] = useState({
     latitude: 49.119706917599885,
     longitude: -122.88886313338101,
-    zoom: 15,
+    zoom: 8,
     width: "100vw",
     height: "100vh"
   });
@@ -41,22 +41,16 @@ const IncidentMapScreen = props => {
         let srcIncident = "";
         if (value1.incident === "Assault") {
           srcIncident = "./04_Incident/Assault.png";
-
         } else if (value1.incident === "Break and Enter") {
           srcIncident = "./04_Incident/Break_and_Enter.png";
-
         } else if (value1.incident === "General Theft") {
           srcIncident = "./04_Incident/General_Theft.png";
-
         } else if (value1.incident === "Property Damage") {
           srcIncident = "./04_Incident/Property_Damage.png";
-
         } else if (value1.incident === "Public Intoxication") {
           srcIncident = "./04_Incident/Public_Intoxication.png";
-
         } else if (value1.incident === "Vehicle Collision") {
           srcIncident = "./04_Incident/Vehicle_Collision.png";
-
         } else if (value1.incident === "Vehicle Theft") {
           srcIncident = "./04_Incident/Vehicle_Theft.png";
         }
@@ -68,12 +62,14 @@ const IncidentMapScreen = props => {
           >
             <button
               onClick={e => {
-                setSelectedIncident({ data: value1, userId: key, reportId: key1 })
-                setPopupToggler(true)
-
+                setSelectedIncident({
+                  data: value1,
+                  userId: key,
+                  reportId: key1
+                });
+                setPopupToggler(true);
               }}
               className="btnIncident"
-
               style={{ backgroundImage: `url(${srcIncident})` }}
             >
               {/* <img
@@ -82,7 +78,6 @@ const IncidentMapScreen = props => {
                 style={{ width: "100%" }}
               /> */}
             </button>
-
           </Marker>
         );
       }
@@ -104,25 +99,34 @@ const IncidentMapScreen = props => {
               latitude={parseFloat(selectedIncident.data.latitude)}
               longitude={parseFloat(selectedIncident.data.longitude)}
               closeOnClick={false}
-              onClose={() => { setSelectedIncident(null) }}
+              onClose={() => {
+                setSelectedIncident(null);
+              }}
               className="apple-popup"
             >
               <div>
                 <h5 className="popuptitle">{selectedIncident.data.title}</h5>
-                <p className="popupdate">{new Intl.DateTimeFormat("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "2-digit"
-                }).format(Date.parse(selectedIncident.data.timestamp))
-                }</p>
-                <p className="popupdescription">{selectedIncident.data.description}</p>
-                <a style={{ color: '#1f4568' }} href={`/IncidentScreen/${selectedIncident.userId}/${selectedIncident.reportId}`}>
+                <p className="popupdate">
+                  {new Intl.DateTimeFormat("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "2-digit"
+                  }).format(Date.parse(selectedIncident.data.timestamp))}
+                </p>
+                <p className="popupdescription">
+                  {selectedIncident.data.description}
+                </p>
+                <a
+                  style={{ color: "#1f4568" }}
+                  href={`/IncidentScreen/${selectedIncident.userId}/${selectedIncident.reportId}`}
+                >
                   More Details
                 </a>
               </div>
             </Popup>
-          ) : ""
-          }
+          ) : (
+            ""
+          )}
         </ReactMapGL>
       </div>
     );
@@ -130,7 +134,6 @@ const IncidentMapScreen = props => {
     return (
       <div>
         <NavBar />
-
       </div>
     );
   }
