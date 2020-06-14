@@ -22,7 +22,12 @@ const Dashboard = props => {
             <div className="0000000">
               <div className="col-md-4 col-sm-4 price-box price-box--purple">
                 <div className="price-box__wrap">
-                  <div className="price-box__img"></div>
+                  <div
+                    className="price-box__img"
+                    style={{
+                      backgroundImage: `url("./01_DashBoard/OnDutyStaff.png")`
+                    }}
+                  ></div>
                   <h1 className="price-box__title">On Duty Staff</h1>
 
                   <h2 className="price-box__discount">
@@ -44,7 +49,12 @@ const Dashboard = props => {
             <div className="0000000">
               <div className="col-md-4 col-sm-4 price-box price-box--purple">
                 <div className="price-box__wrap">
-                  <div className="price-box__img"></div>
+                  <div
+                    className="price-box__img"
+                    style={{
+                      backgroundImage: `url("./01_DashBoard/Incidents.png")`
+                    }}
+                  ></div>
                   <h1 className="price-box__title">Incidents Today</h1>
 
                   <h2 className="price-box__discount">
