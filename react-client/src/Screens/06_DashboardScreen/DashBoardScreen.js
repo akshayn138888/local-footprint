@@ -55,7 +55,7 @@ const Dashboard = props => {
               <div className="col-md-4 col-sm-4 price-box price-box--purple">
                 <div className="price-box__wrap">
                   <div className="price-box__img"></div>
-                  <h1 className="price-box__title">List of Incidents</h1>
+                  <h1 className="price-box__title">List of Incident</h1>
 
                   <h2 className="price-box__discount">
                     <span className="price-box__dollar"></span>11
