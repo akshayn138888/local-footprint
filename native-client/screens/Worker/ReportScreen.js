@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import * as Location from "expo-location";
-
 import {
   ScrollView,
   View,
@@ -13,13 +12,17 @@ import {
   KeyboardAvoidingView,
   Picker
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+
 import * as firebase from "firebase";
 import Colors from "../../constants/Colors";
 import ImagePicker from "../../components/ImagePicker";
 import { firebaseConfig } from "../../config/fire";
 import { useSelector } from "react-redux";
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 const ReportScreen = props => {
   //States
   const [titleValue, setTitleValue] = useState("");
@@ -122,76 +125,102 @@ const ReportScreen = props => {
     }
   };
   return (
-    <KeyboardAvoidingView>
-      <ScrollView>
-        {isLoading ? (
-          <ActivityIndicator size="large" color={Colors.primary} />
-        ) : (
-            <View style={styles.form}>
-              <ImagePicker onImageTaken={imageTakenHandler} />
+    <KeyboardAvoidingView
+      behavior="padding"
+      // keyboardVerticalOffset={80}
+      style={styles.screen}
+    >
+      <LinearGradient style={styles.outsideContainer} colors={["#22c1c3", "#2d9afd"]}>
 
-              <Text style={styles.label}>Title</Text>
+        <ScrollView>
+          {isLoading ? (
+            <ActivityIndicator size="large" color={Colors.primary} />
+          ) : (
+              <View style={styles.form}>
+                <View style={{ borderWidth: 2, borderColor: Colors.accent, borderRadius: 15, marginBottom: 10, overflow: "hidden" }}>
+                  <Button
+                    title="Save Report"
+                    color={Platform.OS == "android" ? "#22c1c4" : Colors.accent}
+                    onPress={saveReportHandler}
+                  />
+                </View>
+                <ImagePicker onImageTaken={imageTakenHandler} />
 
-              <TextInput
-                style={styles.textInput}
-                onChangeText={titleChangeHandler}
-                value={titleValue}
-              />
-              <Text style={styles.label}>Description</Text>
+                <Text style={styles.label}>Title</Text>
 
-              <TextInput
-                style={styles.textInput}
-                onChangeText={descriptionChangeHandler}
-                value={descriptionValue}
-              />
-              <Picker
-                selectedValue={picker}
-                style={styles.picker}
-                onValueChange={pickerHandler}
-              >
-                <Picker.Item label="Assault" value="Assault" />
-                <Picker.Item label="Break and Enter" value="Break and Enter" />
-                <Picker.Item label="General Theft" value="General Theft" />
-                <Picker.Item label="Property Damage" value="Property Damage" />
-                <Picker.Item label="Public Intoxication" value="Public Intoxication" />
-                <Picker.Item label="Vehicle Collision" value="Vehicle Collision" />
-                <Picker.Item label="Vehicle Theft" value="Vehicle Theft" />
-              </Picker>
+                <TextInput
+                  style={styles.textInput}
+                  onChangeText={titleChangeHandler}
+                  value={titleValue}
+                />
+                <Text style={styles.label}>Description</Text>
 
-              <Button
-                title="Save Report"
-                color={Colors.primary}
-                onPress={saveReportHandler}
-              />
-            </View>
-          )}
-      </ScrollView>
+                <TextInput
+                  style={styles.textInput}
+                  onChangeText={descriptionChangeHandler}
+                  value={descriptionValue}
+                />
+
+              </View>
+
+            )}
+          <Picker
+            style={styles.picker}
+            itemStyle={styles.pickerItem}
+            selectedValue={picker}
+            onValueChange={pickerHandler}
+          >
+            <Picker.Item label="Assault" value="Assault" />
+            <Picker.Item label="Break and Enter" value="Break and Enter" />
+            <Picker.Item label="General Theft" value="General Theft" />
+            <Picker.Item label="Property Damage" value="Property Damage" />
+            <Picker.Item label="Public Intoxication" value="Public Intoxication" />
+            <Picker.Item label="Vehicle Collision" value="Vehicle Collision" />
+            <Picker.Item label="Vehicle Theft" value="Vehicle Theft" />
+          </Picker>
+        </ScrollView>
+      </LinearGradient>
     </KeyboardAvoidingView >
   );
 };
 ReportScreen.navigationOptions = {
   headerTitle: "Add Report"
 };
+
+
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
+  outsideContainer: {
+    flex: 1,
+    // alignItems: "center",
+    // justifyContent: "center",
+  },
   form: {
-    margin: 30
+    marginHorizontal: 30,
+    marginTop: 40
   },
   label: {
-    fontSize: 18,
-    marginBottom: 15
+    fontSize: 17,
+    marginBottom: 15,
+    color: "white"
   },
   textInput: {
     borderBottomColor: "#ccc",
     borderBottomWidth: 1,
     marginBottom: 15,
     paddingVertical: 4,
-    paddingHorizontal: 2
+    paddingHorizontal: 2,
+    color: "white"
   },
-
   picker: {
-    height: 50,
+    height: 100,
     width: "100%",
-    marginBottom: 20
+    borderRadius: 2,
+    borderColor: "black"
+  },
+  pickerItem: {
   }
 });
 export default ReportScreen;

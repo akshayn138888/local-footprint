@@ -46,22 +46,28 @@ const ImgPicker = props => {
             <Image style={styles.image} source={{ uri: pickedImage }} />
           )}
       </View>
-      <Button
-        title="Take Image"
-        color={Colors.primary}
-        onPress={takeImageHandler}
-      />
+      <View style={{ borderWidth: 2, borderColor: Colors.accent, borderRadius: 15, overflow: 'hidden', }}>
+        <Button
+          title="Take Image"
+          color={Platform.OS == "android" ? "#22c1c4" : Colors.accent}
+
+          onPress={takeImageHandler}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
   imagePicker: {
     alignItems: "center"
   },
   imagePreview: {
     width: "100%",
-    height: 200,
+    height: 150,
     marginBottom: 10,
     justifyContent: "center",
     alignItems: "center",

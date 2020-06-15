@@ -92,7 +92,7 @@ const WorkerScreen = props => {
 
 
       </View>
-      <View style={{ marginBottom: 50, borderWidth: 2, borderColor: Colors.accent, borderRadius: "15%", padding: 10 }}>
+      <View style={{ marginBottom: 70, borderWidth: 2, borderColor: Colors.accent, borderRadius: 15, padding: 10 }}>
         <Button color={Platform.OS == "android" ? Colors.primary : Colors.accent} title="Finish Work" onPress={logoutHandler} />
       </View>
       {/* </ScrollView> */}
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   title: {
     color: "white",
     marginTop: "10%",
-    fontSize: 35,
+    fontSize: 50,
     marginBottom: "3%"
 
   },
