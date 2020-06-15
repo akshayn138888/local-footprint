@@ -46,7 +46,7 @@ const ImgPicker = props => {
             <Image style={styles.image} source={{ uri: pickedImage }} />
           )}
       </View>
-      <View style={{ borderWidth: 2, borderColor: Colors.accent, borderRadius: 15, overflow: 'hidden', }}>
+      <View>
         <Button
           title="Take Image"
           color={Platform.OS == "android" ? "#22c1c4" : Colors.accent}
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   imagePreview: {
     width: "100%",
     height: 150,
-    marginBottom: 10,
+    marginBottom: "1%",
     justifyContent: "center",
     alignItems: "center",
     borderColor: "#ccc",

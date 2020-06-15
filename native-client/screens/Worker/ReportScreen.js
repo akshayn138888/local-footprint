@@ -14,6 +14,7 @@ import {
   Platform
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import ModalSelector from 'react-native-modal-selector'
 
 import * as firebase from "firebase";
 import Colors from "../../constants/Colors";
@@ -125,6 +126,33 @@ const ReportScreen = props => {
       );
     }
   };
+
+  {/* <Picker
+            style={styles.picker}
+            itemStyle={styles.pickerItem}
+            selectedValue={picker}
+            onValueChange={pickerHandler}
+          >
+            <Picker.Item value="Assault" />
+            <Picker.Item  value="Break and Enter" />
+            <Picker.Item  value="General Theft" />
+            <Picker.Item label="Property Damage" value="Property Damage" />
+            <Picker.Item label="Public Intoxication" value="Public Intoxication" />
+            <Picker.Item label="Vehicle Collision" value="Vehicle Collision" />
+            <Picker.Item label="Vehicle Theft" value="Vehicle Theft" />
+          </Picker> */}
+  let index = 0;
+  const data = [
+    { key: index++, section: true, label: "Assault" },
+    { key: index++, label: "Break and Enter" },
+    { key: index++, label: "General Theft" },
+    { key: index++, label: "Property Damage" },
+    { key: index++, label: "General Theft" },
+    { key: index++, label: "Public Intoxication" },
+    { key: index++, label: "Vehicle Collision" },
+    { key: index++, label: "General Theft" },
+    { key: index++, label: "Vehicle Theft", accessibilityLabel: 'Tap here for cranberries' },
+  ];
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "android" ? "" : "padding"}
@@ -138,14 +166,14 @@ const ReportScreen = props => {
             <ActivityIndicator size="large" color={Colors.primary} />
           ) : (
               <View style={styles.form}>
-                <View style={{ borderWidth: 2, borderColor: Colors.accent, borderRadius: 15, marginBottom: 10, overflow: "hidden" }}>
-                  <Button
-                    title="Save Report"
-                    color={Platform.OS == "android" ? "#22c1c4" : Colors.accent}
-                    onPress={saveReportHandler}
-                  />
-                </View>
+
                 <ImagePicker onImageTaken={imageTakenHandler} />
+
+                <View
+                  style={{
+                    marginVertical: "7%"
+                  }}
+                />
 
                 <Text style={styles.label}>Title</Text>
 
@@ -160,25 +188,34 @@ const ReportScreen = props => {
                   style={styles.textInput}
                   onChangeText={descriptionChangeHandler}
                   value={descriptionValue}
+                  multiline={true}
                 />
 
+                <View style={styles.picker}>
+                  <ModalSelector
+                    data={data}
+                    initValue={picker ? picker : "Select Type of Crime"}
+                    accessible={true}
+                    scrollViewAccessibilityLabel={'Scrollable options'}
+                    cancelButtonAccessibilityLabel={'Cancel Button'}
+                    onChange={(option) => setPicker(option.label)}>
+                  </ModalSelector>
+                </View>
+
+
+
+
+
+                <View style={styles.savebtn}>
+                  <Button
+                    title="Save Report"
+                    color={Platform.OS == "android" ? "#22c1c4" : Colors.accent}
+                    onPress={saveReportHandler}
+                  />
+                </View>
               </View>
 
             )}
-          <Picker
-            style={styles.picker}
-            itemStyle={styles.pickerItem}
-            selectedValue={picker}
-            onValueChange={pickerHandler}
-          >
-            <Picker.Item label="Assault" value="Assault" />
-            <Picker.Item label="Break and Enter" value="Break and Enter" />
-            <Picker.Item label="General Theft" value="General Theft" />
-            <Picker.Item label="Property Damage" value="Property Damage" />
-            <Picker.Item label="Public Intoxication" value="Public Intoxication" />
-            <Picker.Item label="Vehicle Collision" value="Vehicle Collision" />
-            <Picker.Item label="Vehicle Theft" value="Vehicle Theft" />
-          </Picker>
         </ScrollView>
       </LinearGradient>
     </KeyboardAvoidingView >
@@ -200,7 +237,13 @@ const styles = StyleSheet.create({
   },
   form: {
     marginHorizontal: 30,
-    marginTop: 40
+    marginTop: "20%"
+  },
+  title: {
+    fontSize: 35,
+    marginBottom: "7%",
+    color: "white",
+    textAlign: "center",
   },
   label: {
     fontSize: 17,
@@ -215,13 +258,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 2,
     color: "white"
   },
-  picker: {
-    height: 100,
-    width: "100%",
-    borderRadius: 2,
-    borderColor: "black"
+  savebtn: {
+    borderWidth: 2,
+    borderColor: Colors.accent,
+    borderRadius: 15,
+    marginTop: "5%",
+    overflow: "hidden"
   },
-  pickerItem: {
+  picker: {
+    marginTop: 0,
+    marginBottom: 10
   }
 });
 export default ReportScreen;
