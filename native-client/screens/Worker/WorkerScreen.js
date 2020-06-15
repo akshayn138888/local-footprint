@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
+import { StyleSheet, Text, View, Button, ScrollView, Platform } from "react-native";
 import * as Location from "expo-location";
 import { useDispatch, useSelector } from "react-redux";
 import * as authActions from "../../store/actions/auth";
@@ -92,7 +92,7 @@ const WorkerScreen = props => {
 
 
       </View>
-      <View style={{ marginBottom: 70, borderWidth: 2, borderColor: Colors.accent, borderRadius: 15, padding: 10 }}>
+      <View style={styles.btnWork}>
         <Button color={Platform.OS == "android" ? Colors.primary : Colors.accent} title="Finish Work" onPress={logoutHandler} />
       </View>
       {/* </ScrollView> */}
@@ -128,7 +128,16 @@ const styles = StyleSheet.create({
   work: {
     color: "white",
     fontSize: 15,
+  },
+  btnWork: {
+    marginBottom: 70,
+    borderWidth: 2,
+    borderColor: Colors.accent,
+    borderRadius: 15,
+    padding: Platform.OS === "android" ? 0 : 12,
+    overflow: "hidden"
   }
+
 });
 
 export default WorkerScreen;

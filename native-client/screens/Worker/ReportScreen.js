@@ -10,7 +10,8 @@ import {
   Alert,
   ActivityIndicator,
   KeyboardAvoidingView,
-  Picker
+  Picker,
+  Platform
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -126,8 +127,8 @@ const ReportScreen = props => {
   };
   return (
     <KeyboardAvoidingView
-      behavior="padding"
-      // keyboardVerticalOffset={80}
+      behavior={Platform.OS == "android" ? "" : "padding"}
+      keyboardVerticalOffset={80}
       style={styles.screen}
     >
       <LinearGradient style={styles.outsideContainer} colors={["#22c1c3", "#2d9afd"]}>

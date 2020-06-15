@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { ScrollView, View, KeyboardAvoidingView, StyleSheet, Button, ActivityIndicator, Alert, TextInput, Text, Image, Platform } from "react-native";
+import { ScrollView, View, KeyboardAvoidingView, StyleSheet, Button, ActivityIndicator, Alert, TextInput, Text, Image, Platform, TouchableHi } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch } from "react-redux"
 
@@ -60,7 +60,7 @@ const AuthScreen = props => {
   }
   return (
     <KeyboardAvoidingView
-      behavior="padding"
+      behavior={Platform.OS == "android" ? "" : "padding"}
       keyboardVerticalOffset={50}
       style={styles.screen}
     >
