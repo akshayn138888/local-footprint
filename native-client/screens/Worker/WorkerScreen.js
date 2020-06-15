@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
 import * as Location from "expo-location";
 import { useDispatch, useSelector } from "react-redux";
 import * as authActions from "../../store/actions/auth";
+import { LinearGradient } from "expo-linear-gradient";
+import Colors from '../../constants/Colors'
+
+import Clock from '../../components/Clock'
+
 
 const WorkerScreen = props => {
   const [location, setlocation] = useState(null);
@@ -13,7 +18,7 @@ const WorkerScreen = props => {
   const email = useSelector(state => state.auth.email);
 
   useEffect(
-    function() {
+    function () {
       if (location) {
         fetch(
           `https://location-app-5d3d8.firebaseio.com/locations/${username}.json?auth=${token}`,
@@ -38,18 +43,18 @@ const WorkerScreen = props => {
   );
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      (async () => {
-        let { status } = await Location.requestPermissionsAsync();
-        if (status !== "granted") {
-          setErrorMsg("Permission to access location was denied");
-        }
-        let location = await Location.getCurrentPositionAsync({});
-        setlocation(location);
-      })();
-    }, 30000); ////////////////////////////////////// CHange Timing when //////////////////////// Demoing
+    // const interval = setInterval(() => {
+    (async () => {
+      let { status } = await Location.requestPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+      }
+      let location = await Location.getCurrentPositionAsync({});
+      setlocation(location);
+    })();
+    // }, 30000); ////////////////////////////////////// CHange Timing when //////////////////////// Demoing
 
-    return () => clearInterval(interval);
+    // return () => clearInterval(interval);
   }, []);
 
   const logoutHandler = async () => {
@@ -75,32 +80,54 @@ const WorkerScreen = props => {
   }
 
   return (
-    <View>
-      <Text>WorkerScreen</Text>
-      {userEmail}
-      <Button
-        title="Report-Incident"
-        onPress={() => {
-          props.navigation.navigate("Report");
-        }}
-      />
-      <Button
-        title="StartWork"
-        onPress={() => {
-          props.navigation.navigate("Auth");
-        }}
-      />
-      <Button title="Log Out" onPress={logoutHandler} />
-    </View>
+    <LinearGradient style={styles.outsideContainer} colors={["#22c1c3", "#2d9afd"]}>
+      {/* <ScrollView> */}
+      <View style={styles.container}>
+        <Text style={styles.title}>Welcome</Text>
+        <Text style={styles.titleHeader}>{userEmail}</Text>
+
+        <Clock />
+        <Text style={styles.work}>Time Worked</Text>
+
+
+
+      </View>
+      <View style={{ marginBottom: 50, borderWidth: 2, borderColor: Colors.accent, borderRadius: "15%", padding: 10 }}>
+        <Button color={Platform.OS == "android" ? Colors.primary : Colors.accent} title="Finish Work" onPress={logoutHandler} />
+      </View>
+      {/* </ScrollView> */}
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
+  oocontainer: {
+    flex: 1
+  },
+  outsideContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
+  },
+  title: {
+    color: "white",
+    marginTop: "10%",
+    fontSize: 35,
+    marginBottom: "3%"
+
+  },
+  titleHeader: {
+    color: "white",
+    marginBottom: "20%"
+  },
+  work: {
+    color: "white",
+    fontSize: 15,
   }
 });
 

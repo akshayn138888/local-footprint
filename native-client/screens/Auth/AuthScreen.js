@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux"
 
 
 import Colors from '../../constants/Colors'
-import Card from '../../components/Card'
 
 import * as authActions from '../../store/actions/auth'
 
@@ -111,6 +110,11 @@ const AuthScreen = props => {
                 )}
 
             </View>
+            <Button
+              title={"Worker Screen"}
+              color={Platform.OS == "android" ? Colors.primary : Colors.accent}
+              onPress={() => props.navigation.navigate('Worker')}
+            />
           </View>
         </ScrollView>
       </LinearGradient>
@@ -142,7 +146,6 @@ const styles = StyleSheet.create({
   titleHeader: {
     color: "white",
     marginBottom: "8%"
-
   },
   authContainer: {
     flex: 1,
