@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { ScrollView, View, KeyboardAvoidingView, StyleSheet, Button, ActivityIndicator, Alert, TextInput, Text } from "react-native";
+import { ScrollView, View, KeyboardAvoidingView, StyleSheet, Button, ActivityIndicator, Alert, TextInput, Text, Image, Platform } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch } from "react-redux"
+
 
 import Colors from '../../constants/Colors'
 import Card from '../../components/Card'
@@ -58,44 +60,110 @@ const AuthScreen = props => {
     const errText = <Text>{error}</Text>
   }
   return (
-    <View>
-      {errText}
-      <Text>Auth Screen</Text>
-      <Button
-        title="StartWork"
-        onPress={() => {
-          props.navigation.navigate("Work");
-        }}
-      />
-      <KeyboardAvoidingView>
-        <Card>
-          <ScrollView>
-            <TextInput name="email" value={email} onChange={handleEmail} placeholder="Enter Your Email..." />
-            <TextInput name="password" value={password} onChange={handlePassword} placeholder="Enter Your Password..." />
+    <KeyboardAvoidingView
+      behavior="padding"
+      keyboardVerticalOffset={50}
+      style={styles.screen}
+    >
+      <LinearGradient colors={["#22c1c3", "#2d9afd"]} style={styles.gradient}>
+        {errText}
+        <Image source={require('../../assets/OwlLogo.png')} style={styles.owl} />
+
+        <Text style={styles.title}> Local Footprint</Text>
+        <Text style={styles.titleHeader}> Please Login to Continue</Text>
+        <ScrollView>
+          <View style={styles.authContainer}>
+
+            <TextInput
+              style={styles.textInput1}
+              value={email}
+              onChange={handleEmail}
+              id="email"
+              label="E-Mail"
+              keyboardType="email-address"
+              required
+              email
+              autoCapitalize="none"
+              errorText="Please enter a valid email address."
+            />
+            <TextInput
+              style={styles.textInput1}
+              value={password}
+              onChange={handlePassword}
+              id="password"
+              label="Password"
+              keyboardType="default"
+              secureTextEntry
+              required
+              minLength={5}
+              autoCapitalize="none"
+              errorText="Please enter a valid password."
+            />
             <View style={styles.buttonContainer}>
               {isLoading ? (
                 <ActivityIndicator size="small" color={Colors.primary} />
               ) : (
                   <Button
                     title={"Login"}
-                    color={Colors.primary}
+                    color={Platform.OS == "android" ? Colors.primary : Colors.accent}
                     onPress={authHandler}
                   />
                 )}
+
             </View>
-          </ScrollView>
-        </Card>
-      </KeyboardAvoidingView>
-    </View>
+          </View>
+        </ScrollView>
+      </LinearGradient>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
-    backgroundColor: "#fff",
+  },
+  gradient: {
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
-    justifyContent: "center"
+  },
+  owl: {
+    width: "30%",
+    height: "23%",
+    marginLeft: 0,
+    marginTop: "5%"
+  },
+  title: {
+    color: "white",
+    marginTop: "10%",
+    fontSize: 35
+
+  },
+  titleHeader: {
+    color: "white",
+    marginBottom: "8%"
+
+  },
+  authContainer: {
+    flex: 1,
+    width: 300,
+    maxWidth: 400,
+    maxHeight: 400,
+    padding: 20,
+    borderRadius: 10,
+  },
+  textInput1: {
+    marginBottom: "6%",
+    backgroundColor: "white",
+    borderRadius: 10,
+    textAlign: "center",
+    paddingVertical: 5,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.6,
+    shadowRadius: 2,
+  },
+  buttonContainer: {
+    marginTop: 10
   }
 });
 

@@ -34,7 +34,14 @@ const AuthNavigator = createStackNavigator(
     Auth: AuthScreen
   },
   {
-    defaultNavigationOptions: defaultNavOptions
+    defaultNavigationOptions: {
+      headerTitle: "Login",
+      headerStyle: {
+        backgroundColor: Platform.OS === "android" ? Colors.primary : ""
+      },
+
+      headerTintColor: Platform.OS === "android" ? "white" : Colors.primary
+    }
   }
 );
 
