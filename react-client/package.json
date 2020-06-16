@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@deck.gl/aggregation-layers": "^8.1.9",
+    "@deck.gl/core": "^8.1.9",
     "@deck.gl/layers": "^8.1.9",
     "@deck.gl/react": "^8.1.9",
     "@storybook/react": "^5.3.19",
@@ -18,7 +20,8 @@
     "react-map-gl": "^5.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "react-scroll": "^1.7.16"
+    "react-scroll": "^1.7.16",
+    "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
