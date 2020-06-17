@@ -101,7 +101,7 @@ const LiveWorkerStats = props => {
       }
       parseData.push(array1);
     }
-    console.log(data);
+
     //Line Layer
     // const layers = [new LineLayer({ id: "line-layer", data })];
 

@@ -9,7 +9,7 @@ import "./App.css";
 import LiveWorkerStats from "./Screens/07_LiveWorkerStats/LiveWorkerStats";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Grommet } from "grommet";
-
+import ReportStats from "./Screens/08_ReportStat/ReportsStats";
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +26,7 @@ function App() {
           <Route exact path="/IncidentScreen" component={IncidentScreen} />
           <Route exact path="/DashBoardScreen" component={DashBoardScreen} />
           <Route exact path="/LiveWorkerStats" component={LiveWorkerStats} />
+          <Route exact path="/ReportStats" component={ReportStats} />
         </Switch>
       </Grommet>
     </BrowserRouter>
