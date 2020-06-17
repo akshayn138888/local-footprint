@@ -10,12 +10,10 @@ import {
   Alert,
   ActivityIndicator,
   KeyboardAvoidingView,
-  Picker,
   Platform
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import ModalSelector from 'react-native-modal-selector'
-
+import ModalSelector from "react-native-modal-selector";
 import * as firebase from "firebase";
 import Colors from "../../constants/Colors";
 import ImagePicker from "../../components/ImagePicker";
@@ -32,12 +30,10 @@ const ReportScreen = props => {
   const [selectedImage, setSelectedImage] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [picker, setPicker] = useState(null);
-
   // Redux
   const token = useSelector(state => state.auth.token);
   const username = useSelector(state => state.auth.userId);
   const email = useSelector(state => state.auth.email);
-
   // Handlers
   const titleChangeHandler = text => {
     // you could add validation
@@ -53,7 +49,6 @@ const ReportScreen = props => {
   const pickerHandler = (itemValue, itemIndex) => {
     setPicker(itemValue);
   };
-
   const saveReportHandler = async () => {
     if (titleValue && selectedImage && picker && descriptionValue) {
       uploadImage = async uri => {
@@ -67,7 +62,6 @@ const ReportScreen = props => {
         await ref.put(blob);
         const fileUrl = await ref.getDownloadURL();
         console.log(fileUrl);
-
         let { status } = await Location.requestPermissionsAsync();
         if (status !== "granted") {
           setErrorMsg("Permission to access location was denied");
@@ -76,7 +70,6 @@ const ReportScreen = props => {
           };
         }
         let location = await Location.getCurrentPositionAsync({});
-
         await fetch(
           `https://location-app-5d3d8.firebaseio.com/images/${username}.json?auth=${token}`,
           {
@@ -117,17 +110,14 @@ const ReportScreen = props => {
         "Please ensure form is complete before submitting.",
         [
           {
-            text: "Okay",
-            onPress: () => {
-              props.navigation.goBack();
-            }
+            text: "Okay"
           }
         ]
       );
     }
   };
-
-  {/* <Picker
+  {
+    /* <Picker
             style={styles.picker}
             itemStyle={styles.pickerItem}
             selectedValue={picker}
@@ -140,7 +130,8 @@ const ReportScreen = props => {
             <Picker.Item label="Public Intoxication" value="Public Intoxication" />
             <Picker.Item label="Vehicle Collision" value="Vehicle Collision" />
             <Picker.Item label="Vehicle Theft" value="Vehicle Theft" />
-          </Picker> */}
+          </Picker> */
+  }
   let index = 0;
   const data = [
     { key: index++, section: true, label: "Assault" },
@@ -151,7 +142,11 @@ const ReportScreen = props => {
     { key: index++, label: "Public Intoxication" },
     { key: index++, label: "Vehicle Collision" },
     { key: index++, label: "General Theft" },
-    { key: index++, label: "Vehicle Theft", accessibilityLabel: 'Tap here for cranberries' },
+    {
+      key: index++,
+      label: "Vehicle Theft",
+      accessibilityLabel: "Tap here for cranberries"
+    }
   ];
   return (
     <KeyboardAvoidingView
@@ -159,79 +154,86 @@ const ReportScreen = props => {
       keyboardVerticalOffset={80}
       style={styles.screen}
     >
-      <LinearGradient style={styles.outsideContainer} colors={["#22c1c3", "#2d9afd"]}>
-
+      <LinearGradient
+        style={styles.outsideContainer}
+        colors={["#22c1c3", "#2d9afd"]}
+      >
         <ScrollView>
           {isLoading ? (
             <ActivityIndicator size="large" color={Colors.primary} />
           ) : (
-              <View style={styles.form}>
-
-                <ImagePicker onImageTaken={imageTakenHandler} />
-
-                <View
+            <View style={styles.form}>
+              <ImagePicker onImageTaken={imageTakenHandler} />
+              <View
+                style={{
+                  marginVertical: "7%"
+                }}
+              />
+              <Text style={styles.label}>Title</Text>
+              <TextInput
+                style={styles.textInput}
+                onChangeText={titleChangeHandler}
+                value={titleValue}
+              />
+              <Text style={styles.label}>Description</Text>
+              <TextInput
+                style={styles.textInput}
+                onChangeText={descriptionChangeHandler}
+                value={descriptionValue}
+                multiline={true}
+              />
+              <View>
+                <ModalSelector
                   style={{
-                    marginVertical: "7%"
+                    borderColor: "white",
+                    borderWidth: 1,
+                    overflow: "hidden",
+                    borderRadius: 15
                   }}
-                />
-
-                <Text style={styles.label}>Title</Text>
-
-                <TextInput
-                  style={styles.textInput}
-                  onChangeText={titleChangeHandler}
-                  value={titleValue}
-                />
-                <Text style={styles.label}>Description</Text>
-
-                <TextInput
-                  style={styles.textInput}
-                  onChangeText={descriptionChangeHandler}
-                  value={descriptionValue}
-                  multiline={true}
-                />
-
-                <View style={styles.picker}>
-                  <ModalSelector
-                    data={data}
-                    initValue={picker ? picker : "Select Type of Crime"}
-                    accessible={true}
-                    scrollViewAccessibilityLabel={'Scrollable options'}
-                    cancelButtonAccessibilityLabel={'Cancel Button'}
-                    onChange={(option) => setPicker(option.label)}>
-                  </ModalSelector>
-                </View>
-
-
-
-
-
-                <View style={styles.savebtn}>
-                  <Button
-                    title="Save Report"
-                    color={Platform.OS == "android" ? "#22c1c4" : Colors.accent}
-                    onPress={saveReportHandler}
-                  />
-                </View>
+                  data={data}
+                  initValue={picker ? picker : "Select Type of Crime"}
+                  accessible={true}
+                  scrollViewAccessibilityLabel={"Scrollable options"}
+                  cancelButtonAccessibilityLabel={"Cancel Button"}
+                  onChange={option => setPicker(option.label)}
+                >
+                  <Text
+                    style={{
+                      textAlign: "center",
+                      fontSize: 18,
+                      padding: 8,
+                      color: "white"
+                    }}
+                  >
+                    {" "}
+                    {picker ? picker : "Select Type of Crime"}
+                  </Text>
+                </ModalSelector>
               </View>
-
-            )}
+              <View style={styles.savebtn}>
+                <Button
+                  buttonStyle={{ color: "white" }}
+                  title="Save Report"
+                  color={Platform.OS == "android" ? "" : "#2b9ff5"}
+                  onPress={saveReportHandler}
+                />
+              </View>
+            </View>
+          )}
         </ScrollView>
       </LinearGradient>
-    </KeyboardAvoidingView >
+    </KeyboardAvoidingView>
   );
 };
 ReportScreen.navigationOptions = {
   headerTitle: "Add Report"
 };
-
-
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    flex: 1
   },
   outsideContainer: {
-    flex: 1,
+    flex: 1
     // alignItems: "center",
     // justifyContent: "center",
   },
@@ -243,7 +245,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
     marginBottom: "7%",
     color: "white",
-    textAlign: "center",
+    textAlign: "center"
   },
   label: {
     fontSize: 17,
@@ -259,15 +261,14 @@ const styles = StyleSheet.create({
     color: "white"
   },
   savebtn: {
+    fontSize: 18,
+    color: "blue",
+    backgroundColor: "white",
     borderWidth: 2,
     borderColor: Colors.accent,
     borderRadius: 15,
     marginTop: "5%",
     overflow: "hidden"
-  },
-  picker: {
-    marginTop: 0,
-    marginBottom: 10
   }
 });
 export default ReportScreen;
