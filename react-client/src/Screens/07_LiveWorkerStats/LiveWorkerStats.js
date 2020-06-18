@@ -120,7 +120,7 @@ const LiveWorkerStats = props => {
       colorRange: COLOR_RANGE,
       pickable: true,
       extruded: true,
-      radius: 10,
+      radius: 20,
       elevationScale: 4,
       getPosition: d => d.COORDINATES
     });
@@ -136,9 +136,6 @@ const LiveWorkerStats = props => {
           }}
         >
           <DeckGL viewState={viewport} layers={[layer]} />
-          {parseData
-            ? parseData.map(markerArray => markerArray[markerArray.length - 1])
-            : ""}
           <NavBar />
         </ReactMapGL>
       </div>

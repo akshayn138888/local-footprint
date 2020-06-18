@@ -43,18 +43,18 @@ const WorkerScreen = props => {
   );
 
   useEffect(() => {
-    // const interval = setInterval(() => {
-    (async () => {
-      let { status } = await Location.requestPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-      }
-      let location = await Location.getCurrentPositionAsync({});
-      setlocation(location);
-    })();
-    // }, 30000); ////////////////////////////////////// CHange Timing when //////////////////////// Demoing
+    const interval = setInterval(() => {
+      (async () => {
+        let { status } = await Location.requestPermissionsAsync();
+        if (status !== "granted") {
+          setErrorMsg("Permission to access location was denied");
+        }
+        let location = await Location.getCurrentPositionAsync({});
+        setlocation(location);
+      })();
+    }, 5000); ////////////////////////////////////// CHange Timing when //////////////////////// Demoing
 
-    // return () => clearInterval(interval);
+    return () => clearInterval(interval);
   }, []);
 
   const logoutHandler = async () => {

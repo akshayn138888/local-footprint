@@ -52,7 +52,7 @@ const WorkerTimeLapse = () => {
                 opacity: 0.3,
                 widthMinPixels: 2,
                 rounded: true,
-                trailLength: 180,
+                trailLength: 45,
                 currentTime: time1,
                 shadowEnabled: false
             })
