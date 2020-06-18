@@ -10,6 +10,8 @@ import LiveWorkerStats from "./Screens/07_LiveWorkerStats/LiveWorkerStats";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Grommet } from "grommet";
 import ReportStats from "./Screens/08_ReportStat/ReportsStats";
+import WorkerTimeLapse from "./Screens/09_WorkerTimeLapse/WorkerTimeLapse";
+
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +29,7 @@ function App() {
           <Route exact path="/DashBoardScreen" component={DashBoardScreen} />
           <Route exact path="/LiveWorkerStats" component={LiveWorkerStats} />
           <Route exact path="/ReportStats" component={ReportStats} />
+          <Route exact path="/WorkerTimeLapse" component={WorkerTimeLapse} />
         </Switch>
       </Grommet>
     </BrowserRouter>
