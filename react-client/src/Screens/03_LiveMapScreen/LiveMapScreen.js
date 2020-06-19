@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import DeckGL from "@deck.gl/react";
 
 import { TripsLayer } from "@deck.gl/geo-layers";
-
+import WorkerNavBar from "../../components/topNavBar/WorkerNavBar";
 const MapScreen = props => {
   const [latLon, setLatLon] = useState(null);
   const [layer, setlayer] = useState(null);
@@ -16,66 +16,6 @@ const MapScreen = props => {
     width: "100vw",
     height: "100vh"
   });
-
-  // const data = [
-  //   {
-  //     waypoints: [
-  //       {
-  //         coordinates: [-122.88886313338101, 49.119706917599885],
-  //         timestamp: 1554772579000
-  //       },
-  //       {
-  //         coordinates: [-122.88886313338101, 49.129706917599885],
-  //         timestamp: 1554772579010
-  //       },
-
-  //       {
-  //         coordinates: [-122.4485672, 49.139706917599885],
-  //         timestamp: 1554772580200
-  //       },
-  //       {
-  //         coordinates: [-122.4485672, 49.149706917599885],
-  //         timestamp: 1554772580200 + 1000
-  //       },
-  //       {
-  //         coordinates: [-122.4485672, 49.159706917599885],
-  //         timestamp: 1554772580200 + 2000
-  //       },
-  //       {
-  //         coordinates: [-122.4485672, 49.169706917599885],
-  //         timestamp: 1554772580200 + 3000
-  //       },
-  //       {
-  //         coordinates: [-122.4485672, 49.179706917599885],
-  //         timestamp: 1554772580200 + 4000
-  //       },
-  //       {
-  //         coordinates: [-122.4485672, 49.189706917599885],
-  //         timestamp: 1554772580200 + 5000
-  //       },
-  //       {
-  //         coordinates: [-122.4485672, 49.199706917599885],
-  //         timestamp: 1554772580200 + 6000
-  //       },
-  //       {
-  //         coordinates: [-122.4485672, 49.209706917599885],
-  //         timestamp: 1554772580200 + 7000
-  //       },
-  //       {
-  //         coordinates: [-122.4485672, 49.219706917599885],
-  //         timestamp: 1554772580200 + 8000
-  //       },
-  //       {
-  //         coordinates: [-122.4585672, 49.229706917599885],
-  //         timestamp: 1554772580200 + 9000
-  //       },
-  //       {
-  //         coordinates: [-122.4685672, 49.239706917599885],
-  //         timestamp: 1554772580200 + 10000
-  //       }
-  //     ]
-  //   }
-  // ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -92,30 +32,6 @@ const MapScreen = props => {
       clearInterval(interval);
     };
   }, []);
-
-  // useEffect(() => {
-  //   const interval1 = setInterval(() => {
-  //     const layer = new TripsLayer({
-  //       id: "trips-layer",
-  //       data,
-  //       getPath: d => d.waypoints.map(p => p.coordinates),
-  //       // deduct start timestamp from each data point to avoid overflow
-  //       getTimestamps: d => d.waypoints.map(p => p.timestamp - 1554772579000),
-  //       getColor: [253, 128, 93],
-  //       opacity: 0.8,
-  //       widthMinPixels: 50,
-  //       rounded: true,
-  //       trailLength: 1000,
-  //       currentTime: timer
-  //     });
-  //     setTimer(timer + 500);
-  //     setlayer(layer);
-  //   }, 1000);
-
-  // return () => {
-  //   clearInterval(interval1);
-  // };
-  // }, []);
 
   if (latLon) {
     let parseData = [];
@@ -154,7 +70,7 @@ const MapScreen = props => {
           {parseData
             ? parseData.map(markerArray => markerArray[markerArray.length - 1])
             : ""}
-
+          <WorkerNavBar />
           <NavBar />
         </ReactMapGL>
       </div>
@@ -162,6 +78,7 @@ const MapScreen = props => {
   } else {
     return (
       <div>
+        <WorkerNavBar />
         <NavBar />
       </div>
     );

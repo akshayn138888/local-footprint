@@ -16,11 +16,11 @@ const NavBar = props => {
           marginBottom: "10%"
         }}
       >
-        <img
+        {/* <img
           src="/02_Logo/OwlLogo.png"
           style={{ paddingRight: 15, height: 30 }}
           alt="LOGO"
-        />
+        /> */}
         <h5
           className="header__logo__title"
           style={{ display: "flex", alignItems: "center" }}
@@ -37,12 +37,6 @@ const NavBar = props => {
       </NavLink>
       <NavLink to="IncidentScreen" className="btd btd-3">
         Report Map
-      </NavLink>
-      <NavLink to="" className="btd btd-3">
-        Report Statistics
-      </NavLink>
-      <NavLink to="" className="btd btd-3">
-        Add A Worker
       </NavLink>
     </div>
   );
