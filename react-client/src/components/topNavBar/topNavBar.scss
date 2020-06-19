@@ -1,0 +1,30 @@
+.top-navbar-report {
+  position: relative;
+  height: 10%;
+  width: 315px;
+  border-radius: 20px;
+  background: #ebeff9;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  left: 38%;
+  top: 88%;
+}
+.top-navbar-worker {
+  position: relative;
+  height: 10%;
+  width: 650px;
+  border-radius: 20px;
+  background: #ebeff9;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  left: 38%;
+  top: 88%;
+}

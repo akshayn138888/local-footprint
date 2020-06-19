@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
-
+import ReportNavBar from "./topNavBar/ReportNavBar";
 const IncidentMapScreen = props => {
   const [popupToggler, setPopupToggler] = useState(false);
   const [selectedIncident, setSelectedIncident] = useState(null);
@@ -91,7 +91,6 @@ const IncidentMapScreen = props => {
           mapStyle="mapbox://styles/akkin13/ckb1qv50i0grp1inr5bx1qkfm"
           onViewportChange={viewport => setViewport(viewport)}
         >
-          <NavBar />
           {parseData ? parseData.map(markerArray => markerArray) : ""}
 
           {selectedIncident ? (
@@ -127,12 +126,15 @@ const IncidentMapScreen = props => {
           ) : (
             ""
           )}
+          <ReportNavBar />
+          <NavBar />
         </ReactMapGL>
       </div>
     );
   } else {
     return (
       <div>
+        <ReportNavBar />
         <NavBar />
       </div>
     );

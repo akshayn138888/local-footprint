@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button, ScrollView, Platform } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  ScrollView,
+  Platform
+} from "react-native";
 import * as Location from "expo-location";
 import { useDispatch, useSelector } from "react-redux";
 import * as authActions from "../../store/actions/auth";
 import { LinearGradient } from "expo-linear-gradient";
-import Colors from '../../constants/Colors'
+import Colors from "../../constants/Colors";
 
-import Clock from '../../components/Clock'
-
+import Clock from "../../components/Clock";
 
 const WorkerScreen = props => {
   const [location, setlocation] = useState(null);
@@ -18,7 +24,7 @@ const WorkerScreen = props => {
   const email = useSelector(state => state.auth.email);
 
   useEffect(
-    function () {
+    function() {
       if (location) {
         fetch(
           `https://location-app-5d3d8.firebaseio.com/locations/${username}.json?auth=${token}`,
@@ -52,7 +58,9 @@ const WorkerScreen = props => {
         let location = await Location.getCurrentPositionAsync({});
         setlocation(location);
       })();
-    }, 5000); ////////////////////////////////////// CHange Timing when //////////////////////// Demoing
+    }, 5000);
+
+    ////////////////////////////////////// CHange Timing when //////////////////////// Demoing
 
     return () => clearInterval(interval);
   }, []);
@@ -80,7 +88,10 @@ const WorkerScreen = props => {
   }
 
   return (
-    <LinearGradient style={styles.outsideContainer} colors={["#22c1c3", "#2d9afd"]}>
+    <LinearGradient
+      style={styles.outsideContainer}
+      colors={["#22c1c3", "#2d9afd"]}
+    >
       {/* <ScrollView> */}
       <View style={styles.container}>
         <Text style={styles.title}>Welcome</Text>
@@ -88,12 +99,13 @@ const WorkerScreen = props => {
 
         <Clock />
         <Text style={styles.work}>Time Worked</Text>
-
-
-
       </View>
       <View style={styles.btnWork}>
-        <Button color={Platform.OS == "android" ? Colors.primary : Colors.accent} title="Finish Work" onPress={logoutHandler} />
+        <Button
+          color={Platform.OS == "android" ? Colors.primary : Colors.accent}
+          title="Finish Work"
+          onPress={logoutHandler}
+        />
       </View>
       {/* </ScrollView> */}
     </LinearGradient>
@@ -107,7 +119,7 @@ const styles = StyleSheet.create({
   outsideContainer: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   container: {
     flex: 1,
@@ -119,7 +131,6 @@ const styles = StyleSheet.create({
     marginTop: "10%",
     fontSize: 50,
     marginBottom: "3%"
-
   },
   titleHeader: {
     color: "white",
@@ -127,7 +138,7 @@ const styles = StyleSheet.create({
   },
   work: {
     color: "white",
-    fontSize: 15,
+    fontSize: 15
   },
   btnWork: {
     marginBottom: 70,
@@ -137,7 +148,6 @@ const styles = StyleSheet.create({
     padding: Platform.OS === "android" ? 0 : 12,
     overflow: "hidden"
   }
-
 });
 
 export default WorkerScreen;

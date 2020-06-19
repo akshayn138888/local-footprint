@@ -4,55 +4,21 @@ import DeckGL from "@deck.gl/react";
 import { LineLayer } from "@deck.gl/layers";
 import { HexagonLayer } from "@deck.gl/aggregation-layers";
 import NavBar from "../../components/NavBar/NavBar";
+import WorkerNavBar from "../../components/topNavBar/WorkerNavBar";
 
 const LiveWorkerStats = props => {
   const [latLon, setLatLon] = useState(null);
   const [viewport, setViewport] = useState({
     latitude: 49.119706917599885,
     longitude: -122.88886313338101,
-    zoom: 9,
-    pitch: 45,
+    zoom: 12,
+    pitch: 60,
+    bearing: -36,
 
     width: "100vw",
     height: "100vh"
   });
   console.log(viewport.zoom);
-
-  //   const data = [
-  //     { COORDINATES: [-122.88886313338101, 49.121706917599885] },
-  //     { COORDINATES: [-122.88886313338101, 49.121706917599885] },
-  //     { COORDINATES: [-122.88886313338101, 49.121706917599885] },
-  //     { COORDINATES: [-122.00886313338101, 49.17706917599885] },
-  //     { COORDINATES: [-122.88886313338101, 49.159706917599885] },
-  //     { COORDINATES: [-122.7686313338101, 49.19706917599885] },
-  //     { COORDINATES: [-122.89886313338101, 49.189706917599885] },
-  //     { COORDINATES: [-122.34313338101, 49.119706917599885] },
-  //     { COORDINATES: [-122.21886313338101, 49.169706917599885] },
-  //     { COORDINATES: [-122.1186313338101, 49.159706917599885] },
-  //     { COORDINATES: [-122.1186313338101, 49.159706917599885] },
-  //     { COORDINATES: [-122.1186313338101, 49.159706917599881] },
-  //     { COORDINATES: [-122.1186313338101, 49.159706917599883] },
-  //     { COORDINATES: [-122.1186313338101, 49.159706917599885] },
-  //     { COORDINATES: [-122.1186313338101, 49.159706917599886] },
-  //     { COORDINATES: [-122.1186313338101, 49.159706917599889] },
-  //     { COORDINATES: [-122.1186313338101, 49.15970691759988] },
-  //     { COORDINATES: [-122.1186313338101, 49.159706917599885] },
-  //     { COORDINATES: [-122.196313338101, 49.156706917599885] },
-  //     { COORDINATES: [-122.196313338101, 49.156706917599885] },
-  //     { COORDINATES: [-122.196313338101, 49.156706917599885] },
-  //     { COORDINATES: [-122.196313338101, 49.156706917599885] },
-  //     { COORDINATES: [-122.196313338101, 49.156706917599885] },
-  //     { COORDINATES: [-122.196313338101, 49.156706917599885] },
-  //     { COORDINATES: [-122.196313338101, 49.156706917599885] },
-  //     { COORDINATES: [-122.196313338101, 49.156706917599885] },
-  //     { COORDINATES: [-122.196313338101, 49.156706917599885] }
-  //   ];
-  //   const data = [
-  //     {
-  //       sourcePosition: [-122.88886313338101, 49.119706917599885],
-  //       targetPosition: [-122.88886313338101, 49.43706917599885]
-  //     }
-  //   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -136,14 +102,15 @@ const LiveWorkerStats = props => {
           }}
         >
           <DeckGL viewState={viewport} layers={[layer]} />
-          <NavBar />
+
+          <WorkerNavBar />
         </ReactMapGL>
       </div>
     );
   } else {
     return (
       <div>
-        <NavBar />
+        <WorkerNavBar />
       </div>
     );
   }

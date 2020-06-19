@@ -1,47 +1,55 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { ScrollView, View, KeyboardAvoidingView, StyleSheet, Button, ActivityIndicator, Alert, TextInput, Text, Image, Platform, TouchableHi } from "react-native";
+import {
+  ScrollView,
+  View,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Button,
+  ActivityIndicator,
+  Alert,
+  TextInput,
+  Text,
+  Image,
+  Platform,
+  TouchableHi
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
 
+import Colors from "../../constants/Colors";
 
-import Colors from '../../constants/Colors'
-
-import * as authActions from '../../store/actions/auth'
+import * as authActions from "../../store/actions/auth";
 
 const AuthScreen = props => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [error, setError] = useState()
-  const dispatch = useDispatch()
-
+  const [error, setError] = useState();
+  const dispatch = useDispatch();
 
   function handleEmail(evt) {
-    const email = evt.nativeEvent.text
+    const email = evt.nativeEvent.text;
     setEmail(email);
   }
 
   function handlePassword(evt) {
-    const password = evt.nativeEvent.text
+    const password = evt.nativeEvent.text;
     setPassword(password);
   }
 
   const authHandler = async () => {
-    const actions = authActions.login(
-      email,
-      password
-    )
-    setError(null)
-    setIsLoading(true)
+    const actions = authActions.login(email, password);
+    setError(null);
+    setIsLoading(true);
     try {
-      await dispatch(actions)
-      props.navigation.navigate('Worker')
+      await dispatch(actions);
+      props.navigation.navigate("Worker");
     } catch (error) {
-      setError(error.message)
-      setIsLoading(false)
+      setError(error.message);
+      setIsLoading(false);
     }
-  }
+  };
 
   // const inputChangeHandler = useCallback(
   //   (inputIdentifier, inputValue, inputValidity) => {
@@ -54,9 +62,9 @@ const AuthScreen = props => {
   //   },
   //   [dispatchFormState]
   // );
-  let errText = <Text></Text>
+  let errText = <Text></Text>;
   if (error) {
-    const errText = <Text>{error}</Text>
+    const errText = <Text>{error}</Text>;
   }
   return (
     <KeyboardAvoidingView
@@ -66,13 +74,15 @@ const AuthScreen = props => {
     >
       <LinearGradient colors={["#22c1c3", "#2d9afd"]} style={styles.gradient}>
         {errText}
-        <Image source={require('../../assets/OwlLogo.png')} style={styles.owl} />
+        <Image
+          source={require("../../assets/OwlLogo.png")}
+          style={styles.owl}
+        />
 
         <Text style={styles.title}> Local Footprint</Text>
         <Text style={styles.titleHeader}> Please Login to Continue</Text>
         <ScrollView>
           <View style={styles.authContainer}>
-
             <TextInput
               style={styles.textInput1}
               value={email}
@@ -102,18 +112,19 @@ const AuthScreen = props => {
               {isLoading ? (
                 <ActivityIndicator size="small" color={Colors.primary} />
               ) : (
-                  <Button
-                    title={"Login"}
-                    color={Platform.OS == "android" ? Colors.primary : Colors.accent}
-                    onPress={authHandler}
-                  />
-                )}
-
+                <Button
+                  title={"Login"}
+                  color={
+                    Platform.OS == "android" ? Colors.primary : Colors.accent
+                  }
+                  onPress={authHandler}
+                />
+              )}
             </View>
             <Button
               title={"Worker Screen"}
               color={Platform.OS == "android" ? Colors.primary : Colors.accent}
-              onPress={() => props.navigation.navigate('Worker')}
+              onPress={() => props.navigation.navigate("Worker")}
             />
           </View>
         </ScrollView>
@@ -124,12 +135,12 @@ const AuthScreen = props => {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    flex: 1
   },
   gradient: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
   owl: {
     width: "30%",
@@ -141,7 +152,6 @@ const styles = StyleSheet.create({
     color: "white",
     marginTop: "10%",
     fontSize: 35
-
   },
   titleHeader: {
     color: "white",
@@ -153,17 +163,18 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     maxHeight: 400,
     padding: 20,
-    borderRadius: 10,
+    borderRadius: 10
   },
   textInput1: {
     marginBottom: "6%",
     backgroundColor: "white",
     borderRadius: 10,
     textAlign: "center",
-    paddingVertical: 5,
+    paddingVertical: 0,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.6,
     shadowRadius: 2,
+    fontSize: 20
   },
   buttonContainer: {
     marginTop: 10
@@ -171,7 +182,6 @@ const styles = StyleSheet.create({
 });
 
 export default AuthScreen;
-
 
 // useEffect(() => {
 //   if (error) {

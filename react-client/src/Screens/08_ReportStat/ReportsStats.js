@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { Link } from "react-router-dom";
-
+import ReportNavBar from "../../components/topNavBar/ReportNavBar";
 import DeckGL from "@deck.gl/react";
 import { HeatmapLayer } from "@deck.gl/aggregation-layers";
+import NavBar from "../../components/NavBar/NavBar";
 
 const ReportStats = props => {
   const [popupToggler, setPopupToggler] = useState(false);
@@ -80,11 +81,17 @@ const ReportStats = props => {
           onViewportChange={viewport => setViewport(viewport)}
         >
           <DeckGL viewState={viewport} layers={[layer]} />
+          <ReportNavBar />
         </ReactMapGL>
       </div>
     );
   } else {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        {" "}
+        <ReportNavBar />
+      </div>
+    );
   }
 };
 export default ReportStats;
