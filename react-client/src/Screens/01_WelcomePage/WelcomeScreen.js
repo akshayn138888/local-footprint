@@ -1,8 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Link as Anchor } from "react-scroll";
+
 //import "bootstrap/dist/css/bootstrap.min.css";
 import "./Welcome.css";
+import {
+  Player,
+  ControlBar,
+  ReplayControl,
+  ForwardControl,
+  CurrentTimeDisplay,
+  TimeDivider,
+  PlaybackRateMenuButton,
+  VolumeMenuButton
+} from "video-react";
 const WelcomeScreen = props => {
   return (
     <>
@@ -98,16 +109,39 @@ const WelcomeScreen = props => {
                       Contact
                     </a>
                   </div>
-                  <img
+
+                  {/* <img
                     className="site__img"
                     src="https://d540vms5r2s2d.cloudfront.net/mad/uploads/mad_blog_5dce98b8aaf431573820600.jpg"
                     style={{ borderRadius: "3%" }}
-                  ></img>
+                  ></img> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Player
+          poster="/assets/poster.png"
+          autoPlay={true}
+          fluid={false}
+          width={900}
+          height={400}
+          playsInline
+        >
+          <source src="http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4" />
+          <source src="http://mirrorblender.top-ix.org/movies/sintel-1024-surround.mp4" />
+
+          <ControlBar>
+            <ReplayControl seconds={10} order={1.1} />
+            <ForwardControl seconds={30} order={1.2} />
+            <CurrentTimeDisplay order={4.1} />
+            <TimeDivider order={4.2} />
+            <PlaybackRateMenuButton rates={[5, 2, 1, 0.5, 0.1]} order={7.1} />
+            <VolumeMenuButton disabled />
+          </ControlBar>
+        </Player>
       </div>
 
       <div className="sect sect--padding-bottom">
