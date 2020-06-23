@@ -69,7 +69,7 @@ const AuthScreen = props => {
           <input
             name="password"
             id="password"
-            type="text"
+            type="password"
             onChange={handleChange}
             value={text1.password}
             className="form-field"

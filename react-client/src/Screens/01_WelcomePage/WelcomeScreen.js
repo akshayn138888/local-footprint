@@ -42,19 +42,6 @@ const WelcomeScreen = props => {
                 <span className="footer__black">Footprint</span>
               </h1>
             </div>
-            {/* <button
-            type="button"
-            className="navbar-toggle collapsed"
-            data-toggle="collapse"
-            data-target="#navbar"
-            aria-expanded="false"
-            aria-controls="navbar"
-          >
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </button> */}
 
             <div className="header__menu">
               <nav id="navbar" className="header__nav collapse Home">
@@ -98,16 +85,30 @@ const WelcomeScreen = props => {
               <div className="col-md-12">
                 <div className="site">
                   <h1 className="site__title">
-                    Fast paced way to grow your business
+                    Fast paced way to keep track of your Workers
                   </h1>
                   <h2 className="site__subtitle">
                     Manage analytics like a boss
                   </h2>
                   <div className="site__box-link">
-                    <a className="btn btn--width">Pricing</a>
-                    <a className="btn btn--revert btn--width" href="#">
+                    <Anchor
+                      to="pricing"
+                      smooth={true}
+                      duration={500}
+                      offset={-75}
+                      className="btn btn--width"
+                    >
+                      Pricing
+                    </Anchor>
+                    <Anchor
+                      to="contact_us"
+                      smooth={true}
+                      duration={500}
+                      offset={-75}
+                      className="btn btn--revert btn--width"
+                    >
                       Contact
-                    </a>
+                    </Anchor>
                   </div>
 
                   {/* <img
@@ -220,13 +221,13 @@ const WelcomeScreen = props => {
       <div className="sect sect--padding-bottom">
         <div
           className="container"
-          style={{ marginRight: "5%", marginLeft: "5%" }}
+          style={{ marginRight: "15%", marginLeft: "15%" }}
         >
           <div className="row">
             <h1 className="row__title contact_us">Contact Us </h1>
             <h2 className="row__sub">Feel free to ask any questions</h2>
           </div>
-          <form id="contact" className="form" style={{ marginTop: "3%" }}>
+          <form id="contact" className="form" style={{ marginTop: "3%", boxShadow: "none" }}>
             <div className="form-group">
               <select className="form__field form__select">
                 <option selected value>
@@ -276,7 +277,14 @@ const WelcomeScreen = props => {
                 placeholder="Your messsage*"
                 className="form__field form__textarea"
               ></textarea>
-              <button className="btn btn--up btn--width" type="submit">
+              <button className="btn btn--up btn--width btn--contact"
+                style={{
+                  fontSize: 18, padding: "8px 8px",
+                  fontFamily: `"Lato", sans-serif`,
+                  border: "none"
+                }}
+                type="submit"
+              >
                 Submit
               </button>
             </div>

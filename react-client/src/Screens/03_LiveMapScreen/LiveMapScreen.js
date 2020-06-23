@@ -9,6 +9,7 @@ const MapScreen = props => {
   const [latLon, setLatLon] = useState(null);
   const [layer, setlayer] = useState(null);
   const [timer, setTimer] = useState(10);
+  const [selectedWorker, setSelectedWorker] = useState(null)
   const [viewport, setViewport] = useState({
     latitude: 49.119706917599885,
     longitude: -122.88886313338101,
@@ -70,6 +71,40 @@ const MapScreen = props => {
           {parseData
             ? parseData.map(markerArray => markerArray[markerArray.length - 1])
             : ""}
+
+          {selectedWorker ? (
+            <Popup
+              latitude={parseFloat(selectedWorker.data.latitude)}
+              longitude={parseFloat(selectedWorker.data.longitude)}
+              closeOnClick={false}
+              onClose={() => {
+                setSelectedWorker(null);
+              }}
+              className="apple-popup"
+            >
+              <div>
+                <h5 className="popuptitle">{selectedWorker.data.title}</h5>
+                <p className="popupdate">
+                  {new Intl.DateTimeFormat("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "2-digit"
+                  }).format(Date.parse(selectedWorker.data.timestamp))}
+                </p>
+                <p className="popupdescription">
+                  {selectedWorker.data.description}
+                </p>
+                <a
+                  style={{ color: "#1f4568" }}
+                  href={`/IncidentScreen/${selectedWorker.userId}/${selectedWorker.reportId}`}
+                >
+                  More Details
+                </a>
+              </div>
+            </Popup>
+          ) : (
+              ""
+            )}
           <WorkerNavBar />
           <NavBar />
         </ReactMapGL>

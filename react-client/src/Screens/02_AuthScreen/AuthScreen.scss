@@ -91,16 +91,20 @@
         padding: 0 1em;
         margin: 0.5em 1em 1em 1em;
         width: 350px;
-        height: 35px;
-        border-radius: 25px;
+        height: 50px;
+        font-size: 17px;
+        font-family: "Lato", sans-serif;
+        border-radius: 15px;
         border: none;
+        text-align: center;
         background: #ffffff;
         box-shadow: inset 5px 5px 10px #d1cdc7, inset -2.5px -2.5px 5px #ffffff;
         &:hover {
-          background: #f2f2f2;
+          background: #fff;
         }
         &:focus {
           background: #fff;
+          outline: none;
         }
       }
     }

@@ -93,7 +93,6 @@ const IncidentShowScreen = props => {
                 {report.incident} Reported by: {report.userEmail.split("@")[0]}
               </h4>
               <Text>
-                <Text>{srcIncident}</Text>
                 {new Intl.DateTimeFormat("en-US", {
                   year: "numeric",
                   month: "long",
@@ -118,7 +117,7 @@ const IncidentShowScreen = props => {
               <Calendar
                 size="small"
                 date={new Date(report.timestamp).toISOString()}
-                onSelect={date => {}}
+                onSelect={date => { }}
                 fit="contain"
               />
               {/* <Card

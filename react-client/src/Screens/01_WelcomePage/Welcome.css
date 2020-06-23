@@ -636,8 +636,9 @@
 
 .form__field {
   height: 50px;
+  font-family: "Lato", sans-serif;
   position: relative;
-  border: none;
+  border: lightgray solid 1px;
   padding: 10px 12px;
   width: 100%;
   border-radius: 6px;
@@ -646,7 +647,6 @@
   -webkit-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2);
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
   -moz-transition: all 0.4s;
@@ -938,13 +938,17 @@
   .row--margin {
     margin-top: 30px;
   }
-  .btn {
-    font-size: 12px;
-    padding: 8px 8px;
-  }
   .btn--width {
     width: 100px;
   }
+
+  .btn--contact {
+    font-size: 12px;
+    padding: 8px 8px;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+  }
+
   .career_title {
     font-size: 18px;
     margin-top: 0;

@@ -7,7 +7,7 @@ export const fetchWeather = async query => {
     params: {
       q: query,
       units: "metric",
-      APPID: ""
+      APPID: "e49d06bd8cb8ec27ad353ad9d1a0224f"
     }
   });
 
