@@ -124,8 +124,8 @@ const IncidentMapScreen = props => {
               </div>
             </Popup>
           ) : (
-            ""
-          )}
+              ""
+            )}
           <ReportNavBar />
           <NavBar />
         </ReactMapGL>

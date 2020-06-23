@@ -10,8 +10,7 @@ import {
   TextInput,
   Text,
   Image,
-  Platform,
-  TouchableHi
+  Platform
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch } from "react-redux";
@@ -51,29 +50,20 @@ const AuthScreen = props => {
     }
   };
 
-  // const inputChangeHandler = useCallback(
-  //   (inputIdentifier, inputValue, inputValidity) => {
-  //     dispatchFormState({
-  //       type: FORM_INPUT_UPDATE,
-  //       value: inputValue,
-  //       isValid: inputValidity,
-  //       input: inputIdentifier
-  //     });
-  //   },
-  //   [dispatchFormState]
-  // );
-  let errText = <Text></Text>;
-  if (error) {
-    const errText = <Text>{error}</Text>;
-  }
+  useEffect(() => {
+    if (error) {
+      Alert.alert("An Error Occured", error, [{ text: "Try Again" }]);
+    }
+  }, [error]);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "android" ? "" : "padding"}
       keyboardVerticalOffset={50}
       style={styles.screen}
     >
-      <LinearGradient colors={["#22c1c3", "#2d9afd"]} style={styles.gradient}>
-        {errText}
+      <LinearGradient colors={["#09203f", "#537895"]} style={styles.gradient}>
+        <Text></Text>
         <Image
           source={require("../../assets/OwlLogo.png")}
           style={styles.owl}
@@ -112,20 +102,22 @@ const AuthScreen = props => {
               {isLoading ? (
                 <ActivityIndicator size="small" color={Colors.primary} />
               ) : (
-                <Button
-                  title={"Login"}
-                  color={
-                    Platform.OS == "android" ? Colors.primary : Colors.accent
-                  }
-                  onPress={authHandler}
-                />
-              )}
+                  <View style={{ borderColor: "white", borderWidth: 1, borderRadius: 5, height: 40 }}>
+                    <Button
+                      title={"Login"}
+                      color={
+                        Platform.OS == "android" ? Colors.primary : Colors.accent
+                      }
+                      onPress={authHandler}
+                    />
+                  </View>
+                )}
             </View>
-            <Button
+            {/* <Button
               title={"Worker Screen"}
               color={Platform.OS == "android" ? Colors.primary : Colors.accent}
               onPress={() => props.navigation.navigate("Worker")}
-            />
+            /> */}
           </View>
         </ScrollView>
       </LinearGradient>
@@ -167,14 +159,15 @@ const styles = StyleSheet.create({
   },
   textInput1: {
     marginBottom: "6%",
+    height: "16%",
     backgroundColor: "white",
-    borderRadius: 10,
+    borderRadius: 5,
     textAlign: "center",
     paddingVertical: 0,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.6,
     shadowRadius: 2,
-    fontSize: 20
+    fontSize: 16
   },
   buttonContainer: {
     marginTop: 10

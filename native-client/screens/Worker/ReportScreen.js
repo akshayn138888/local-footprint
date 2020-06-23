@@ -116,22 +116,6 @@ const ReportScreen = props => {
       );
     }
   };
-  {
-    /* <Picker
-            style={styles.picker}
-            itemStyle={styles.pickerItem}
-            selectedValue={picker}
-            onValueChange={pickerHandler}
-          >
-            <Picker.Item value="Assault" />
-            <Picker.Item  value="Break and Enter" />
-            <Picker.Item  value="General Theft" />
-            <Picker.Item label="Property Damage" value="Property Damage" />
-            <Picker.Item label="Public Intoxication" value="Public Intoxication" />
-            <Picker.Item label="Vehicle Collision" value="Vehicle Collision" />
-            <Picker.Item label="Vehicle Theft" value="Vehicle Theft" />
-          </Picker> */
-  }
   let index = 0;
   const data = [
     { key: index++, section: true, label: "Assault" },
@@ -156,70 +140,70 @@ const ReportScreen = props => {
     >
       <LinearGradient
         style={styles.outsideContainer}
-        colors={["#22c1c3", "#2d9afd"]}
+        colors={["#517fa4", "#243949"]}
       >
         <ScrollView>
           {isLoading ? (
             <ActivityIndicator size="large" color={Colors.primary} />
           ) : (
-            <View style={styles.form}>
-              <ImagePicker onImageTaken={imageTakenHandler} />
-              <View
-                style={{
-                  marginVertical: "7%"
-                }}
-              />
-              <Text style={styles.label}>Title</Text>
-              <TextInput
-                style={styles.textInput}
-                onChangeText={titleChangeHandler}
-                value={titleValue}
-              />
-              <Text style={styles.label}>Description</Text>
-              <TextInput
-                style={styles.textInput}
-                onChangeText={descriptionChangeHandler}
-                value={descriptionValue}
-                multiline={true}
-              />
-              <View>
-                <ModalSelector
+              <View style={styles.form}>
+                <ImagePicker onImageTaken={imageTakenHandler} />
+                <View
                   style={{
-                    borderColor: "white",
-                    borderWidth: 1,
-                    overflow: "hidden",
-                    borderRadius: 15
+                    marginVertical: "7%"
                   }}
-                  data={data}
-                  initValue={picker ? picker : "Select Type of Crime"}
-                  accessible={true}
-                  scrollViewAccessibilityLabel={"Scrollable options"}
-                  cancelButtonAccessibilityLabel={"Cancel Button"}
-                  onChange={option => setPicker(option.label)}
-                >
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      fontSize: 18,
-                      padding: 8,
-                      color: "white"
-                    }}
-                  >
-                    {" "}
-                    {picker ? picker : "Select Type of Crime"}
-                  </Text>
-                </ModalSelector>
-              </View>
-              <View style={styles.savebtn}>
-                <Button
-                  buttonStyle={{ color: "white" }}
-                  title="Save Report"
-                  color={Platform.OS == "android" ? "" : "#2b9ff5"}
-                  onPress={saveReportHandler}
                 />
+                <Text style={styles.label}>Title</Text>
+                <TextInput
+                  style={styles.textInput}
+                  onChangeText={titleChangeHandler}
+                  value={titleValue}
+                />
+                <Text style={styles.label}>Description</Text>
+                <TextInput
+                  style={styles.textInput}
+                  onChangeText={descriptionChangeHandler}
+                  value={descriptionValue}
+                  multiline={true}
+                />
+                <View>
+                  <ModalSelector
+                    style={{
+                      borderColor: "white",
+                      borderWidth: 1,
+                      overflow: "hidden",
+                      borderRadius: 6
+                    }}
+                    data={data}
+                    initValue={picker ? picker : "Select Type of Crime"}
+                    accessible={true}
+                    scrollViewAccessibilityLabel={"Scrollable options"}
+                    cancelButtonAccessibilityLabel={"Cancel Button"}
+                    onChange={option => setPicker(option.label)}
+                  >
+                    <Text
+                      style={{
+                        textAlign: "center",
+                        fontSize: 18,
+                        padding: 8,
+                        color: "white"
+                      }}
+                    >
+                      {" "}
+                      {picker ? picker : "Select Type of Crime"}
+                    </Text>
+                  </ModalSelector>
+                </View>
+                <View style={styles.savebtn}>
+                  <Button
+                    buttonStyle={{ color: "white" }}
+                    title="Save Report"
+                    color={Platform.OS == "android" ? "#243949" : "#2b9ff5"}
+                    onPress={saveReportHandler}
+                  />
+                </View>
               </View>
-            </View>
-          )}
+            )}
         </ScrollView>
       </LinearGradient>
     </KeyboardAvoidingView>
@@ -230,7 +214,7 @@ ReportScreen.navigationOptions = {
 };
 const styles = StyleSheet.create({
   screen: {
-    flex: 1
+    flex: 1,
   },
   outsideContainer: {
     flex: 1
@@ -263,12 +247,14 @@ const styles = StyleSheet.create({
   savebtn: {
     fontSize: 18,
     color: "blue",
-    backgroundColor: "white",
+    backgroundColor: "#f5f5f5",
     borderWidth: 2,
-    borderColor: Colors.accent,
-    borderRadius: 15,
+    borderColor: "white",
+    borderRadius: 5,
     marginTop: "5%",
     overflow: "hidden"
   }
 });
 export default ReportScreen;
+
+///50B2C0
