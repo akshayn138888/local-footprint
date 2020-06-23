@@ -24,7 +24,7 @@ const WorkerScreen = props => {
   const email = useSelector(state => state.auth.email);
 
   useEffect(
-    function() {
+    function () {
       if (location) {
         fetch(
           `https://location-app-5d3d8.firebaseio.com/locations/${username}.json?auth=${token}`,
@@ -90,7 +90,7 @@ const WorkerScreen = props => {
   return (
     <LinearGradient
       style={styles.outsideContainer}
-      colors={["#22c1c3", "#2d9afd"]}
+      colors={["#09203f", "#537895"]}
     >
       {/* <ScrollView> */}
       <View style={styles.container}>
@@ -103,7 +103,7 @@ const WorkerScreen = props => {
       <View style={styles.btnWork}>
         <Button
           color={Platform.OS == "android" ? Colors.primary : Colors.accent}
-          title="Finish Work"
+          title="FINISH WORK"
           onPress={logoutHandler}
         />
       </View>
@@ -134,19 +134,23 @@ const styles = StyleSheet.create({
   },
   titleHeader: {
     color: "white",
-    marginBottom: "20%"
+    marginBottom: "20%",
+    letterSpacing: 1.5
   },
   work: {
     color: "white",
-    fontSize: 15
+    fontSize: 15,
+    letterSpacing: 1.25
   },
   btnWork: {
     marginBottom: 70,
     borderWidth: 2,
     borderColor: Colors.accent,
-    borderRadius: 15,
-    padding: Platform.OS === "android" ? 0 : 12,
-    overflow: "hidden"
+    borderRadius: 7,
+    paddingVertical: Platform.OS === "android" ? 0 : 5,
+    paddingHorizontal: Platform.OS === "android" ? 0 : 10,
+    overflow: "hidden",
+    letterSpacing: 1.5,
   }
 });
 

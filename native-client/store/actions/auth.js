@@ -37,11 +37,11 @@ export const login = (email, password) => {
       // console.log(response)
       const errorResData = await response.json();
       const errorId = errorResData.error.message;
-      let message = "Something went wrong !";
+      let message = "Username or Password are Incorrect";
       if (errorId === "EMAIL_NOT_FOUND") {
-        message = "This email could not be found.";
+        message = "Email Could Not Be Found";
       } else if (errorId === "INVALID_PASSWORD") {
-        message = "This password is not valid !";
+        message = "Password Is Invalid";
       }
       throw new Error(message);
     }
