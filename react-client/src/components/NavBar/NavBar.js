@@ -1,6 +1,6 @@
 import React from "react";
 import "./Nav.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 const NavBar = props => {
   return (
     <div
@@ -21,13 +21,15 @@ const NavBar = props => {
           style={{ paddingRight: 15, height: 30 }}
           alt="LOGO"
         /> */}
-        <h5
-          className="header__logo__title"
-          style={{ display: "flex", alignItems: "center" }}
-        >
-          <span style={{ color: "#3794D7" }}>Local</span>{" "}
-          <span className="footer__black">Footprint</span>
-        </h5>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <h5
+            className="header__logo__title"
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <span style={{ color: "#3794D7" }}>Local</span>{" "}
+            <span className="footer__black">Footprint</span>
+          </h5>
+        </Link>
       </div>
       <NavLink to="/DashBoardScreen" className="btd btd-3">
         Home

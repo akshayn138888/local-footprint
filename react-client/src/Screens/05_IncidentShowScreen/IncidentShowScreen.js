@@ -27,9 +27,9 @@ const IncidentShowScreen = props => {
         console.log(data);
         setReport(data);
         setViewport({
-          latitude: parseFloat(data.latitude) - 0.07,
-          longitude: parseFloat(data.longitude) + 0.05,
-          zoom: 10,
+          latitude: parseFloat(data.latitude),
+          longitude: parseFloat(data.longitude),
+          zoom: 7,
           width: "100vw",
           height: "100vh"
         });
@@ -57,7 +57,7 @@ const IncidentShowScreen = props => {
       <>
         <Box margin={{ horizontal: "5%" }}>
           <Grid
-            rows={["xsmall", "medium", "medium", "medium"]}
+            rows={["xsmall", "large", "medium", "large"]}
             columns={["70%", "30%"]}
             areas={[
               ["title", "title"],
@@ -117,7 +117,7 @@ const IncidentShowScreen = props => {
               <Calendar
                 size="small"
                 date={new Date(report.timestamp).toISOString()}
-                onSelect={date => { }}
+                onSelect={date => {}}
                 fit="contain"
               />
               {/* <Card
@@ -131,9 +131,9 @@ const IncidentShowScreen = props => {
             <Box
               background="dark-2"
               gridArea="location"
-              overflow="hidden"
               round={true}
               fit="cover"
+              overflow="hidden"
               style={{ marginTop: "5%" }}
             >
               <div>

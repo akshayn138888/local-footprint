@@ -86,7 +86,7 @@ const LiveWorkerStats = props => {
       colorRange: COLOR_RANGE,
       pickable: true,
       extruded: true,
-      radius: 20,
+      radius: 10,
       elevationScale: 4,
       getPosition: d => d.COORDINATES
     });
