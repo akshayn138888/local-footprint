@@ -88,7 +88,7 @@ const LiveWorkerStats = props => {
       pickable: true,
       extruded: true,
       radius: 10,
-      elevationScale: 4,
+      elevationScale: 5,
       getPosition: d => d.COORDINATES
     });
 
