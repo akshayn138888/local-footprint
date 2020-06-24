@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./DashBoard.css";
 import NavBar from "../../components/NavBar/NavBar.js";
 import Weather from "../../components/Weather/Weather";
+import Spinner from "../../components/spinner/Spinner";
+
 const Dashboard = props => {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
@@ -241,6 +243,7 @@ const Dashboard = props => {
   } else {
     return (
       <div>
+        <Spinner />
         <NavBar />
       </div>
     );

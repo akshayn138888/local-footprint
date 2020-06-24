@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
+import Spinner from "./spinner/Spinner";
+
 import ReportNavBar from "./topNavBar/ReportNavBar";
 const IncidentMapScreen = props => {
   // const [popupToggler, setPopupToggler] = useState(false);
@@ -132,8 +134,8 @@ const IncidentMapScreen = props => {
   } else {
     return (
       <div>
-        <ReportNavBar />
         <NavBar />
+        <Spinner />
       </div>
     );
   }

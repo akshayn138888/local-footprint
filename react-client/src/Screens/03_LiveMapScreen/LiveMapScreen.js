@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import NavBar from "../../components/NavBar/NavBar";
 import DeckGL from "@deck.gl/react";
-
+import Spinner from "../../components/spinner/Spinner";
 import { TripsLayer } from "@deck.gl/geo-layers";
 import WorkerNavBar from "../../components/topNavBar/WorkerNavBar";
 const MapScreen = props => {
@@ -114,8 +114,8 @@ const MapScreen = props => {
   } else {
     return (
       <div>
-        <WorkerNavBar />
         <NavBar />
+        <Spinner />
       </div>
     );
   }

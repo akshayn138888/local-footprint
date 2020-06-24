@@ -5,6 +5,7 @@ import { LineLayer } from "@deck.gl/layers";
 import { HexagonLayer } from "@deck.gl/aggregation-layers";
 import NavBar from "../../components/NavBar/NavBar";
 import WorkerNavBar from "../../components/topNavBar/WorkerNavBar";
+import Spinner from "../../components/spinner/Spinner";
 
 const LiveWorkerStats = props => {
   const [latLon, setLatLon] = useState(null);
@@ -111,6 +112,7 @@ const LiveWorkerStats = props => {
     return (
       <div>
         <WorkerNavBar />
+        <Spinner />
       </div>
     );
   }
