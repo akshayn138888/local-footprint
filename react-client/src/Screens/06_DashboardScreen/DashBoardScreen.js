@@ -189,8 +189,17 @@ const Dashboard = props => {
                 <div className="col-md-4 col-sm-4 price-box price-box--purple">
                   <div className="price-box__wrap2">
                     <h1 className="price-box__title">Latest Incident</h1>
-
-                    <h4>{incidentArray[incidentArray.length - 1].incident} </h4>
+                    <div
+                      className="price-box__img1"
+                      style={{
+                        backgroundImage: `url(${
+                          incidentArray[incidentArray.length - 1].url
+                        })`
+                      }}
+                    ></div>
+                    <h5 style={{ textDecoration: "underline" }}>
+                      {incidentArray[incidentArray.length - 1].incident}{" "}
+                    </h5>
                     <strong>
                       Reported by:{" "}
                       {
@@ -219,14 +228,6 @@ const Dashboard = props => {
                         ].description.slice(0, 200)}
                         ...
                       </p>
-                      <div
-                        className="price-box__img1"
-                        style={{
-                          backgroundImage: `url(${
-                            incidentArray[incidentArray.length - 1].url
-                          })`
-                        }}
-                      ></div>
                     </div>
                     <h2 className="price-box__discount"></h2>
                   </div>
