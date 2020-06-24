@@ -9,7 +9,7 @@ const MapScreen = props => {
   const [latLon, setLatLon] = useState(null);
   const [layer, setlayer] = useState(null);
   const [timer, setTimer] = useState(10);
-  const [selectedWorker, setSelectedWorker] = useState(null)
+  const [selectedWorker, setSelectedWorker] = useState(null);
   const [viewport, setViewport] = useState({
     latitude: 49.119706917599885,
     longitude: -122.88886313338101,
@@ -47,11 +47,26 @@ const MapScreen = props => {
             latitude={parseFloat(value1.latitude)}
             longitude={parseFloat(value1.longitude)}
           >
-            <img
+            <button
+              onClick={e => {
+                setSelectedWorker({
+                  data: value1
+                });
+              }}
+              className="btnIncident"
+              style={{ backgroundImage: `url(./04_Incident/01_Worker.png)` }}
+            >
+              {/* <img
+                src={srcIncident}
+                alt="security guard"
+                style={{ width: "100%" }}
+              /> */}
+            </button>
+            {/* <img
               src="./04_Incident/01_Worker.png"
               alt="security guard"
               style={{ width: `8%` }}
-            />
+            /> */}
           </Marker>
         );
       }
@@ -83,28 +98,14 @@ const MapScreen = props => {
               className="apple-popup"
             >
               <div>
-                <h5 className="popuptitle">{selectedWorker.data.title}</h5>
-                <p className="popupdate">
-                  {new Intl.DateTimeFormat("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "2-digit"
-                  }).format(Date.parse(selectedWorker.data.timestamp))}
+                <p className="popuptitle" style={{ textAlign: "center" }}>
+                  {selectedWorker.data.userEmail.toLowerCase()}
                 </p>
-                <p className="popupdescription">
-                  {selectedWorker.data.description}
-                </p>
-                <a
-                  style={{ color: "#1f4568" }}
-                  href={`/IncidentScreen/${selectedWorker.userId}/${selectedWorker.reportId}`}
-                >
-                  More Details
-                </a>
               </div>
             </Popup>
           ) : (
-              ""
-            )}
+            ""
+          )}
           <WorkerNavBar />
           <NavBar />
         </ReactMapGL>

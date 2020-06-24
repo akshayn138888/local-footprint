@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
 import ReportNavBar from "./topNavBar/ReportNavBar";
 const IncidentMapScreen = props => {
-  const [popupToggler, setPopupToggler] = useState(false);
+  // const [popupToggler, setPopupToggler] = useState(false);
   const [selectedIncident, setSelectedIncident] = useState(null);
   const [latLon, setLatLon] = useState(null);
   const [viewport, setViewport] = useState({
@@ -37,7 +37,6 @@ const IncidentMapScreen = props => {
       // console.log(value);
 
       for (let [key1, value1] of Object.entries(value)) {
-        let title = value1.title;
         let srcIncident = "";
         if (value1.incident === "Assault") {
           srcIncident = "./04_Incident/Assault.png";
@@ -67,7 +66,6 @@ const IncidentMapScreen = props => {
                   userId: key,
                   reportId: key1
                 });
-                setPopupToggler(true);
               }}
               className="btnIncident"
               style={{ backgroundImage: `url(${srcIncident})` }}
@@ -124,8 +122,8 @@ const IncidentMapScreen = props => {
               </div>
             </Popup>
           ) : (
-              ""
-            )}
+            ""
+          )}
           <ReportNavBar />
           <NavBar />
         </ReactMapGL>
