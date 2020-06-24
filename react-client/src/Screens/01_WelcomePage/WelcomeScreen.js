@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Link as Anchor } from "react-scroll";
 
-//import "bootstrap/dist/css/bootstrap.min.css";
 import "./Welcome.css";
+
 import {
   Player,
   ControlBar,
@@ -14,6 +14,7 @@ import {
   PlaybackRateMenuButton,
   VolumeMenuButton
 } from "video-react";
+
 const WelcomeScreen = props => {
   return (
     <>
@@ -66,7 +67,7 @@ const WelcomeScreen = props => {
                       offset={-75}
                       className="header__link"
                     >
-                      Contact us
+                      Contact Us
                     </Anchor>
                   </li>
                   <li className="header__el header__el--blue">
@@ -128,11 +129,10 @@ const WelcomeScreen = props => {
           autoPlay={true}
           fluid={false}
           width={900}
-          height={400}
+          height={500}
           playsInline
         >
-          <source src="http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4" />
-          <source src="http://mirrorblender.top-ix.org/movies/sintel-1024-surround.mp4" />
+          <source src="https://firebasestorage.googleapis.com/v0/b/location-app-5d3d8.appspot.com/o/1local.mp4?alt=media&token=12e9a767-dbc8-4379-95f7-04b4f6b7c14a" />
 
           <ControlBar>
             <ReplayControl seconds={10} order={1.1} />
@@ -227,7 +227,11 @@ const WelcomeScreen = props => {
             <h1 className="row__title contact_us">Contact Us </h1>
             <h2 className="row__sub">Feel free to ask any questions</h2>
           </div>
-          <form id="contact" className="form" style={{ marginTop: "3%", boxShadow: "none" }}>
+          <form
+            id="contact"
+            className="form"
+            style={{ marginTop: "3%", boxShadow: "none" }}
+          >
             <div className="form-group">
               <select className="form__field form__select">
                 <option selected value>
@@ -277,9 +281,11 @@ const WelcomeScreen = props => {
                 placeholder="Your messsage*"
                 className="form__field form__textarea"
               ></textarea>
-              <button className="btn btn--up btn--width btn--contact"
+              <button
+                className="btn btn--up btn--width btn--contact"
                 style={{
-                  fontSize: 18, padding: "8px 8px",
+                  fontSize: 18,
+                  padding: "8px 8px",
                   fontFamily: `"Lato", sans-serif`,
                   border: "none"
                 }}

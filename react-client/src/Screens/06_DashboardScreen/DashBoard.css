@@ -85,6 +85,22 @@ body {
   -o-transition: all 0.4s;
 }
 
+.price-box__wrap1 {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2); /*0px 22px 20px -10px rgba(0, 0, 0,0.2)*/
+  padding: 20px;
+  width: 260px;
+  text-align: center;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+}
+.verticalLine {
+  border-left: 2px solid lightgray;
+}
 .price-box__img {
   display: inline-block;
 }
@@ -93,6 +109,14 @@ body {
   width: 130px;
   height: 130px;
   border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.price-box__img1 {
+  width: 300px;
+  height: 225px;
+  border-radius: 5px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

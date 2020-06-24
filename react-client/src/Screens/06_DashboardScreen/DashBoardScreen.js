@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./DashBoard.css";
 import NavBar from "../../components/NavBar/NavBar.js";
 import Weather from "../../components/Weather/Weather";
+import Spinner from "../../components/spinner/Spinner";
+
 const Dashboard = props => {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
@@ -43,10 +45,12 @@ const Dashboard = props => {
     ////////// Live report Data ????///////////////////////
     let hashMap = {};
     let count = 0;
+    let incidentArray = [];
     for (let [key, value] of Object.entries(report)) {
       // console.log(value);
 
       for (let [key1, value1] of Object.entries(value)) {
+        incidentArray.push(value1);
         if (value1.incident === "Assault") {
           hashMap["Assault"] = +1;
           count++;
@@ -79,7 +83,7 @@ const Dashboard = props => {
 
         <div
           className="sect sect--padding-bottom"
-          style={{ position: "absolute", left: "35%", paddingTop: "0" }}
+          style={{ position: "absolute", left: "300px", paddingTop: "0" }}
         >
           <div>
             <div
@@ -88,7 +92,12 @@ const Dashboard = props => {
             >
               <div className="0000000">
                 <div className="col-md-4 col-sm-4 price-box price-box--purple">
-                  <div className="price-box__wrap">
+                  <div
+                    className="price-box__wrap1"
+                    style={{
+                      marginBottom: "10px"
+                    }}
+                  >
                     <div
                       className="price-box__img"
                       style={{
@@ -104,7 +113,7 @@ const Dashboard = props => {
                   </div>
                 </div>
                 <div className="col-md-4 col-sm-4 price-box price-box--purple">
-                  <div className="price-box__wrap">
+                  <div className="price-box__wrap1">
                     <div>
                       <Weather />
                     </div>
@@ -115,7 +124,12 @@ const Dashboard = props => {
               </div>
               <div className="0000000">
                 <div className="col-md-4 col-sm-4 price-box price-box--purple">
-                  <div className="price-box__wrap">
+                  <div
+                    className="price-box__wrap1"
+                    style={{
+                      marginBottom: "10px"
+                    }}
+                  >
                     <div
                       className="price-box__img"
                       style={{
@@ -131,7 +145,7 @@ const Dashboard = props => {
                   </div>
                 </div>
                 <div className="col-md-4 col-sm-4 price-box price-box--purple">
-                  <div className="price-box__wrap">
+                  <div className="price-box__wrap1">
                     <h1 className="price-box__title">List of Incidents</h1>
 
                     <ul className="price-box__list1" style={{ content: "." }}>
@@ -172,6 +186,55 @@ const Dashboard = props => {
                   </div>
                 </div>
               </div>
+              <div class="verticalLine"></div>
+              <div className="000000">
+                <div className="col-md-4 col-sm-4 price-box price-box--purple">
+                  <div className="price-box__wrap2">
+                    <h1 className="price-box__title">Latest Incident</h1>
+                    <div
+                      className="price-box__img1"
+                      style={{
+                        backgroundImage: `url(${
+                          incidentArray[incidentArray.length - 1].url
+                        })`
+                      }}
+                    ></div>
+                    <h5 style={{ textDecoration: "underline" }}>
+                      {incidentArray[incidentArray.length - 1].incident}{" "}
+                    </h5>
+                    <strong>
+                      Reported by:{" "}
+                      {
+                        incidentArray[incidentArray.length - 1].userEmail.split(
+                          "@"
+                        )[0]
+                      }
+                    </strong>
+                    <p>
+                      {new Intl.DateTimeFormat("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "2-digit",
+                        hour: "numeric",
+                        minute: "numeric"
+                      }).format(
+                        Date.parse(
+                          incidentArray[incidentArray.length - 1].timestamp
+                        )
+                      )}
+                    </p>
+                    <div>
+                      <p style={{ textTransform: "capitalize" }}>
+                        {incidentArray[
+                          incidentArray.length - 1
+                        ].description.slice(0, 200)}
+                        ...
+                      </p>
+                    </div>
+                    <h2 className="price-box__discount"></h2>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -180,6 +243,7 @@ const Dashboard = props => {
   } else {
     return (
       <div>
+        <Spinner />
         <NavBar />
       </div>
     );

@@ -4,6 +4,7 @@ import "./AuthScreen.scss";
 const AuthScreen = props => {
   const [submitForm, setSubmitForm] = useState({});
   const [text1, setText1] = useState({ email: "", password: "" });
+  const [error, setError] = useState(null);
   function handleChange(evt) {
     const value = evt.target.value;
     setText1({
@@ -13,6 +14,10 @@ const AuthScreen = props => {
   }
   const handleSubmit = async e => {
     e.preventDefault();
+    try {
+    } catch (err) {
+      console.log(err);
+    }
     const response = await fetch(
       `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCmLsit70cUZ1cKjoXfx9UaQNjDAzjyHGE`,
       {
@@ -27,14 +32,16 @@ const AuthScreen = props => {
         })
       }
     );
+
     console.log(response);
     if (!response.ok) {
-      throw new Error("Something Went Wrong");
+      setError("Password or username are incorrect.");
+    } else {
+      const resData = await response.json();
+      console.log(resData);
+      console.log("logged in");
+      props.history.push("/DashboardScreen");
     }
-    const resData = await response.json();
-    console.log(resData);
-    console.log("logged in");
-    props.history.push("/DashboardScreen");
   };
   return (
     <div
@@ -54,8 +61,13 @@ const AuthScreen = props => {
             <img src="/02_Logo/OwlLogo.png" />
           </div>
           <h2>Welcome Back</h2>
-          <h4>Please login to continue</h4>
+          {error ? (
+            <h4 style={{ color: "red", fontWeight: "bold" }}> {error} </h4>
+          ) : (
+            <h4>Please login to continue</h4>
+          )}
         </div>
+
         <form className="form" onSubmit={handleSubmit}>
           <input
             name="email"

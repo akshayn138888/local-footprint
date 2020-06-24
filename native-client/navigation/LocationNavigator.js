@@ -1,7 +1,7 @@
 import React from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createBottomTabNavigator } from "react-navigation-tabs";
 import { Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
@@ -35,7 +35,9 @@ const tabScreenConfig = {
     screen: ReportScreen,
     navigationOptions: {
       tabBarIcon: tabInfo => {
-        return <Ionicons name="ios-today" size={25} color={tabInfo.tintColor} />;
+        return (
+          <Ionicons name="ios-today" size={25} color={tabInfo.tintColor} />
+        );
       },
       tabBarColor: Colors.accentColor,
       tabBarLabel: "Create Report"
@@ -43,17 +45,13 @@ const tabScreenConfig = {
   }
 };
 
-const LocationNavigator = createBottomTabNavigator(
-  tabScreenConfig,
-  {
-    activeTintColor: 'white',
-    shifting: true,
-    barStyle: {
-      backgroundColor: Colors.primaryColor
-    }
+const LocationNavigator = createBottomTabNavigator(tabScreenConfig, {
+  activeTintColor: "white",
+  shifting: true,
+  barStyle: {
+    backgroundColor: Colors.primaryColor
   }
-
-);
+});
 
 const AuthNavigator = createStackNavigator(
   {
@@ -61,11 +59,10 @@ const AuthNavigator = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      headerTitle: "Login",
+      headerTitle: "Local FootPrint",
       headerStyle: {
-        backgroundColor: Platform.OS === "android" ? Colors.primary : ""
+        backgroundColor: Platform.OS === "android" ? Colors.primary : "#09203f"
       },
-
       headerTintColor: Platform.OS === "android" ? "white" : Colors.primary
     }
   }

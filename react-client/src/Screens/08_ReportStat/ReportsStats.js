@@ -5,6 +5,7 @@ import ReportNavBar from "../../components/topNavBar/ReportNavBar";
 import DeckGL from "@deck.gl/react";
 import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 import NavBar from "../../components/NavBar/NavBar";
+import Spinner from "../../components/spinner/Spinner";
 
 const ReportStats = props => {
   const [popupToggler, setPopupToggler] = useState(false);
@@ -90,6 +91,7 @@ const ReportStats = props => {
       <div>
         {" "}
         <ReportNavBar />
+        <Spinner />
       </div>
     );
   }
