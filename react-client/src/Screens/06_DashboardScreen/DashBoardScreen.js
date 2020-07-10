@@ -4,9 +4,10 @@ import NavBar from "../../components/NavBar/NavBar.js";
 import Weather from "../../components/Weather/Weather";
 import Spinner from "../../components/spinner/Spinner";
 import { AiOutlineHome } from "react-icons/ai";
-import { FaUserFriends } from "react-icons/fa";
+import { FaUserFriends, FaRegIdBadge } from "react-icons/fa";
 import { BsMap } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
+import { Radar } from 'react-chartjs-2';
 
 
 const Dashboard = props => {
@@ -120,15 +121,47 @@ const Dashboard = props => {
             <div style={{ display: "flex", flexDirection: "column", flexWrap: 'wrap', padding: 5 }}>
 
               <h4 style={{ width: "100%", color: "white", margin: 5 }}>Incident Statistics</h4>
+
+              {/* Top Box */}
               <div style={{ width: "100%", height: "40vh", marginTop: "2em", backgroundColor: "#2A2E32", borderRadius: "5%", padding: "1em" }}>
                 <h5 className={"m_none"}>Incidents This Month</h5>
               </div>
+
+
               <div style={{ display: "flex", flexWrap: 'wrap', justifyContent: "space-between", marginTop: "1em" }}>
+                {/* Left Box */}
                 <div style={{ width: "49%", height: "45vh", backgroundColor: "#2A2E32", borderRadius: "5%", padding: "1em" }}>
                   <h5 className={"m_none"}>On Duty Staff</h5>
                 </div>
-                <div style={{ width: "49%", height: "45vh", backgroundColor: "#2A2E32", borderRadius: "5%", padding: "1em" }}>
-                  <h5 className={"m_none"}>Incidents this Month</h5>
+                {/* Right Box */}
+                <div style={{ width: "49%", height: "45vh", backgroundColor: "#2A2E32", borderRadius: "5%" }}>
+                  <h5 className={"m_none"} style={{ margin: "1em" }}>Incidents this Month</h5>
+                  <Radar
+                    options={{
+                      legend: {
+                        display: false,
+                      },
+                      scale: {
+                        ticks: {
+                          min: 0,
+                          max: 15,
+                          stepSize: 3,
+                          backdropColor: "rgba(0,0,0,0)"
+
+                        },
+                        gridLines: {
+                          color: "#686868"
+                        }
+                      }
+                    }}
+                    data={{
+                      labels: ['Assault', 'Break and Enter', `General Theft`, 'Property Damage', 'Property Damage', 'Public Intoxication', 'Vehicle Collision', 'Vehicle Theft'],
+                      datasets: [{
+                        data: [12, 10, 6, 8, 9, 10, 8, 8],
+                        borderColor: 'rgba(100,100,40,1)',
+                        borderWidth: 2
+                      }]
+                    }} />
                 </div>
               </div>
 
