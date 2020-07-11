@@ -4,10 +4,11 @@ import NavBar from "../../components/NavBar/NavBar.js";
 import Weather from "../../components/Weather/Weather";
 import Spinner from "../../components/spinner/Spinner";
 import { AiOutlineHome } from "react-icons/ai";
-import { FaUserFriends, FaRegIdBadge } from "react-icons/fa";
+import { FaUserFriends } from "react-icons/fa";
 import { BsMap } from "react-icons/bs";
+import { IoIosPerson } from "react-icons/io";
 import { NavLink } from "react-router-dom";
-import { Radar } from 'react-chartjs-2';
+import { Line, Radar, HorizontalBar } from 'react-chartjs-2';
 
 
 const Dashboard = props => {
@@ -38,16 +39,24 @@ const Dashboard = props => {
 
   if (users && report) {
     ////////////////Live Users Data ?/////////////////////
+    let currentAddress = []
     let set1 = new Set();
     for (let [key, value] of Object.entries(users)) {
+      let allAddresses = []
       for (let [key1, value1] of Object.entries(value)) {
         if (value1.timestamp) {
-          if ((new Date() - Date.parse(value1.timestamp)) / (1000 * 60) < 15) {
-            set1.add(value);
+
+          if ((new Date() - Date.parse(value1.timestamp)) / (1000 * 60) < 1000000) {
+            // if ((new Date() - Date.parse(value1.timestamp)) / (1000 * 60) < 15) {
+            set1.add(value1.userEmail)
+            allAddresses.push({ latitude: `${value1.latitude}`, longitude: `${value1.longitude}`, })
           }
         }
       }
+      currentAddress.push(allAddresses[allAddresses.length - 1])
     }
+    let usersLoggedIn = Array.from(set1)
+
     ////////// Live report Data ????///////////////////////
     let hashMap = {};
     let count = 0;
@@ -81,6 +90,7 @@ const Dashboard = props => {
         }
       }
     }
+
     return (
       <>
         <div style={{ height: "100vh", width: "100vw", background: '#202227' }}>
@@ -124,30 +134,137 @@ const Dashboard = props => {
 
               {/* Top Box */}
               <div style={{ width: "100%", height: "40vh", marginTop: "2em", backgroundColor: "#2A2E32", borderRadius: "5%", padding: "1em" }}>
-                <h5 className={"m_none"}>Incidents This Month</h5>
+                <h5 className={"m_none"} style={{ marginBottom: '2em' }}>Incidents This Month</h5>
+                <div style={{ height: '80%' }}>
+                  <Line
+
+                    options={{
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      legend: {
+                        display: false,
+                      }
+                    }}
+
+                    data={{
+                      labels: ['Jan', 'Feb.', `Mar`, 'April', 'May', 'June', 'July'],
+                      datasets: [{
+                        label: "Total Incidents This Month",
+                        data: [12, 10, 6, 8, 9, 10, 18],
+                        borderColor: 'rgba(255,255,76, 0.7)',
+                        backgroundColor: 'rgba(255,255,76, 0.05)',
+                        borderWidth: 2
+                      }]
+                    }} />
+                </div>
               </div>
 
 
               <div style={{ display: "flex", flexWrap: 'wrap', justifyContent: "space-between", marginTop: "1em" }}>
-                {/* Left Box */}
-                <div style={{ width: "49%", height: "45vh", backgroundColor: "#2A2E32", borderRadius: "5%", padding: "1em" }}>
-                  <h5 className={"m_none"}>On Duty Staff</h5>
+
+                {/* Left Bottom Box */}
+                <div style={{ width: "23%", minWidth: '280px', height: "45vh", backgroundColor: "#2A2E32", borderRadius: "5%", padding: '1em' }}>
+                  <h5 className={"m_none"} style={{ marginBottom: "1em", textAlign: 'center' }}>On Duty Staff</h5>
+                  <div>
+                    {usersLoggedIn.map(userEmail => (
+                      <div className={'centerVH'} style={{ justifyContent: 'flex-start', marginBottom: '1.5em' }}>
+                        <IoIosPerson style={{ height: '2em', width: '2em', border: '1px solid white', borderRadius: '100%' }} />
+                        <div style={{ paddingLeft: '0.75em' }}>
+                          <p className={"m_none"} style={{ color: "#c5c5c5", opacity: '0.7' }}>{userEmail}</p>
+                          <small style={{ color: "rgba(255,255,76, 0.4)" }}>Vancouver</small>
+                        </div>
+                      </div>
+                    )
+                    )}
+                  </div>
+                  <div className={'centerVH'} style={{ justifyContent: 'flex-start', marginBottom: '1.5em' }}>
+                    <IoIosPerson style={{ height: '2em', width: '2em', border: '1px solid white', borderRadius: '100%' }} />
+                    <div style={{ paddingLeft: '0.75em' }}>
+                      <p className={"m_none"} style={{ color: "#c5c5c5", opacity: '0.7' }}>jsmithjunior@gmail.com</p>
+                      <small style={{ color: "rgba(255,255,76, 0.4)" }}>San Fransico</small>
+                    </div>
+                  </div>
+                  <div className={'centerVH'} style={{ justifyContent: 'flex-start', marginBottom: '1.5em' }}>
+                    <IoIosPerson style={{ height: '2em', width: '2em', border: '1px solid white', borderRadius: '100%' }} />
+                    <div style={{ paddingLeft: '0.75em' }}>
+                      <p className={"m_none"} style={{ color: "#c5c5c5", opacity: '0.7' }}>patschmidt@gmail.com</p>
+                      <small style={{ color: "rgba(255,255,76, 0.4)" }}>San Fransico</small>
+                    </div>
+                  </div>
+                  <div className={'centerVH'} style={{ justifyContent: 'flex-start', marginBottom: '1.5em' }}>
+                    <IoIosPerson style={{ height: '2em', width: '2em', border: '1px solid white', borderRadius: '100%' }} />
+                    <div style={{ paddingLeft: '0.75em' }}>
+                      <p className={"m_none"} style={{ color: "#c5c5c5", opacity: '0.7' }}>kimjones@gmail.com</p>
+                      <small style={{ color: "rgba(255,255,76, 0.4)" }}>Edmonton</small>
+                    </div>
+                  </div>
                 </div>
-                {/* Right Box */}
-                <div style={{ width: "49%", height: "45vh", backgroundColor: "#2A2E32", borderRadius: "5%" }}>
-                  <h5 className={"m_none"} style={{ margin: "1em" }}>Incidents this Month</h5>
+
+                {/* Center Bottom Box */}
+                <div style={{ width: "26%", height: "45vh", backgroundColor: "#2A2E32", borderRadius: "5%", padding: '1em 1em 1em 0.25em ' }}>
+                  <h5 className={"m_none"} style={{ marginBottom: '1em', textAlign: "center" }}>Staff Locations</h5>
+                  <div className={"centerVH"} style={{ height: '85%' }}>
+                    <HorizontalBar
+                      options={{
+                        maintainAspectRatio: false,
+                        responsive: true,
+                        legend: {
+                          display: false,
+                        },
+                        scales: {
+                          yAxes: [{
+                            ticks: {
+                              fontColor: "#c5c5c5",
+                              fontSize: "14",
+                            },
+                          }],
+                          xAxes: [{
+                            ticks: {
+                              beginAtZero: true,
+                              fontColor: "#c5c5c5"
+                            },
+                          }]
+                        }
+                      }}
+                      data={{
+                        labels: ['Vancouver', 'San Francisco', 'Edmonton'],
+                        datasets: [
+                          {
+                            label: 'Number of Workers At Location',
+                            barThickness: 20,
+                            borderColor: 'rgba(255,255,76, 0.7)',
+                            backgroundColor: 'rgba(255,255,76, 0.05)',
+                            borderWidth: 2,
+                            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+                            hoverBorderColor: 'rgba(255,99,132,1)',
+                            data: [usersLoggedIn.length, 2, 1, 1]
+                          }
+                        ]
+                      }} />
+                  </div>
+                </div>
+
+                {/* Right Bottom Box */}
+                <div style={{ width: "49%", height: "45vh", backgroundColor: "#2A2E32", borderRadius: "5%", padding: `1em` }}>
+                  <h5 className={"m_none"} style={{ marginBottom: "1em", textAlign: "center" }}>Incidents this Month</h5>
                   <Radar
                     options={{
+                      responsive: true,
                       legend: {
                         display: false,
                       },
                       scale: {
+                        pointLabels: {
+                          fontColor: "#c5c5c5",
+                          fontSize: "13",
+                          fontFamily: "Arial"
+                        },
                         ticks: {
                           min: 0,
-                          max: 15,
-                          stepSize: 3,
-                          backdropColor: "rgba(0,0,0,0)"
-
+                          max: 5,
+                          stepSize: 1,
+                          backdropColor: "rgba(0,0,0,0)",
+                          fontColor: "#c5c5c5"
                         },
                         gridLines: {
                           color: "#686868"
@@ -157,13 +274,16 @@ const Dashboard = props => {
                     data={{
                       labels: ['Assault', 'Break and Enter', `General Theft`, 'Property Damage', 'Property Damage', 'Public Intoxication', 'Vehicle Collision', 'Vehicle Theft'],
                       datasets: [{
-                        data: [12, 10, 6, 8, 9, 10, 8, 8],
-                        borderColor: 'rgba(100,100,40,1)',
+                        label: 'Number of Incidents',
+                        data: [3, 1, 3, 2, 4, 2, 3, 4],
+                        borderColor: 'rgba(255,255,76, 0.7)',
+                        backgroundColor: 'rgba(255,255,76, 0.05)',
                         borderWidth: 2
                       }]
                     }} />
                 </div>
               </div>
+
 
 
             </div>
