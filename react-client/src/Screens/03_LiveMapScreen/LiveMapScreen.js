@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import DeckGL from "@deck.gl/react";
 import Spinner from "../../components/spinner/Spinner";
 import { TripsLayer } from "@deck.gl/geo-layers";
-import WorkerNavBar from "../../components/topNavBar/WorkerNavBar";
+import GhostButton from "../../components/ghostButtons/GhostButton";
 const MapScreen = props => {
   const [latLon, setLatLon] = useState(null);
   const [layer, setlayer] = useState(null);
@@ -78,7 +78,7 @@ const MapScreen = props => {
         <ReactMapGL
           {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          mapStyle="mapbox://styles/akkin13/ckb1qv50i0grp1inr5bx1qkfm"
+          mapStyle="mapbox://styles/mapbox/dark-v9"
           onViewportChange={viewport => {
             setViewport(viewport);
           }}
@@ -106,15 +106,13 @@ const MapScreen = props => {
           ) : (
             ""
           )}
-          <WorkerNavBar />
-          <NavBar />
+          <GhostButton />
         </ReactMapGL>
       </div>
     );
   } else {
     return (
       <div>
-        <NavBar />
         <Spinner />
       </div>
     );

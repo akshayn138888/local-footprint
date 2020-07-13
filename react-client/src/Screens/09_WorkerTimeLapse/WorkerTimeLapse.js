@@ -5,6 +5,7 @@ import DeckGL from "@deck.gl/react";
 import { TripsLayer } from "@deck.gl/geo-layers";
 import WorkerNavBar from "../../components/topNavBar/WorkerNavBar";
 import NavBar from "../../components/NavBar/NavBar";
+import GhostButton from "../../components/ghostButtons/GhostButton";
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoicmRpY2siLCJhIjoiY2thbmdvYXJrMXFhZDJ3bGUzc3N4b29kYSJ9.4gZnKOxNEQ9WXEkFym7lTQ";
@@ -74,7 +75,7 @@ const WorkerTimeLapse = () => {
         mapStyle={"mapbox://styles/mapbox/dark-v9"}
         mapboxApiAccessToken={MAPBOX_TOKEN}
       />
-      <WorkerNavBar />
+      <GhostButton />
     </DeckGL>
   );
 };

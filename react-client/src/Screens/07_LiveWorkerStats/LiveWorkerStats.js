@@ -6,7 +6,7 @@ import { HexagonLayer } from "@deck.gl/aggregation-layers";
 import NavBar from "../../components/NavBar/NavBar";
 import WorkerNavBar from "../../components/topNavBar/WorkerNavBar";
 import Spinner from "../../components/spinner/Spinner";
-
+import GhostButton from "../../components/ghostButtons/GhostButton";
 const LiveWorkerStats = props => {
   const [latLon, setLatLon] = useState(null);
   const [viewport, setViewport] = useState({
@@ -104,7 +104,7 @@ const LiveWorkerStats = props => {
         >
           <DeckGL viewState={viewport} layers={[layer]} />
 
-          <WorkerNavBar />
+          <GhostButton />
         </ReactMapGL>
       </div>
     );

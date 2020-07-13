@@ -98,9 +98,6 @@ const AuthScreen = props => {
                 <strong>Login</strong>
               </button>
             </form>
-            {/* <a href="#" className="forgot-link">
-          Forgot Password?
-    </a> */}
           </div>
         </div>
       </div>
