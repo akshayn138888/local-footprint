@@ -84,9 +84,22 @@ a.LP_button:hover {
   color: white;
   background: #2c3338;
   display: grid;
-  grid-template-rows: 1fr 2fr 5fr 2fr 2fr
+  grid-template-rows: 0.5fr 2fr 9fr
 }
 
+.RP_button {
+  color: #606060;
+  text-decoration: none; 
+  border-bottom: 1px #202227 solid;
+  width: 100%;
+  height: 100%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+a.RP_button:hover {
+  background: #202227;
+}
 
 /* colors 8a3aff, 6f79ff, 3a9fff black-> 1f4568  grey->8198ae*/
 .sect {

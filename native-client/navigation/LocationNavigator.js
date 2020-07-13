@@ -61,7 +61,7 @@ const AuthNavigator = createStackNavigator(
     defaultNavigationOptions: {
       headerTitle: "Local FootPrint",
       headerStyle: {
-        backgroundColor: Platform.OS === "android" ? Colors.primary : "#09203f"
+        backgroundColor: Platform.OS === "android" ? Colors.primary : "white"
       },
       headerTintColor: Platform.OS === "android" ? "white" : Colors.primary
     }
