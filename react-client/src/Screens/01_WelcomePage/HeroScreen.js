@@ -10,12 +10,12 @@ function HeroScreen() {
   return (
     <div>
       <div className="bg-video-wrap">
-        <video
+        {/* <video
           src="https://firebasestorage.googleapis.com/v0/b/location-app-5d3d8.appspot.com/o/LocalFVideo.mp4?alt=media&token=e6ae781c-be94-4d6f-b197-b869e605cbb3"
           muted
           autoPlay
           loop
-        ></video>
+        ></video> */}
       </div>
       <div className="overlay">
         <h1 className="h1-full">
