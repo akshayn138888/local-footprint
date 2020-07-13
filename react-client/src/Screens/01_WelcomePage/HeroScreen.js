@@ -27,7 +27,7 @@ function HeroScreen() {
           >
             <h3 className="hero-title">
               <span style={{ color: "#3a9fff" }}>Local</span>{" "}
-              <span className="footer__black">Footprint</span>
+              <span className="footer__black1">Footprint</span>
             </h3>
 
             <Typist.Delay ms={500} />
