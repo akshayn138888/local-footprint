@@ -44,58 +44,67 @@ const AuthScreen = props => {
     }
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        width: "100vw"
-      }}
-    >
-      <div className="login-form">
-        <div className="indent-a" />
-        <div className="indent-b" />
-        <div className="form-header">
-          <div className="logo-wrapper">
-            <img src="/02_Logo/OwlLogo.png" />
-          </div>
-          <h2>Welcome Back</h2>
-          {error ? (
-            <h4 style={{ color: "red", fontWeight: "bold" }}> {error} </h4>
-          ) : (
-            <h4>Please login to continue</h4>
-          )}
-        </div>
+    <>
+      <div className="auth-div">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            width: "100vw"
+          }}
+        >
+          <div className="login-form1">
+            <div className="indent-a1" />
+            <div className="indent-b1" />
+            <div className="form-header1">
+              <div className="logo-wrapper1">
+                <img src="/02_Logo/OwlLogo.png" />
+              </div>
+              <h2 className="h2-1">Welcome Back</h2>
+              {error ? (
+                <h4
+                  style={{ color: "red", fontWeight: "bold", margin: "0.5em" }}
+                >
+                  {" "}
+                  {error}{" "}
+                </h4>
+              ) : (
+                <h4 className="h4-1">Please login to continue</h4>
+              )}
+            </div>
 
-        <form className="form" onSubmit={handleSubmit}>
-          <input
-            name="email"
-            id="email"
-            type="text"
-            onChange={handleChange}
-            value={text1.email}
-            className="form-field"
-            placeholder="Enter Email..."
-          />
-          <input
-            name="password"
-            id="password"
-            type="password"
-            onChange={handleChange}
-            value={text1.password}
-            className="form-field"
-            placeholder="Enter Password..."
-          />
-          <button className="form-submit">
-            <strong>Login</strong>
-          </button>
-        </form>
-        {/* <a href="#" className="forgot-link">
+            <form className="form1" onSubmit={handleSubmit}>
+              <input
+                name="email"
+                id="email"
+                type="text"
+                onChange={handleChange}
+                value={text1.email}
+                className="form-field1"
+                placeholder="Enter Email..."
+              />
+              <input
+                name="password"
+                id="password"
+                type="password"
+                onChange={handleChange}
+                value={text1.password}
+                className="form-field1"
+                placeholder="Enter Password..."
+              />
+              <button className="form-submit1">
+                <strong>Login</strong>
+              </button>
+            </form>
+            {/* <a href="#" className="forgot-link">
           Forgot Password?
     </a> */}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 export default AuthScreen;
