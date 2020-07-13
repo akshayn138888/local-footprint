@@ -1,0 +1,128 @@
+.header-top {
+  color: orangered;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  size: 3em;
+  background: bisque;
+}
+.hero-title {
+  font-size: 1em;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+  /* margin: 0;
+  margin-left: 0px;
+  margin-left: 10px;
+  display: inline-block;
+  line-height: 10px;
+  vertical-align: middle;
+  color: #4ea8ff; */
+}
+.bg-video-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+video {
+  width: 100vw;
+  min-height: 90vh;
+  z-index: 1;
+}
+.footer__black {
+  color: whitesmoke;
+}
+.overlay {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.7) 50%
+  );
+  background-size: 3px 3px;
+  z-index: 2;
+}
+.h1-full {
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 3;
+  width: 100%;
+}
+.hero-h2 {
+  color: white;
+  margin-top: 1.3em;
+  margin-bottom: 1.3em;
+}
+.hero-h3 {
+  color: white;
+  font-size: 1em;
+}
+.hero-h5 {
+  color: white;
+  font-size: 0.5em;
+}
+.hero-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.ghost-button {
+  display: inline-block;
+  width: 20vw;
+  padding: 0.2em;
+  margin-top: 10em;
+  margin-left: 1em;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 1em;
+  font-size: 0.5em;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+}
+.ghost-button:hover,
+.ghost-button:active {
+  background-color: #fff;
+  color: #000;
+}
+
+.services {
+  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0.1vh;
+}
+.pricing {
+  text-align: center;
+  font-size: 3em;
+  font-weight: 2em;
+  margin-top: 0px;
+  /* color: whitesmoke; */
+  color: #3a9fff;
+}
+.pricing-subtitle {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0px;
+  /* color: #3a9fff; */
+  color: whitesmoke;
+}

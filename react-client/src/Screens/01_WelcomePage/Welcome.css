@@ -35,21 +35,6 @@
   margin-top: 45px;
 }
 
-.row__title {
-  text-align: center;
-  font-size: 26px;
-  font-weight: 400;
-  margin-top: 0px;
-}
-
-.row__sub {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 400;
-  margin: 0px;
-  color: #8198ae;
-}
-
 .price-box {
   padding: 0px 25px;
 }
@@ -727,10 +712,6 @@
   color: #fff;
 }
 
-.footer__black {
-  color: #2a4c6c;
-}
-
 .footer__social {
   float: right;
 }
@@ -769,17 +750,6 @@
   }
   .header__logo {
     padding: 12px 20px 12px 20px;
-  }
-
-  .header__logo__title {
-    font-size: 24px;
-    margin: 0;
-    margin-left: 0px;
-    margin-left: 10px;
-    display: inline-block;
-    line-height: 18px;
-    vertical-align: middle;
-    color: #4ea8ff;
   }
 
   .header__el {
