@@ -90,7 +90,7 @@ const ReportStats = props => {
     return (
       <div>
         {" "}
-        <ReportNavBar />
+        <GhostButton />
         <Spinner />
       </div>
     );

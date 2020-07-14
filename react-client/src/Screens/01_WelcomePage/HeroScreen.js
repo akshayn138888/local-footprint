@@ -25,6 +25,11 @@ function HeroScreen() {
             }}
           >
             <h3 className="hero-title">
+              <img
+                className="footer__img"
+                src="/02_Logo/OwlLogo.png"
+                style={{ width: "3.5vw", height: "8vh", marginRight: "0.35em" }}
+              />
               <span style={{ color: "#3a9fff" }}>Local</span>{" "}
               <span className="footer__black1">Footprint</span>
             </h3>
@@ -238,7 +243,12 @@ function HeroScreen() {
           </div>
         </div>
       </div>
-      <footer className="footer">
+      <footer
+        className="footer"
+        style={{
+          backgroundImage: "linear-gradient(to top, #09203f 0%, #537895 100%)"
+        }}
+      >
         <div className="container" style={{ margin: "2%" }}>
           <div className="row">
             <div
@@ -283,6 +293,15 @@ function HeroScreen() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="footer-address">
+          <h5 className="footer-address-h5"> 12039 64 Ave,</h5>
+          <h5 className="footer-address-h5"> Surrey, BC, Canada </h5>
+        </div>
+        <div>
+          <h3 className="footer-copyright">
+            @copyright Akshay Nanda & Ryan Dick Software Inc.
+          </h3>
         </div>
       </footer>
     </div>
