@@ -1,4 +1,205 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
+​
+/*Reset*/
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  color: #1f4568;
+}
+​
+/* General */
+.m_none {
+  margin: 0;
+}
+​ .centerVH {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+​ .centerVH_FDC {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+​
+/* Left Pane */
+​
+​
+.LP {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  color: white;
+  background: #202a40;
+  display: grid;
+  grid-template-rows: 1fr 5fr 2fr 2fr 2fr;
+}
+​ .LP_photo {
+  width: 7em;
+  height: 7em;
+  border-radius: 100%;
+  border: 2px white solid;
+}
+​ .LP_button {
+  color: #606060;
+  text-decoration: none;
+  border-top: 2px #202227 solid;
+  border-bottom: 2px #202227 solid;
+  width: 100%;
+  height: 100%;
+  transition-property: all;
+  transition-duration: 0.6s;
+  transition-timing-function: ease;
+}
+​ .active_icon_white {
+  color: white;
+}
+​ a.LP_button:hover {
+  background: #202227;
+}
+​
+/* Center Pane */
+​
+/* Center Pane General */
+​
+.CP {
+  padding-left: 225px;
+  padding-right: 325px;
+  padding-top: 1em;
+  color: #606060;
+}
+​ .inner_box {
+  background-color: #2a2e32;
+  border-radius: 2em;
+  padding: 1em;
+  margin: 0.5em 0em;
+}
+​ .inner_box:hover {
+  background-color: #363b40;
+  color: white;
+  opacity: 1;
+}
+​ .inner_box_heading {
+  margin-bottom: 1em;
+  text-align: center;
+}
+​ .chart_height {
+  height: 85%;
+}
+​
+  /* Top Box */
+​
+  .Top_Box {
+  width: 100%;
+  height: 40vh;
+  transition-duration: unset;
+}
+​ .Top_Box:hover {
+  background-color: #363b40;
+  color: white;
+  opacity: 1;
+}
+​
+​
+  /* Left Bottom Box */
+​
+  .Left_Bottom_Box {
+  width: "23%";
+  min-width: "280px";
+  height: "45vh";
+  transition-duration: unset;
+}
+​ .Left_Bottom_Box:hover .user_email,
+.Left_Bottom_Box:hover .user_location {
+  background-color: #363b40;
+  color: white;
+  opacity: 1;
+}
+​
+  /* .Left_Bottom_Box:hover .user_email {
+    color: white;
+  } */
+​
+  .user_info_outer {
+  justify-content: flex-start;
+  margin-bottom: 1.5em;
+}
+​ .person_logo {
+  height: 2em;
+  width: 2em;
+  border: 1px solid white;
+  border-radius: 100%;
+}
+​ .user_info_inner {
+  padding-left: 0.75em;
+}
+​ .user_email {
+  color: #a5a5a5;
+  opacity: 0.7;
+}
+​ .user_location {
+  opacity: 0.8;
+}
+​
+  /* Center Bottom Box */
+  .Center_Bottom_Box {
+  width: 26%;
+  height: 45vh;
+  padding: 1em 1em 1em 0.25em;
+}
+​
+​
+  /* Right Bottom Box */
+​
+  .Right_Bottom_Box {
+  width: 49%;
+  max-width: 670px;
+  height: 45vh;
+}
+​
+​
+​
+/* Right Pane */
+​
+.RP {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 275px;
+  height: 100vh;
+  color: white;
+  background: #2c3338;
+  display: grid;
+  grid-template-rows: 0.5fr 2fr 9fr;
+}
+​ .Crime_Feed_outer {
+  width: 100%;
+  height: 45vh;
+  border-radius: 5%;
+  margin-top: 2em;
+}
+​ ​ .RP_button {
+  color: #606060;
+  text-decoration: none;
+  border-bottom: 1px #202227 solid;
+  width: 100%;
+  height: 100%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  transition-property: all;
+  transition-duration: 0.6s;
+  transition-timing-function: ease;
+}
+​ a.RP_button:hover {
+  background: #202227;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
 
 /*Reset*/
 html,
@@ -36,27 +237,28 @@ body {
 
 /* Left Pane */
 .LP {
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
-  width: 200px; 
+  width: 200px;
   height: 100vh;
   color: white;
   background: #202a40;
   display: grid;
-  grid-template-rows: 1fr 5fr 2fr 2fr 2fr
+  grid-template-rows: 1fr 5fr 2fr 2fr 2fr;
 }
 
 .LP_photo {
   width: 9em;
-  height: 9em; border-radius: 100%;
+  height: 9em;
+  border-radius: 100%;
   border: 2px white solid;
 }
 
 .LP_button {
   color: #606060;
-  text-decoration: none; 
-  border-Top: 2px #202227 solid; 
+  text-decoration: none;
+  border-top: 2px #202227 solid;
   border-bottom: 2px #202227 solid;
   width: 100%;
   height: 100%;
@@ -70,26 +272,25 @@ a.LP_button:hover {
   background: #202227;
 }
 
-
 /* Center Pane */
 
 /* Right Pane */
 
 .RP {
-  position: fixed; 
-  right:0;
+  position: fixed;
+  right: 0;
   top: 0;
-  width: 275px; 
+  width: 275px;
   height: 100vh;
   color: white;
   background: #2c3338;
   display: grid;
-  grid-template-rows: 0.5fr 2fr 9fr
+  grid-template-rows: 0.5fr 2fr 9fr;
 }
 
 .RP_button {
   color: #606060;
-  text-decoration: none; 
+  text-decoration: none;
   border-bottom: 1px #202227 solid;
   width: 100%;
   height: 100%;

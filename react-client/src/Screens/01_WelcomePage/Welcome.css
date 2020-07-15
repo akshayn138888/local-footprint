@@ -814,6 +814,7 @@
   }
   .form {
     margin-top: 30px;
+    width: 65vw;
   }
   .form__field--half:first-of-type {
     margin-bottom: 10px;

@@ -35,10 +35,13 @@ function HeroScreen() {
             </h3>
 
             <Typist.Delay ms={500} />
-            <h4 className="hero-h3"> Track your workers visually.</h4>
+            <h4 className="hero-h3"> Track your workers visually</h4>
             <Typist.Delay ms={500} />
-            <h5 className="hero-h5">VIEW REALTIME GPS DATA.</h5>
 
+            <h5 className="hero-h5">VIEW REALTIME GPS DATA</h5>
+
+            <Typist.Backspace count={25} delay={200} />
+            <h5 className="hero-h5">heading report 2</h5>
             <div className="hero-buttons">
               <a class="ghost-button" href="#">
                 PRICING
@@ -166,13 +169,13 @@ function HeroScreen() {
             className="container"
             style={{ marginRight: "15%", marginLeft: "15%" }}
           >
-            <div className="row">
+            {/* <div className="row">
               <h1 className="pricing">Contact Us </h1>
               <h2 className="pricing-subtitle">
                 Feel free to ask any questions
               </h2>
-            </div>
-            <form
+            </div> */}
+            {/* <form
               id="contact"
               className="form"
               style={{ marginTop: "3%", boxShadow: "none" }}
@@ -180,7 +183,7 @@ function HeroScreen() {
               <div className="form-group">
                 <select className="form__field form__select">
                   <option selected value>
-                    Choose topic*
+                    Choose Topic*
                   </option>
                   <option value="1">Pricing</option>
                   <option value="2">Success Stories</option>
@@ -239,7 +242,7 @@ function HeroScreen() {
                   Submit
                 </button>
               </div>
-            </form>
+            </form> */}
           </div>
         </div>
       </div>
