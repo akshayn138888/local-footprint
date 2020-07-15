@@ -40,17 +40,29 @@ function HeroScreen() {
 
             <h5 className="hero-h5">VIEW REALTIME GPS DATA</h5>
 
-            <Typist.Backspace count={25} delay={200} />
-            <h5 className="hero-h5">heading report 2</h5>
-            <div className="hero-buttons">
-              <a class="ghost-button" href="#">
-                PRICING
-              </a>
-              <a class="ghost-button" href="/signin">
-                SIGN IN
-              </a>
-            </div>
+            <Typist.Backspace count={22} delay={400} />
+            <h5 className="hero-h5">IMPROVE EMPLOYEE MANAGEMENT</h5>
+            <Typist.Backspace count={27} delay={400} />
+            <h5 className="hero-h5">REVIEW EMPLOYEE REPORTS</h5>
+            <Typist.Backspace count={24} delay={400} />
+            <h5 className="hero-h5">VIEW REALTIME GPS DATA</h5>
+            <Typist.Backspace count={22} delay={400} />
+            <h5 className="hero-h5">IMPROVE EMPLOYEE MANAGEMENT</h5>
+            <Typist.Backspace count={27} delay={400} />
+            <h5 className="hero-h5">REVIEW EMPLOYEE REPORTS</h5>
+            <Typist.Backspace count={23} delay={400} />
+            <h5 className="hero-h5">IMPROVE EMPLOYEE MANAGEMENT</h5>
+            <Typist.Backspace count={27} delay={400} />
+            <h5 className="hero-h5">VIEW REALTIME GPS DATA</h5>
           </Typist>
+          <div className="hero-buttons">
+            <a class="ghost-button" href="#">
+              PRICING
+            </a>
+            <a class="ghost-button" href="/signin">
+              SIGN IN
+            </a>
+          </div>
         </h1>
       </div>
       <div
