@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import NavBar from "../../components/NavBar/NavBar";
 import DeckGL from "@deck.gl/react";
+import DashBoardLP from "../../components/DashBoardLP";
+
 import Spinner from "../../components/spinner/Spinner";
 import { TripsLayer } from "@deck.gl/geo-layers";
 import GhostButton from "../../components/ghostButtons/GhostButton";
@@ -106,6 +108,7 @@ const MapScreen = props => {
           ) : (
             ""
           )}
+          <DashBoardLP />
           <GhostButton />
         </ReactMapGL>
       </div>
@@ -113,6 +116,7 @@ const MapScreen = props => {
   } else {
     return (
       <div>
+        <DashBoardLP />
         <Spinner />
       </div>
     );

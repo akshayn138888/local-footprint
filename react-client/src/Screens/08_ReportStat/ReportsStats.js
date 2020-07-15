@@ -7,6 +7,8 @@ import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 import NavBar from "../../components/NavBar/NavBar";
 import Spinner from "../../components/spinner/Spinner";
 import GhostButton from "../../components/ghostButtons/GhostButton";
+import DashBoardLP from "../../components/DashBoardLP";
+
 const ReportStats = props => {
   const [popupToggler, setPopupToggler] = useState(false);
   const [selectedIncident, setSelectedIncident] = useState(null);
@@ -82,6 +84,7 @@ const ReportStats = props => {
           onViewportChange={viewport => setViewport(viewport)}
         >
           <DeckGL viewState={viewport} layers={[layer]} />
+          <DashBoardLP />
           <GhostButton />
         </ReactMapGL>
       </div>
@@ -89,7 +92,7 @@ const ReportStats = props => {
   } else {
     return (
       <div>
-        {" "}
+        <DashBoardLP />
         <GhostButton />
         <Spinner />
       </div>

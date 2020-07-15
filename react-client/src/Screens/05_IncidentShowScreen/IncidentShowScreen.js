@@ -6,7 +6,6 @@ const IncidentShowScreen = props => {
   const [report, setReport] = useState(null);
 
   const { userId, reportId } = props.match.params;
-  console.log(userId, reportId)
 
   const [viewport, setViewport] = useState({
     latitude: 49.119706917599885,
@@ -118,7 +117,7 @@ const IncidentShowScreen = props => {
               <Calendar
                 size="small"
                 date={new Date(report.timestamp).toISOString()}
-                onSelect={date => { }}
+                onSelect={date => {}}
                 fit="contain"
               />
               {/* <Card

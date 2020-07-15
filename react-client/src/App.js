@@ -5,6 +5,7 @@ import HeroScreen from "./Screens/01_WelcomePage/HeroScreen";
 import IncidentScreen from "./Screens/04_IncidentScreen/IncidentScreen";
 import IncidentShowScreen from "./Screens/05_IncidentShowScreen/IncidentShowScreen";
 import DashBoard from "./Screens/06_DashboardScreen/DashBoardScreen";
+import Show from "./Screens/05_IncidentShowScreen/Show";
 import "./App.css";
 import LiveWorkerStats from "./Screens/07_LiveWorkerStats/LiveWorkerStats";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -23,7 +24,7 @@ function App() {
           <Route
             exact
             path="/IncidentScreen/:userId/:reportId"
-            component={IncidentShowScreen}
+            component={Show}
           />
           <Route exact path="/IncidentScreen" component={IncidentScreen} />
           <Route exact path="/DashBoardScreen" component={DashBoard} />

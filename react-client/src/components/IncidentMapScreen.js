@@ -3,6 +3,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
 import Spinner from "./spinner/Spinner";
+import DashBoardLP from "./DashBoardLP";
 
 import ReportNavBar from "./topNavBar/ReportNavBar";
 import GhostButton from "./ghostButtons/GhostButton";
@@ -127,6 +128,7 @@ const IncidentMapScreen = props => {
           ) : (
             ""
           )}
+          <DashBoardLP />
           <GhostButton />
         </ReactMapGL>
       </div>
