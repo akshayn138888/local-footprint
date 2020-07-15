@@ -24,7 +24,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
+  width: 217px;
   height: 100vh;
   color: white;
   background: #202a40;
@@ -106,13 +106,38 @@ a.LP_button:hover {
   opacity: 1;
 }
 
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+.Left_Bottom_Box::-webkit-scrollbar {
+  width: 0.3em;
+}
+
+.Left_Bottom_Box::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.Left_Bottom_Box::-webkit-scrollbar-thumb {
+  background-color: #202227;
+  outline: 1px solid #202227;
+}
 /* Left Bottom Box */
 
 .Left_Bottom_Box {
-  width: "23%";
-  min-width: "280px";
-  height: "45vh";
+  width: 31%;
+  height: 45vh;
+  min-width: 280px;
   transition-duration: unset;
+  overflow-y: scroll;
 }
 
 .Left_Bottom_Box:hover .user_email,
@@ -153,7 +178,7 @@ a.LP_button:hover {
 
 /* Center Bottom Box */
 .Center_Bottom_Box {
-  width: 26%;
+  width: 58%;
   height: 45vh;
   padding: 1em 1em 1em 0.25em;
 }
@@ -161,9 +186,8 @@ a.LP_button:hover {
 /* Right Bottom Box */
 
 .Right_Bottom_Box {
-  width: 49%;
-  max-width: 670px;
-  height: 45vh;
+  width: 100%;
+  height: 80vh;
 }
 
 /* Right Pane */
@@ -179,10 +203,24 @@ a.LP_button:hover {
   display: grid;
   grid-template-rows: 0.5fr 2fr 9fr;
 }
+.incident-feed::-webkit-scrollbar {
+  width: 0.3em;
+}
 
+.incident-feed::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.incident-feed::-webkit-scrollbar-thumb {
+  background-color: #202227;
+  outline: 1px solid #202227;
+}
+
+.incident-feed {
+  overflow-y: scroll;
+}
 .Crime_Feed_outer {
   width: 100%;
-  height: 45vh;
   border-radius: 5%;
   margin-top: 2em;
 }

@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import "./IncidentShowScreen.css";
 
-import NavBar from "../../components/NavBar/NavBar.js";
 import Weather from "../../components/Weather/Weather";
 import Spinner from "../../components/spinner/Spinner";
-import { BsMap, BsClock } from "react-icons/bs";
-import { IoIosPerson } from "react-icons/io";
+import { BsClock } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
-import { Line, Radar, HorizontalBar } from "react-chartjs-2";
 import DashBoardLP from "../../components/DashBoardLP";
 
 const Show = props => {
@@ -121,8 +118,8 @@ const Show = props => {
                   </h5> */}
 
               <div
-                className="Top_Box inner_box"
-                style={{ overflow: "hidden", height: "40vh" }}
+                className="inner_box"
+                style={{ overflow: "hidden", minHeight: "20vh" }}
               >
                 <h5 className={"m_none inner_box_heading"}>
                   {report1.incident} Reported by:{" "}
@@ -139,6 +136,7 @@ const Show = props => {
                   margin: "0",
                   overflow: "hidden",
                   height: "75vh",
+                  width: "100%",
                   borderRadius: "2em"
                 }}
               >
@@ -169,8 +167,8 @@ const Show = props => {
             </div>
 
             {/* Crime Feed */}
-            <div className={"Crime_Feed_outer"}>
-              <h5 className={"m_none inner_box_heading"}>Incident Feed</h5>
+            <div className={"Crime_Feed_outer incident-feed"}>
+              <h5 className={"m_none inner_box_heading"}>Report Feed</h5>
               <div style={{ width: "100%" }}>
                 {console.log(incidentArray)}
                 {incidentArray
@@ -180,6 +178,11 @@ const Show = props => {
                     <>
                       <NavLink
                         to={`/IncidentScreen/${crime.userId}/${crime.reportId}`}
+                        onClick={() => {
+                          return props.history.push(
+                            `/IncidentScreen/${crime.userId}/${crime.reportId}`
+                          );
+                        }}
                         className={"centerVH"}
                         activeStyle={{ background: "#202227" }}
                         className={`RP_button`}

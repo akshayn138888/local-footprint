@@ -8,19 +8,36 @@ function DashBoardLP() {
   return (
     <div className={"LP"}>
       <div className={"centerVH"}>
-        <h5 className="header__logo__title">
-          <span style={{ color: "#3794D7" }}>Local</span>{" "}
-          <span className="footer__black" style={{ color: "white" }}>
-            Footprint
-          </span>
-        </h5>
+        <a href="/" style={{ textDecoration: "none" }}>
+          <h5
+            className="header__logo__title"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center"
+            }}
+          >
+            <img
+              className="footer__img"
+              src="/02_Logo/OwlLogo.png"
+              style={{ width: "1em", height: "1.3em", marginRight: "0.1em" }}
+            />
+            <span style={{ color: "#3794D7" }}>Local</span>{" "}
+            <span className="footer__black" style={{ color: "white" }}>
+              Footprint
+            </span>
+          </h5>
+        </a>
       </div>
       <div className={"centerVH_FDC"}>
         <img
           className={"LP_photo"}
-          src="https://annemariesegal.files.wordpress.com/2017/06/img_0422-linkedin-size-smiling-man-in-suit.png?w=750&h=742"
+          src="https://www.photochaps.com/wp-content/uploads/2015/11/LI_13.jpg"
         />
-        <h4>John Smith</h4>
+        <h4>Ben Foster</h4>
+        <p className="m_none" style={{ color: "#A0A0A0" }}>
+          Guarda World
+        </p>
       </div>
       <NavLink
         to="/DashBoardScreen"

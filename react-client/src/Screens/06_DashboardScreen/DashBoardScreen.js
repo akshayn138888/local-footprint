@@ -98,7 +98,7 @@ const Dashboard = props => {
 
     return (
       <>
-        <div style={{ height: "200vh", width: "100vw", background: "#202227" }}>
+        <div style={{ height: "180vh", width: "100vw", background: "#202227" }}>
           {/* Left Pane */}
           <DashBoardLP />
 
@@ -116,13 +116,13 @@ const Dashboard = props => {
                   marginLeft: 5
                 }}
               >
-                Incident Statistics
+                Analytics
               </h4>
 
               {/* Top Box */}
               <div className="Top_Box inner_box">
                 <h5 className={"m_none inner_box_heading"}>
-                  Incidents This Month
+                  Reports This Month
                 </h5>
                 <div className={"chart_height"}>
                   <Line
@@ -250,7 +250,7 @@ const Dashboard = props => {
                   <div className={"centerVH chart_height"}>
                     <HorizontalBar
                       options={{
-                        maintainAspectRatio: false,
+                        maintainAspectRatio: true,
                         responsive: true,
                         legend: {
                           display: false
@@ -268,7 +268,8 @@ const Dashboard = props => {
                             {
                               ticks: {
                                 beginAtZero: true,
-                                fontColor: "#c5c5c5"
+                                fontColor: "#c5c5c5",
+                                stepSize: 1
                               }
                             }
                           ]
@@ -284,7 +285,7 @@ const Dashboard = props => {
                             borderWidth: 2,
                             hoverBackgroundColor: "rgba(255,99,132,0.4)",
                             hoverBorderColor: "rgba(255,99,132,1)",
-                            data: [usersLoggedIn.length, 2, 1, 1]
+                            data: [usersLoggedIn.length, 4, 1]
                           }
                         ]
                       }}
@@ -295,11 +296,13 @@ const Dashboard = props => {
                 {/* Right Bottom Box */}
                 <div className="Right_Bottom_Box inner_box">
                   <h5 className={"m_none inner_box_heading"}>
-                    Incidents this Month
+                    Reports this Month
                   </h5>
                   <div className={"centerVH chart_height"}>
                     <Radar
                       options={{
+                        maintainAspectRatio: true,
+
                         responsive: true,
                         legend: {
                           display: false
@@ -359,8 +362,8 @@ const Dashboard = props => {
             </div>
 
             {/* Crime Feed */}
-            <div className={"Crime_Feed_outer"}>
-              <h5 className={"m_none inner_box_heading"}>Incident Feed</h5>
+            <div className={"Crime_Feed_outer incident-feed"}>
+              <h5 className={"m_none inner_box_heading"}>Report Feed</h5>
               <div style={{ width: "100%" }}>
                 {console.log(incidentArray)}
                 {incidentArray

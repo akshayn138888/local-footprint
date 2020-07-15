@@ -1,5 +1,5 @@
 .auth-div {
-  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+  background-image: #2c3338;
 }
 
 .login-form1 {
@@ -7,7 +7,7 @@
   height: 600px;
   width: 400px;
   border-radius: 20px;
-  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+  background: #1f4467;
   box-shadow: 11px 11px 22px #09203f, -11px -11px 22px #537895;
   overflow: hidden;
   display: flex;
@@ -36,10 +36,10 @@
     box-shadow: inset 5px 5px 10px #d1cdc7, inset -5px -5px 10px #ffffff;
   }
   .form-header1 {
-    height: 45%;
+    height: 35%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
     align-items: center;
     flex-wrap: wrap;
     .logo-wrapper1 {
@@ -75,13 +75,14 @@
   }
   .form1 {
     .form-submit1 {
-      width: 200px;
+      width: 150px;
       height: 35px;
       border-radius: 25px;
       color: #fafafa;
       border: none;
       font-size: 1em;
-      margin: 2em 5.3em;
+      margin-left: 2.1em;
+      margin-bottom: 1em;
       background: #47a1f2;
       outline: none;
       &:hover {
