@@ -13,6 +13,7 @@
   justify-content: center;
   margin-top: 0.5em;
   margin-bottom: 2em;
+  display: block;
   /* margin: 0;
   margin-left: 0px;
   margin-left: 10px;
@@ -53,6 +54,7 @@ video {
   text-align: center;
   color: #fff;
   position: absolute;
+  display: inline-block;
   top: 0;
   bottom: 0;
   left: 0;
@@ -63,16 +65,19 @@ video {
 }
 .hero-h2 {
   color: white;
+  display: block;
   margin-top: 1.3em;
   margin-bottom: 1.3em;
 }
 .hero-h3 {
   color: white;
+  display: block;
   font-size: 0.75em;
   font-family: "Rubik";
 }
 .hero-h5 {
   color: white;
+  display: block;
   font-size: 0.5em;
 }
 .hero-buttons {

@@ -34,8 +34,8 @@ function HeroScreen() {
               <span className="footer__black1">Footprint</span>
             </h3>
 
-            <Typist.Delay ms={500} />
             <h4 className="hero-h3"> Track your workers visually</h4>
+
             <Typist.Delay ms={500} />
 
             <h5 className="hero-h5">VIEW REALTIME GPS DATA</h5>

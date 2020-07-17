@@ -61,7 +61,7 @@ const Show = props => {
           height: "100vh"
         });
       });
-  }, []);
+  }, [userId, reportId]);
 
   if (report && report1) {
     ////////// Live report Data ????///////////////////////
@@ -178,11 +178,11 @@ const Show = props => {
                     <>
                       <NavLink
                         to={`/IncidentScreen/${crime.userId}/${crime.reportId}`}
-                        onClick={() => {
-                          return props.history.push(
-                            `/IncidentScreen/${crime.userId}/${crime.reportId}`
-                          );
-                        }}
+                        // onClick={() => {
+                        //   return props.history.push(
+                        //     `/IncidentScreen/${crime.userId}/${crime.reportId}`
+                        //   );
+                        // }}
                         className={"centerVH"}
                         activeStyle={{ background: "#202227" }}
                         className={`RP_button`}
