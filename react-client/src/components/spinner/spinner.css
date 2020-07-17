@@ -9,7 +9,7 @@
 @keyframes load {
   50% {
     transform: rotatez(180deg) scale(0.2);
-    border-color: orange;
+    border-color: #3a9fff;
   }
   100% {
     transform: rotatez(360deg) scale(1.1);
@@ -17,7 +17,7 @@
 }
 .loader1::before {
   content: "";
-  color: white;
+  color: #3a9fff;
   height: 30px;
   width: 30px;
   background: transparent;
@@ -42,7 +42,7 @@
   width: 30px;
   background: transparent;
   border-radius: 10%;
-  border: 25px inset orange;
+  border: 25px inset #3877b3;
   animation: load2 1s infinite ease-in-out;
 }
 @keyframes load3 {

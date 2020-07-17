@@ -3,8 +3,10 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
 import Spinner from "./spinner/Spinner";
+import DashBoardLP from "./DashBoardLP";
 
 import ReportNavBar from "./topNavBar/ReportNavBar";
+import GhostButton from "./ghostButtons/GhostButton";
 const IncidentMapScreen = props => {
   // const [popupToggler, setPopupToggler] = useState(false);
   const [selectedIncident, setSelectedIncident] = useState(null);
@@ -88,7 +90,7 @@ const IncidentMapScreen = props => {
         <ReactMapGL
           {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          mapStyle="mapbox://styles/akkin13/ckb1qv50i0grp1inr5bx1qkfm"
+          mapStyle="mapbox://styles/mapbox/dark-v9"
           onViewportChange={viewport => setViewport(viewport)}
         >
           {parseData ? parseData.map(markerArray => markerArray) : ""}
@@ -126,15 +128,15 @@ const IncidentMapScreen = props => {
           ) : (
             ""
           )}
-          <ReportNavBar />
-          <NavBar />
+          <DashBoardLP />
+          <GhostButton />
         </ReactMapGL>
       </div>
     );
   } else {
     return (
       <div>
-        <NavBar />
+        <GhostButton />
         <Spinner />
       </div>
     );

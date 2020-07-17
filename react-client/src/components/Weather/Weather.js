@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { fetchWeather } from "./api/fetchWeather";
 import "./Weather.css";
-
 const Weather = () => {
   const [weather, setWeather] = useState({});
-
   useEffect(() => {
     fetchWeather("Vancouver").then(data => {
       setWeather(data);
     });
   }, []);
-
   return (
-    <div style={{ backgroundImage: "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)", width: "80%", borderRadius: "10%", paddingTop: "7.5%" }}>
+    <div
+      style={{
+        backgroundColor: "#1F4467",
+        width: "80%",
+        borderRadius: "10%",
+        paddingTop: "7.5%"
+      }}
+    >
       {weather.main && (
         <div>
-          <h2 className="city-name" style={{ margin: 0, marginBottom: "20px", textAlign: "center" }}>
+          <h2 className="city-name" style={{ textAlign: "center" }}>
             <span>{weather.name}</span>
           </h2>
           <div className="city-temp">
@@ -34,5 +38,4 @@ const Weather = () => {
     </div>
   );
 };
-
 export default Weather;

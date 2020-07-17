@@ -1,0 +1,25 @@
+.hero-buttons-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.ghost-button-1 {
+  display: inline-block;
+  width: 20vw;
+  padding: 0.3em;
+  margin-top: 90vh;
+  margin-left: 1em;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 1em;
+  font-size: 1em;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+}
+.ghost-button-1:hover,
+.ghost-button-1:active {
+  background-color: #fff;
+  color: #000;
+}
